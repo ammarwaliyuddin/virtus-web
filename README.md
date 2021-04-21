@@ -12,3 +12,6 @@ sistem informasi dan monitoring perangkat iot smartwatch
 jika masih eror silahkan update composer
 
 composer update --ignore-platform-reqs
+
+jika ada perubahan pada databases, 
+tolong upload file sql di folder DB
