@@ -314,6 +314,9 @@ a.btn-form {
     color: #FFFFFF;
 
   }
+  .axel-style{
+    font-family: 'Courier New', Courier, monospace;
+  }
 }
 
 @media screen and (max-width: 471px) {
