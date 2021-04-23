@@ -6,11 +6,38 @@
 <div class="container-fluid mt-5">
     <div class="row">
         <div class="col-12 ">
+            <?php
+            $session = \Config\Services::session();
+            if (!empty($session->getFlashdata('pesan'))) {
+
+                echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                ' . $session->getFlashdata('pesan') . '
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>';
+            }
+            ?>
             <div class="card p-5">
                 <div class="btngrp-zaam mt-2  w-100">
+
+                    <a href="" class="btn btn-dark mr-2">Print</a>
                     <a href="" class="btn btn-danger mr-2">Unduh PDF</a>
-                    <a href="" class="btn btn-success mr-2">Unduh Excel</a>
-                    <a href="" class="btn btn-dark">Print</a>
+                    <div class="btn-group mr-2">
+                        <button type="button" class="btn btn-success">Excel</button>
+                        <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <!-- Button trigger modal -->
+                            <a class="dropdown-item" data-toggle="modal" data-target="#import_excel" href="#">
+                                Import
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                Export
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="jabatan-header mt-4 mb-2">
@@ -51,6 +78,37 @@
         </div>
     </div>
 
+</div>
+
+<!-- modal import excel -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="import_excel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Import Excel </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <?= form_open_multipart('Jabatan/upload') ?>
+
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <input type="file" name="fileimport" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Import data</button>
+            </div>
+            <?= form_close(); ?>
+        </div>
+    </div>
 </div>
 
 
