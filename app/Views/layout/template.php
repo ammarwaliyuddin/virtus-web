@@ -64,10 +64,10 @@
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid">
                     <h3>TOTAL PETUGAS <span>1000</span></h3>
-                    <!-- <button type="button" id="sidebarCollapse" class="btn btn-info">
-                <i class="fas fa-align-left"></i>
-                <span></span>
-            </button> -->
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span></span>
+                    </button>
                     <!-- login panel -->
                     <div class="login-panel">
                         <div class="img-profil"></div>
