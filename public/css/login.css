@@ -135,7 +135,6 @@ a.btn-form {
   border-radius: 40px;
 }
 
-
 .footer-login {
   position: absolute;
   bottom: 0;
@@ -154,7 +153,6 @@ a.btn-form {
   margin-bottom: 10px;
 }
 
-
 .footer-login .logo {
   color: #ffffff;
   display: flex;
@@ -170,8 +168,7 @@ a.btn-form {
   font-family: "Quicksand";
   font-style: normal;
   font-size: 18px;
-  color: #FFFFFF;
-
+  color: #ffffff;
 }
 
 /* responsive */
@@ -180,7 +177,6 @@ a.btn-form {
   .myauto img {
     margin: 20px auto;
   }
-
 }
 
 @media screen and (max-width: 1279px) {
@@ -311,11 +307,7 @@ a.btn-form {
     font-family: "Quicksand";
     font-style: normal;
     font-size: 16px;
-    color: #FFFFFF;
-
-  }
-  .axel-style{
-    font-family: 'Courier New', Courier, monospace;
+    color: #ffffff;
   }
 }
 
@@ -325,7 +317,6 @@ a.btn-form {
   }
 
   .footer-login {
-
     width: 90%;
   }
 
@@ -348,8 +339,7 @@ a.btn-form {
     font-family: "Quicksand";
     font-style: normal;
     font-size: 12px;
-    color: #FFFFFF;
-
+    color: #ffffff;
   }
 }
 
@@ -367,5 +357,4 @@ a.btn-form {
   .footer-login .img-logo {
     margin-right: 5px;
   }
-
 }
