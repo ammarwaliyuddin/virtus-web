@@ -29,4 +29,9 @@ class Security extends BaseController
         //dd($data);
         return view('Security/Security', $data);
     }
+
+    public function detail_personil()
+    {
+        return view('Security/Detail_Personil');
+    }
 }

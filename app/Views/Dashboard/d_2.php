@@ -27,32 +27,35 @@
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                             <div class="row">
                                 <div class="col-6 text-white">
-                                    <div class="card-monitoring bg-zaamorange">
-                                        <div class="ico-cardmonitoring">
-                                            <img src="/img/ico/[red}ICON SLEEP 1.png" alt="" srcset="">
+
+                                    <a href="<?= base_url('Security_personil'); ?> ">
+                                        <div class="card-monitoring bg-zaamorange">
+                                            <div class="ico-cardmonitoring">
+                                                <img src="/img/ico/[red}ICON SLEEP 1.png" alt="" srcset="">
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <i class="fas fa-user fa-2x"></i>
+                                                </div>
+                                                <div class="col-9">
+                                                    <p class="text-white">A12345678</p>
+                                                    <p class="text-white">Fajar Hamid Embutara</p>
+                                                </div>
+                                                <div class="col-4">
+                                                    <img src="/img/ico/[WHITE ICON] smartwatch 1.png" alt="" srcset="">
+                                                    <p>001</p>
+                                                </div>
+                                                <div class="col-4">
+                                                    <img src="/img/ico/[WHITE ICON] heart rate 1.png" alt="" srcset="">
+                                                    <p>42 bpm</p>
+                                                </div>
+                                                <div class="col-4">
+                                                    <img src="/img/ico/[WHITE ICON] location 1.png" alt="" srcset="">
+                                                    <p>Jakarta</p>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <i class="fas fa-user fa-2x"></i>
-                                            </div>
-                                            <div class="col-9">
-                                                <p class="text-white">A12345678</p>
-                                                <p class="text-white">Fajar Hamid Embutara</p>
-                                            </div>
-                                            <div class="col-4">
-                                                <img src="/img/ico/[WHITE ICON] smartwatch 1.png" alt="" srcset="">
-                                                <p>001</p>
-                                            </div>
-                                            <div class="col-4">
-                                                <img src="/img/ico/[WHITE ICON] heart rate 1.png" alt="" srcset="">
-                                                <p>42 bpm</p>
-                                            </div>
-                                            <div class="col-4">
-                                                <img src="/img/ico/[WHITE ICON] location 1.png" alt="" srcset="">
-                                                <p>Jakarta</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="col-6 text-white">
                                     <div class="card-monitoring bg-zaamorange">

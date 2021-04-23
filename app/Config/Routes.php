@@ -37,6 +37,7 @@ $routes->get('/Dashboard', 'Dashboard::index', ['FilterS' => 'auth']);
 $routes->get('/Dashboard2/(:segment)', 'Dashboard2::index/$1', ['FilterS' => 'auth']);
 
 $routes->get('/Security', 'Security::index', ['FilterS' => 'auth']);
+$routes->get('/Security_personil', 'Security::detail_personil', ['FilterS' => 'auth']);
 $routes->get('/Security2', 'Security2::index', ['FilterS' => 'auth']);
 
 $routes->get('/Shift', 'Shift::index', ['FilterS' => 'auth']);
