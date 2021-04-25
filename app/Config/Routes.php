@@ -45,10 +45,13 @@ $routes->get('/Shift', 'Shift::index', ['FilterS' => 'auth']);
 $routes->get('/Location', 'Location::index', ['FilterS' => 'auth']);
 $routes->get('/Jabatan', 'Jabatan::index', ['FilterS' => 'auth']);
 
-
 // $routes->get('/Jabatan', 'Jabatan::index');
 $routes->delete('/Jabatan/(:num)', 'Jabatan::delete/$1');
 // $routes->get('/Jabatan/(:any)', 'Jabatan::index/$1');
+
+// print dan cetak pdf jabatan 
+
+
 
 $routes->get('/Role_user', 'Role_user::index', ['FilterS' => 'auth']);
 $routes->delete('/Role_user/(:num)', 'Role_user::delete/$1', ['FilterS' => 'auth']);

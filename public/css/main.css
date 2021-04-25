@@ -23,6 +23,14 @@ h6 {
     font-family: 'Quicksand', sans-serif;
 }
 
+.dropdown-toggle.excel::after {
+    display: block;
+    position: unset !important;
+    top: unset !important;
+    right: unset !important;
+    transform: unset !important;
+}
+
 .zaam-input input {
     border-radius: 20px !important;
     margin-right: 5px;

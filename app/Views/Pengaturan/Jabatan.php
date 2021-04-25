@@ -20,12 +20,10 @@
             ?>
             <div class="card p-5">
                 <div class="btngrp-zaam mt-2  w-100">
-
-                    <a href="" class="btn btn-dark mr-2">Print</a>
-                    <a href="" class="btn btn-danger mr-2">Unduh PDF</a>
+                    <a href="/Jabatan/reportpdf" class="btn btn-danger mr-2">Unduh PDF</a>
                     <div class="btn-group mr-2">
                         <button type="button" class="btn btn-success">Excel</button>
-                        <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-success dropdown-toggle excel dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
                         <div class="dropdown-menu">
@@ -33,7 +31,7 @@
                             <a class="dropdown-item" data-toggle="modal" data-target="#import_excel" href="#">
                                 Import
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="/Jabatan/export_excel">
                                 Export
                             </a>
                         </div>
@@ -94,7 +92,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <?= form_open_multipart('Jabatan/upload') ?>
+                <?= form_open_multipart('Jabatan/import_excel') ?>
 
                 <div class="form-group row">
                     <div class="col-sm-10">

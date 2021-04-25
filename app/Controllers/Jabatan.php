@@ -5,6 +5,12 @@ namespace App\Controllers;
 use App\Models\JabatanModel;
 use CodeIgniter\Validation\Rules;
 use PDO;
+use \Mpdf\Mpdf;
+
+// require('./application/third_party/phpoffice/vendor/autoload.php');
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Jabatan extends BaseController
 {
@@ -53,7 +59,8 @@ class Jabatan extends BaseController
         return redirect()->to('/Jabatan');
     }
 
-    public function upload()
+    //import excel
+    public function import_excel()
     {
         $validation = \Config\Services::validation();
         $valid = $this->validate(
@@ -128,5 +135,57 @@ class Jabatan extends BaseController
             $this->session->setFlashdata('pesan', "$jumlaherror Data tidak diimport karna memiliki kesamaan pada data yang sudah ada <br> $jumlahsukses Data berhasil di import");
             return redirect()->to('/Jabatan');
         }
+    }
+    public function reportpdf()
+    {
+        $Jabatan = $this->JabatanModel->findAll();
+
+        $mpdf = new \Mpdf\Mpdf();
+
+        $html = view('Pengaturan/Jabatan_pdf', [
+            'Jabatan' => $Jabatan
+        ]);
+        $mpdf->AddPage("P", "", "", "", "", "15", "15", "15", "15", "", "", "", "", "", "", "", "", "", "", "", "A4");
+        $mpdf->WriteHTML($html);
+
+        return redirect()->to($mpdf->Output('filename.pdf', 'I'));
+    }
+    // export excel
+    public function export_excel()
+    {
+
+        //  $semua_pengguna = $this->export_model->getAll()->result();
+        $Jabatan = $this->JabatanModel->findAll();
+
+        $spreadsheet = new Spreadsheet;
+
+        $spreadsheet->setActiveSheetIndex(0)
+            ->setCellValue('A1', 'No')
+            ->setCellValue('B1', 'Jabatan')
+            ->setCellValue('C1', 'Nama_area')
+            ->setCellValue('D1', 'Deskripsi');
+
+        $kolom = 2;
+        $nomor = 1;
+        $i = 1;
+        foreach ($Jabatan as $J) {
+
+            $spreadsheet->setActiveSheetIndex(0)
+                ->setCellValue('A' . $kolom, $i++)
+                ->setCellValue('B' . $kolom, $J['Jabatan'])
+                ->setCellValue('C' . $kolom, $J['Nama_area'])
+                ->setCellValue('D' . $kolom, $J['Deskripsi']);
+
+            $kolom++;
+            $nomor++;
+        }
+
+        $writer = new Xlsx($spreadsheet);
+
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="rekap.xlsx"');
+        header('Cache-Control: max-age=0');
+
+        $writer->save('php://output');
     }
 }

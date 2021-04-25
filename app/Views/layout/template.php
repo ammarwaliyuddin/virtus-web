@@ -75,7 +75,7 @@
                             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">ADMIN</button>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a href="#" class="dropdown-item">ACCOUNT</a>
-                                <a href="#" class="dropdown-item">LOGOUT</a>
+                                <a href="<?= base_url(); ?>" class="dropdown-item">LOGOUT</a>
                             </div>
                         </div>
                     </div>
@@ -196,7 +196,7 @@
                 labels: ['Semangat', 'Mengantuk', 'Tidur'],
                 datasets: [{
                     label: "grafik pelanggaran",
-                    data: [50, 10, 15],
+                    data: [1, 0, 1],
                     backgroundColor: [
                         '#1AB394',
                         '#F8AB59',
