@@ -58,9 +58,9 @@
                                 </div>
                                 <div class="col-6 text-white">
                                     <a href="<?= base_url('Security_personil'); ?> ">
-                                        <div class="card-monitoring bg-zaamorange">
-                                            <div class="ico-cardmonitoring">
-                                                <img src="/img/ico/[red}ICON SLEEP 1.png" alt="" srcset="">
+                                        <div class="card-monitoring card-axel">
+                                            <div class="ico-cardmonitoring ">
+                                                <img src="" id="card_logo_status">
                                             </div>
                                             <div class="row">
                                                 <div class="col-3">

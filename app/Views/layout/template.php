@@ -124,17 +124,19 @@
                 $('#lokasifajar').html(value.location);
                 $('#statefajar').html(value.state);
                 console.log("User UID : " + value.heartrate);
-                // value.heartrate = 123;
-                if (value.heartrate == 74) {
-                    console.log(value.heartrate);
-                    card = document.querySelector('.card-monitoring');
+                console.log(value.state)
+                card = document.querySelector('.card-monitoring');
+                if (value.state == 'NORMAL') {
+                    // card.classList.remove('siang');
+                    card.classList.add('bg-success');
+                    var src1 = '/img/ico/ICON WORK 1.png';
+                    $("#card_logo_status").attr("src", src1);
+                } else if (value.state == 'TIDUR') {
                     // card.classList.remove('siang');
                     card.classList.add('bg-zaamorange');
                     var src1 = '/img/ico/[red}ICON SLEEP 1.png';
                     $("#card_logo_status").attr("src", src1);
-                } else if (value.heartrate == 123) {
-                    console.log(value.heartrate);
-                    card = document.querySelector('.card-monitoring');
+                } else {
                     // card.classList.remove('siang');
                     card.classList.add('bg-warning');
                     var src1 = '/img/ico/ICON DOZY 1.png';
@@ -149,6 +151,24 @@
                 $('#lokasiaxel').html(value.location);
                 $('#stateaxel').html(value.state);
                 console.log("User UID : " + value.heartrate);
+                value.state = 'TIDUR';
+                card = document.querySelector('.card-monitoring.card-axel');
+                if (value.state == 'NORMAL') {
+                    // card.classList.remove('siang');
+                    card.classList.add('bg-success');
+                    var src1 = '/img/ico/ICON WORK 1.png';
+                    $(".card-axel #card_logo_status").attr("src", src1);
+                } else if (value.state == 'TIDUR') {
+                    // card.classList.remove('siang');
+                    card.classList.add('bg-zaamorange');
+                    var src1 = '/img/ico/[red}ICON SLEEP 1.png';
+                    $(".card-axel #card_logo_status").attr("src", src1);
+                } else {
+                    // card.classList.remove('siang');
+                    card.classList.add('bg-warning');
+                    var src1 = '/img/ico/ICON DOZY 1.png';
+                    $(".card-axel #card_logo_status").attr("src", src1);
+                }
             });
         </script>
         <script>
@@ -175,8 +195,8 @@
             var data = {
                 labels: ['Semangat', 'Mengantuk', 'Tidur'],
                 datasets: [{
-                    label: "Penjualan Barang",
-                    data: [250, 90, 20],
+                    label: "grafik pelanggaran",
+                    data: [50, 10, 15],
                     backgroundColor: [
                         '#1AB394',
                         '#F8AB59',
