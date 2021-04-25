@@ -27,37 +27,6 @@
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                             <div class="row">
                                 <div class="col-6 text-white">
-
-                                    <a href="<?= base_url('Security_personil'); ?> ">
-                                        <div class="card-monitoring bg-zaamorange">
-                                            <div class="ico-cardmonitoring">
-                                                <img src="/img/ico/[red}ICON SLEEP 1.png" alt="" srcset="">
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <i class="fas fa-user fa-2x"></i>
-                                                </div>
-                                                <div class="col-9">
-                                                    <p class="text-white">A12345678</p>
-                                                    <p class="text-white">Fajar Hamid Embutara</p>
-                                                </div>
-                                                <div class="col-4">
-                                                    <img src="/img/ico/[WHITE ICON] smartwatch 1.png" alt="" srcset="">
-                                                    <p>001</p>
-                                                </div>
-                                                <div class="col-4">
-                                                    <img src="/img/ico/[WHITE ICON] heart rate 1.png" alt="" srcset="">
-                                                    <p>42 bpm</p>
-                                                </div>
-                                                <div class="col-4">
-                                                    <img src="/img/ico/[WHITE ICON] location 1.png" alt="" srcset="">
-                                                    <p>Jakarta</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-6 text-white">
                                     <div class="card-monitoring bg-zaamorange">
                                         <div class="ico-cardmonitoring">
                                             <img src="/img/ico/[red}ICON SLEEP 1.png" alt="" srcset="">
@@ -76,11 +45,39 @@
                                             </div>
                                             <div class="col-4">
                                                 <img src="/img/ico/[WHITE ICON] heart rate 1.png" alt="" srcset="">
-                                                <p>42 bpm</p>
+                                                <p id="detakfajar">0</p>
                                             </div>
                                             <div class="col-4">
                                                 <img src="/img/ico/[WHITE ICON] location 1.png" alt="" srcset="">
-                                                <p>Jakarta</p>
+                                                <p id="lokasifajar">Jakarta</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 text-white">
+                                    <div class="card-monitoring bg-zaamorange">
+                                        <div class="ico-cardmonitoring">
+                                            <img src="/img/ico/[red}ICON SLEEP 1.png" alt="" srcset="">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <i class="fas fa-user fa-2x"></i>
+                                            </div>
+                                            <div class="col-9">
+                                                <p class="text-white">2345678</p>
+                                                <p class="text-white">Ananda Rebel</p>
+                                            </div>
+                                            <div class="col-4">
+                                                <img src="/img/ico/[WHITE ICON] smartwatch 1.png" alt="" srcset="">
+                                                <p>001</p>
+                                            </div>
+                                            <div class="col-4">
+                                                <img src="/img/ico/[WHITE ICON] heart rate 1.png" alt="" srcset="">
+                                                <p id="detakaxel">0 bpm</p>
+                                            </div>
+                                            <div class="col-4">
+                                                <img src="/img/ico/[WHITE ICON] location 1.png" alt="" srcset="">
+                                                <p id="lokasiaxel" >None</p>
                                             </div>
                                         </div>
                                     </div>
@@ -96,8 +93,8 @@
                                                 <i class="fas fa-user fa-2x"></i>
                                             </div>
                                             <div class="col-9">
-                                                <p class="text-white">A12345678</p>
-                                                <p class="text-white">Fajar Hamid Embutara</p>
+                                                <p class="text-white">A3456743</p>
+                                                <p class="text-white">Feriko Dwi Hermansyah</p>
                                             </div>
                                             <div class="col-4">
                                                 <img src="/img/ico/[WHITE ICON] smartwatch 1.png" alt="" srcset="">
@@ -124,8 +121,8 @@
                                                 <i class="fas fa-user fa-2x"></i>
                                             </div>
                                             <div class="col-9">
-                                                <p class="text-white">A12345678</p>
-                                                <p class="text-white">Fajar Hamid Embutara</p>
+                                                <p class="text-white">A12345679</p>
+                                                <p class="text-white">Bagus Setyo Kumoro</p>
                                             </div>
                                             <div class="col-4">
                                                 <img src="/img/ico/[WHITE ICON] smartwatch 1.png" alt="" srcset="">
@@ -180,8 +177,8 @@
                                                 <i class="fas fa-user fa-2x"></i>
                                             </div>
                                             <div class="col-9">
-                                                <p class="text-white">A12345678</p>
-                                                <p class="text-white">Fajar Hamid Embutara</p>
+                                                <p class="text-white">A12455678</p>
+                                                <p class="text-white">Axel Elcana Duncan ST</p>
                                             </div>
                                             <div class="col-4">
                                                 <img src="/img/ico/[WHITE ICON] smartwatch 1.png" alt="" srcset="">
@@ -189,7 +186,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <img src="/img/ico/[WHITE ICON] heart rate 1.png" alt="" srcset="">
-                                                <p>42 bpm</p>
+                                                <p>39 bpm</p>
                                             </div>
                                             <div class="col-4">
                                                 <img src="/img/ico/[WHITE ICON] location 1.png" alt="" srcset="">
@@ -236,8 +233,8 @@
                                                 <i class="fas fa-user fa-2x"></i>
                                             </div>
                                             <div class="col-9">
-                                                <p class="text-white">A12345678</p>
-                                                <p class="text-white">Fajar Hamid Embutara</p>
+                                                <p class="text-white">I12345678</p>
+                                                <p class="text-white">Amirudin Dwi Putra</p>
                                             </div>
                                             <div class="col-4">
                                                 <img src="/img/ico/[WHITE ICON] smartwatch 1.png" alt="" srcset="">
@@ -287,6 +284,18 @@
                         <tbody>
                             <tr>
                                 <td>23:02:37</td>
+                                <td>Fajar Hamid Embutara</td>
+                            </tr>
+                            <tr>
+                                <td>04:19:56</td>
+                                <td>Elegi Terinjak</td>
+                            </tr>
+                            <tr>
+                                <td>07:08:09</td>
+                                <td>Leonardo Susanto</td>
+                            </tr>
+                            <tr>
+                                <td>23:02:37</td>
                                 <td>Fajar Hamid</td>
                             </tr>
                             <tr>
@@ -296,6 +305,30 @@
                             <tr>
                                 <td>07:08:09</td>
                                 <td>Bisma Surya Mahendra</td>
+                            </tr>
+                            <tr>
+                                <td>23:02:37</td>
+                                <td>Fajar Hamid</td>
+                            </tr>
+                            <tr>
+                                <td>04:19:56</td>
+                                <td>Feriko</td>
+                            </tr>
+                            <tr>
+                                <td>07:08:09</td>
+                                <td>Bisma Surya Mahendra</td>
+                            </tr>
+                            <tr>
+                                <td>23:02:37</td>
+                                <td>Edi Setyawan</td>
+                            </tr>
+                            <tr>
+                                <td>04:19:56</td>
+                                <td>Surya Raharja</td>
+                            </tr>
+                            <tr>
+                                <td>07:08:09</td>
+                                <td>Axel Elcana Duncan .ST</td>
                             </tr>
                             <tr>
                                 <td>23:02:37</td>
@@ -327,47 +360,11 @@
                             </tr>
                             <tr>
                                 <td>04:19:56</td>
-                                <td>Feriko</td>
+                                <td>Black Asta</td>
                             </tr>
                             <tr>
                                 <td>07:08:09</td>
-                                <td>Bisma Surya Mahendra</td>
-                            </tr>
-                            <tr>
-                                <td>23:02:37</td>
-                                <td>Fajar Hamid</td>
-                            </tr>
-                            <tr>
-                                <td>04:19:56</td>
-                                <td>Feriko</td>
-                            </tr>
-                            <tr>
-                                <td>07:08:09</td>
-                                <td>Bisma Surya Mahendra</td>
-                            </tr>
-                            <tr>
-                                <td>23:02:37</td>
-                                <td>Fajar Hamid</td>
-                            </tr>
-                            <tr>
-                                <td>04:19:56</td>
-                                <td>Feriko</td>
-                            </tr>
-                            <tr>
-                                <td>07:08:09</td>
-                                <td>Bisma Surya Mahendra</td>
-                            </tr>
-                            <tr>
-                                <td>23:02:37</td>
-                                <td>Fajar Hamid</td>
-                            </tr>
-                            <tr>
-                                <td>04:19:56</td>
-                                <td>Feriko</td>
-                            </tr>
-                            <tr>
-                                <td>07:08:09</td>
-                                <td>Bisma Surya Mahendra</td>
+                                <td>Monkey d Dragon</td>
                             </tr>
                         </tbody>
                     </table>
