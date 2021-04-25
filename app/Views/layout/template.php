@@ -63,7 +63,7 @@
         <div id="content">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid">
-                    <h3>TOTAL PETUGAS <span>1000</span></h3>
+                    <h3>TOTAL PETUGAS <span>2</span></h3>
                     <button type="button" id="sidebarCollapse" class="btn btn-info">
                         <i class="fas fa-align-left"></i>
                         <span></span>
@@ -103,9 +103,9 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
         </script>
         <script src="/js/Chart.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        {{--Firebase Tasks--}}
-        <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+        <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+        <!-- {{--Firebase Tasks--}} -->
+        <!-- <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script> -->
         <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
         <script>
             // Initialize Firebase
