@@ -104,37 +104,53 @@
         </script>
         <script src="/js/Chart.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      {{--Firebase Tasks--}}
-      <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
-      <script >
-         // Initialize Firebase
-         var config = {
-             apiKey: "AIzaSyDs7SdTvMQPTNqqYOvcOxcEOMGvFiJvJ_c",
-             authDomain: "smartsystemsecurity-45be9.firebaseapp.com",
-             databaseURL: "https://smartsystemsecurity-45be9.firebaseio.com",
-             storageBucket: "smartsystemsecurity-45be9.appspot.com",
-         };
-         firebase.initializeApp(config);
-         
-         var database = firebase.database();
-         database.ref('users/12345678').on('value', function(snapshot) {
-                 var value = snapshot.val();
-                 $('#detakfajar').html(value.heartrate+" bpm");
-                 $('#lokasifajar').html(value.location);
-                 $('#statefajar').html(value.state);
-                 console.log("User UID : "+value.heartrate);
-         });
-         
-         var database2 = firebase.database();
-         database2.ref('users/23456789').on('value', function(snapshot) {
-                 var value = snapshot.val();
-                 $('#detakaxel').html(value.heartrate+" bpm");
-                 $('#lokasiaxel').html(value.location);
-                 $('#stateaxel').html(value.state);
-                 console.log("User UID : "+value.heartrate);
-         }); 
-       </script>
+        {{--Firebase Tasks--}}
+        <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyDs7SdTvMQPTNqqYOvcOxcEOMGvFiJvJ_c",
+                authDomain: "smartsystemsecurity-45be9.firebaseapp.com",
+                databaseURL: "https://smartsystemsecurity-45be9.firebaseio.com",
+                storageBucket: "smartsystemsecurity-45be9.appspot.com",
+            };
+            firebase.initializeApp(config);
+
+            var database = firebase.database();
+            database.ref('users/12345678').on('value', function(snapshot) {
+                var value = snapshot.val();
+                $('#detakfajar').html(value.heartrate + " bpm");
+                $('#lokasifajar').html(value.location);
+                $('#statefajar').html(value.state);
+                console.log("User UID : " + value.heartrate);
+                // value.heartrate = 123;
+                if (value.heartrate == 74) {
+                    console.log(value.heartrate);
+                    card = document.querySelector('.card-monitoring');
+                    // card.classList.remove('siang');
+                    card.classList.add('bg-zaamorange');
+                    var src1 = '/img/ico/[red}ICON SLEEP 1.png';
+                    $("#card_logo_status").attr("src", src1);
+                } else if (value.heartrate == 123) {
+                    console.log(value.heartrate);
+                    card = document.querySelector('.card-monitoring');
+                    // card.classList.remove('siang');
+                    card.classList.add('bg-warning');
+                    var src1 = '/img/ico/ICON DOZY 1.png';
+                    $("#card_logo_status").attr("src", src1);
+                }
+            });
+
+            var database2 = firebase.database();
+            database2.ref('users/23456789').on('value', function(snapshot) {
+                var value = snapshot.val();
+                $('#detakaxel').html(value.heartrate + " bpm");
+                $('#lokasiaxel').html(value.location);
+                $('#stateaxel').html(value.state);
+                console.log("User UID : " + value.heartrate);
+            });
+        </script>
         <script>
             $(document).ready(function() {
                 $('#sidebarCollapse').on('click', function() {
