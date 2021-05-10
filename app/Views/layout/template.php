@@ -89,7 +89,8 @@
 
 
         <!-- jQuery CDN - Slim version (=without AJAX) -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"> -->
+        <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
         </script>
         <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
@@ -105,9 +106,9 @@
         <script src="/js/Chart.js"></script>
         <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
         <!-- {{--Firebase Tasks--}} -->
-        <!-- <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script> -->
+
         <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
-        <script>
+        <!-- <script>
             // Initialize Firebase
             var config = {
                 apiKey: "AIzaSyDs7SdTvMQPTNqqYOvcOxcEOMGvFiJvJ_c",
@@ -170,7 +171,57 @@
                     $(".card-axel #card_logo_status").attr("src", src1);
                 }
             });
+        </script> -->
+
+        <script>
+            // $.ajax({
+            //     url: 'https://smartsystemsecurity-45be9.firebaseio.com/users.json?',
+            //     // type: 'get',
+            //     // dataType: 'json',
+            //     // data: {
+            //     //     // 'print': 'pretty'
+            //     // },
+            //     success: function(result) {
+            //         var p = [];
+            //         $.each(result, function(i, data) {
+            //             p.push(data.state);
+            //         });
+            //         console.log(p.sort());
+            //         console.log(p.reverse());
+            //     }
+
+            // });
+
+            $.ajax({
+                url: 'https://zaamstudio.com/virtus/personil_monitoring_app.php',
+                type: 'post',
+                crossdomain: true,
+                // contentType: 'application/x-www-form-urlencoded',
+                contentType: 'application/json',
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                },
+                dataType: 'json',
+                data: {
+                    'Kode': 7,
+                    'Nama_area': 'The Pakubuono Signature',
+                    'tanggal': '2020-12-28'
+                },
+                success: function(result) {
+                    // var p = [];
+
+                    console.log(result);
+                    $.each(result, function(i, data) {
+                        console.log(data);
+                        // p.push(data.state);
+                    });
+                    // console.log(p.sort());
+                    // console.log(p.reverse());
+                }
+
+            });
         </script>
+
         <script>
             $(document).ready(function() {
                 $('#sidebarCollapse').on('click', function() {

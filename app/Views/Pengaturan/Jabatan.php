@@ -54,6 +54,7 @@
                         <th>Aksi</th>
                     </thead>
                     <tbody>
+
                         <?php foreach ($Jabatan as $J) : ?>
                             <tr>
                                 <td><?= $J['Jabatan']; ?></td>

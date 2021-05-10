@@ -22,13 +22,10 @@ class Jabatan extends BaseController
 
     public function index()
     {
-        $Jabatan = $this->JabatanModel->findAll();
-
-        $data = [
-            'Jabatan' => $Jabatan
-        ];
-
-        return view('Pengaturan/Jabatan', $data);
+        $data = $this->JabatanModel->findAll();
+        // var_dump($data);
+        // die;
+        return view('Pengaturan/Jabatan', ['Jabatan' => $data]);
     }
 
     public function save()
