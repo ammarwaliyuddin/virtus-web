@@ -54,4 +54,20 @@ class Customer extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/Customer');
     }
+    public function reportpdf()
+    {
+        $Customer = $this->CustomerModel->findAll();
+        // var_dump($Customer);
+        // die;
+
+        $mpdf = new \Mpdf\Mpdf();
+
+        $html = view('Pengaturan/Customer_pdf', [
+            'Customer' => $Customer
+        ]);
+        $mpdf->AddPage("P", "", "", "", "", "15", "15", "15", "15", "", "", "", "", "", "", "", "", "", "", "", "A4");
+        $mpdf->WriteHTML($html);
+
+        return redirect()->to($mpdf->Output('filename.pdf', 'I'));
+    }
 }

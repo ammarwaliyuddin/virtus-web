@@ -6,6 +6,9 @@ use App\Models\LokasiModel;
 
 use App\Models\AreaModel;
 
+use PDO;
+use \Mpdf\Mpdf;
+
 class Area extends BaseController
 {
     protected $LokasiModel;
@@ -54,5 +57,19 @@ class Area extends BaseController
 
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/Area');
+    }
+    public function reportpdf()
+    {
+        $Area = $this->LokasiModel->findAll();
+
+        $mpdf = new \Mpdf\Mpdf();
+
+        $html = view('Pengaturan/Area_pdf', [
+            'Area' => $Area
+        ]);
+        $mpdf->AddPage("P", "", "", "", "", "15", "15", "15", "15", "", "", "", "", "", "", "", "", "", "", "", "A4");
+        $mpdf->WriteHTML($html);
+
+        return redirect()->to($mpdf->Output('filename.pdf', 'I'));
     }
 }

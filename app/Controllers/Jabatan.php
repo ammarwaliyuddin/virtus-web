@@ -136,6 +136,8 @@ class Jabatan extends BaseController
     public function reportpdf()
     {
         $Jabatan = $this->JabatanModel->findAll();
+        // var_dump($Jabatan);
+        // die;
 
         $mpdf = new \Mpdf\Mpdf();
 

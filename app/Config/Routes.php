@@ -63,9 +63,15 @@ $routes->get('/Area', 'Area::index', ['FilterS' => 'auth']);
 $routes->delete('/Area/(:any)', 'Area::delete/$1', ['FilterS' => 'auth']);
 $routes->get('/Area/(:any)', 'Area::index/$1', ['FilterS' => 'auth']);
 
+// area print pdf
+$routes->get('/Area_reportpdf', 'Area::reportpdf', ['FilterS' => 'auth']);
+
 $routes->get('/Customer', 'Customer::index', ['FilterS' => 'auth']);
 $routes->delete('/Customer/(:num)', 'Customer::delete/$1', ['FilterS' => 'auth']);
 $routes->get('/Customer/(:any)', 'Customer::index/$1', ['FilterS' => 'auth']);
+// customer print pdf
+$routes->get('/Customer_reportpdf', 'Customer::reportpdf', ['FilterS' => 'auth']);
+
 
 $routes->get('/User', 'User::index', ['FilterS' => 'auth']);
 $routes->delete('/User/(:any)', 'User::delete/$1', ['FilterS' => 'auth']);
@@ -74,6 +80,8 @@ $routes->get('/User/(:any)', 'User::index/$1', ['FilterS' => 'auth']);
 $routes->get('/Smartwatch', 'Smartwatch::index');
 $routes->delete('/Smartwatch/(:num)', 'Smartwatch::delete/$1', ['FilterS' => 'auth']);
 $routes->get('/Smartwatch/(:any)', 'Smartwatch::index/$1', ['FilterS' => 'auth']);
+// print pdf
+$routes->get('/Smartwatch_reportpdf', 'Smartwatch::reportpdf', ['FilterS' => 'auth']);
 
 /**
  * --------------------------------------------------------------------

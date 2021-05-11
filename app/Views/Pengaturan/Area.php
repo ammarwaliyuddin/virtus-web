@@ -6,9 +6,21 @@
 <div class="container-fluid mt-5">
     <div class="row">
         <div class="col-12 ">
+            <?php
+            $session = \Config\Services::session();
+            if (!empty($session->getFlashdata('pesan'))) {
+
+                echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                ' . $session->getFlashdata('pesan') . '
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>';
+            }
+            ?>
             <div class="card p-5">
                 <div class="btngrp-zaam mt-2  w-100">
-                    <a href="" class="btn btn-danger mr-2">Unduh PDF</a>
+                    <a href="/Area_reportpdf" class="btn btn-danger mr-2">Unduh PDF</a>
                     <div class="btn-group mr-2">
                         <button type="button" class="btn btn-success">Excel</button>
                         <button type="button" class="btn btn-success dropdown-toggle excel dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
