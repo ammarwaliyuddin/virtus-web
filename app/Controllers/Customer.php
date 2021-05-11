@@ -62,7 +62,7 @@ class Customer extends BaseController
 
         $mpdf = new \Mpdf\Mpdf();
 
-        $html = view('Pengaturan/Customer_pdf', [
+        $html = view('Template_pdf/Customer_pdf', [
             'Customer' => $Customer
         ]);
         $mpdf->AddPage("P", "", "", "", "", "15", "15", "15", "15", "", "", "", "", "", "", "", "", "", "", "", "A4");

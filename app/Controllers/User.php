@@ -60,4 +60,19 @@ class User extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/User');
     }
+    public function reportpdf()
+    {
+        $User = $this->UserModel->findAll();
+        // var_dump($User);
+        // die;
+        $mpdf = new \Mpdf\Mpdf();
+
+        $html = view('Template_pdf/User_pdf', [
+            'User' => $User
+        ]);
+        $mpdf->AddPage("P", "", "", "", "", "15", "15", "15", "15", "", "", "", "", "", "", "", "", "", "", "", "A4");
+        $mpdf->WriteHTML($html);
+
+        return redirect()->to($mpdf->Output('filename.pdf', 'I'));
+    }
 }

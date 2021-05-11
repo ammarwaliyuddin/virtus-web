@@ -59,12 +59,18 @@ $routes->get('/Role_user/(:any)', 'Role_user::index/$1', ['FilterS' => 'auth']);
 
 $routes->get('/Tambah_role_user', 'Tambah_role_user::index', ['FilterS' => 'auth']);
 
+// print user laporan
+$routes->get('/User_reportpdf', 'User::reportpdf', ['FilterS' => 'auth']);
+
+
 $routes->get('/Area', 'Area::index', ['FilterS' => 'auth']);
 $routes->delete('/Area/(:any)', 'Area::delete/$1', ['FilterS' => 'auth']);
 $routes->get('/Area/(:any)', 'Area::index/$1', ['FilterS' => 'auth']);
 
 // area print pdf
 $routes->get('/Area_reportpdf', 'Area::reportpdf', ['FilterS' => 'auth']);
+$routes->get('/Area_exportexcel', 'Area::export_excel', ['FilterS' => 'auth']);
+
 
 $routes->get('/Customer', 'Customer::index', ['FilterS' => 'auth']);
 $routes->delete('/Customer/(:num)', 'Customer::delete/$1', ['FilterS' => 'auth']);

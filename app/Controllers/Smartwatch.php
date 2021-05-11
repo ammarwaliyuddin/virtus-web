@@ -56,7 +56,7 @@ class Smartwatch extends BaseController
 
         $mpdf = new \Mpdf\Mpdf();
 
-        $html = view('Pengaturan/Smartwatch_pdf', [
+        $html = view('Template_pdf/Smartwatch_pdf', [
             'Smartwatch' => $Smartwatch
         ]);
         $mpdf->AddPage("P", "", "", "", "", "15", "15", "15", "15", "", "", "", "", "", "", "", "", "", "", "", "A4");

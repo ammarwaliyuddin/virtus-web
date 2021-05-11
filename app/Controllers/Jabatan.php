@@ -141,7 +141,7 @@ class Jabatan extends BaseController
 
         $mpdf = new \Mpdf\Mpdf();
 
-        $html = view('Pengaturan/Jabatan_pdf', [
+        $html = view('Template_pdf/Jabatan_pdf', [
             'Jabatan' => $Jabatan
         ]);
         $mpdf->AddPage("P", "", "", "", "", "15", "15", "15", "15", "", "", "", "", "", "", "", "", "", "", "", "A4");

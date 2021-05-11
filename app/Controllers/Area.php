@@ -4,6 +4,9 @@ namespace App\Controllers;
 
 use App\Models\LokasiModel;
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 use App\Models\AreaModel;
 
 use PDO;
@@ -64,12 +67,48 @@ class Area extends BaseController
 
         $mpdf = new \Mpdf\Mpdf();
 
-        $html = view('Pengaturan/Area_pdf', [
+        $html = view('Template_pdf/Area_pdf', [
             'Area' => $Area
         ]);
         $mpdf->AddPage("P", "", "", "", "", "15", "15", "15", "15", "", "", "", "", "", "", "", "", "", "", "", "A4");
         $mpdf->WriteHTML($html);
 
         return redirect()->to($mpdf->Output('filename.pdf', 'I'));
+    }
+    // export excel
+    public function export_excel()
+    {
+
+        //  $semua_pengguna = $this->export_model->getAll()->result();
+        $Area = $this->LokasiModel->findAll();
+
+        $spreadsheet = new Spreadsheet;
+
+        $spreadsheet->setActiveSheetIndex(0)
+            ->setCellValue('A1', 'No')
+            ->setCellValue('B1', 'Nama_area')
+            ->setCellValue('C1', 'Lokasi');
+
+        $kolom = 2;
+        $nomor = 1;
+        $i = 1;
+        foreach ($Area as $A) {
+
+            $spreadsheet->setActiveSheetIndex(0)
+                ->setCellValue('A' . $kolom, $i++)
+                ->setCellValue('B' . $kolom, $A['Nama_area'])
+                ->setCellValue('C' . $kolom, $A['Lokasi']);
+
+            $kolom++;
+            $nomor++;
+        }
+
+        $writer = new Xlsx($spreadsheet);
+
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="rekap.xlsx"');
+        header('Cache-Control: max-age=0');
+
+        $writer->save('php://output');
     }
 }
