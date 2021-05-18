@@ -15,29 +15,10 @@
                         </button>
                     </div>
                 </div>
+                <a href="" class="btn btn-primary btn-sm">Tambah</a>
                 <div class="card-content p-0">
-                    <!-- <div class="shift-card">
-                        <?php foreach ($Shift as $S) : ?>
-                            <div class="time">
-                                <div class="row">
-                                    <div class="col-9">
-                                        <p>Senin, 30 November 2020</p>
-                                        <p>Shift Jam <?= $S['jam']; ?></p>
-                                    </div>
 
-                                    <div class="col-3">
-                                        <img src="/img/ico/Add User.png" alt="" srcset="">
-                                    </div>
 
-                                </div>
-                            </div>
-                            <div class="personil">
-                                <?php foreach ($Shift as $S) : ?>
-                                    <p><?= $S['Nama']; ?></p>
-                                <?php endforeach; ?>
-                            </div>
-                        <?php endforeach; ?>
-                    </div> -->
                     <table class="table">
                         <thead class="thead-dark">
                             <tr>
@@ -45,7 +26,7 @@
                                 <th scope="col">Nama Area</th>
                                 <th scope="col">Tanggal</th>
                                 <th scope="col">Jam</th>
-                                <th scope="col">Nama Personil</th>
+                                <th scope="col">action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,7 +35,10 @@
                                 <td>Pakuwon</td>
                                 <td>2/05/2021</td>
                                 <td>19.00</td>
-                                <td>Axel</td>
+                                <td>
+                                    <a href="" class="btn btn-danger btn-sm">Edit</a>
+                                    <a href="" class="btn btn-danger btn-sm">Hapus</a>
+                                </td>
                             </tr>
 
                         </tbody>

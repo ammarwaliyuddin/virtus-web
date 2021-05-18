@@ -34,4 +34,8 @@ class Security extends BaseController
     {
         return view('Security/Detail_Personil');
     }
+    public function setting_personil()
+    {
+        return view('Pengaturan/Personil');
+    }
 }

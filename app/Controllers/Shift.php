@@ -26,4 +26,14 @@ class Shift extends BaseController
         //dd($data);
         return view('Shift/Shift', $data);
     }
+    public function setting_shift()
+    {
+
+        return view('Pengaturan/Shift');
+    }
+    public function setting_atur_shift()
+    {
+
+        return view('Pengaturan/Atur_shift');
+    }
 }

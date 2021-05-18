@@ -44,19 +44,28 @@
                     <li>
                         <a href="<?= base_url('Location'); ?>">LOCATION</a>
                     </li>
-                    <li>
-                        <div class=" dropright drop-zaam">
-                            <a href="" class="btn dropdown-toggle tombolsetting" data-toggle="dropdown">SETTING</a>
-                            <div class="dropdown-menu">
-                                <a href="<?= base_url('Jabatan'); ?>" class="dropdown-item">JABATAN</a>
-                                <a href="<?= base_url('Role_user'); ?>" class="dropdown-item">ROLE USER</a>
-                                <a href="<?= base_url('user'); ?>" class="dropdown-item">USER</a>
-                                <a href="<?= base_url('Area'); ?>" class="dropdown-item">AREA</a>
-                                <a href="<?= base_url('Customer'); ?>" class="dropdown-item">CUSTOMER</a>
-                                <a href="<?= base_url('Smartwatch'); ?>" class="dropdown-item">SMARTWATCH</a>
-                            </div>
-                        </div>
+                    <li class="nav-item dropright drop-zaam">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            SETTING
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="<?= base_url('Jabatan'); ?>">JABATAN</a></li>
+                            <li><a href="<?= base_url('Role_user'); ?>" class="dropdown-item">ROLE USER</a></li>
+                            <li><a href="<?= base_url('user'); ?>" class="dropdown-item">USER</a></li>
+                            <li><a href="<?= base_url('Area'); ?>" class="dropdown-item">AREA</a></li>
+                            <li><a href="<?= base_url('Customer'); ?>" class="dropdown-item">CUSTOMER</a></li>
+                            <li><a href="<?= base_url('Smartwatch'); ?>" class="dropdown-item">SMARTWATCH</a></li>
+                            <li><a href="<?= base_url('Security/setting_personil'); ?>" class="dropdown-item">PERSONIL</a></li>
+                            <li class="dropdown-submenu submenu-active"><a class="dropdown-item dropdown-toggle" href="#">SHIFT PERSONIL</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="<?= base_url('Shift/setting_shift'); ?>">SHIFT</a></li>
+                                    <li><a class="dropdown-item" href="<?= base_url('Shift/setting_atur_shift'); ?>">ATUR SHIFT</a></li>
+
+                                </ul>
+                            </li>
+                        </ul>
                     </li>
+
                 </ul>
             </div>
         </nav>
@@ -104,6 +113,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
         </script>
         <script src="/js/Chart.js"></script>
+
         <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
         <!-- {{--Firebase Tasks--}} -->
 
@@ -240,6 +250,23 @@
                     $(this).parent().addClass('active').siblings().removeClass('active')
                 })
             })
+        </script>
+        <script>
+            $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+                if (!$(this).next().hasClass('show')) {
+                    $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+                }
+                var $subMenu = $(this).next(".dropdown-menu");
+                $subMenu.toggleClass('show');
+
+
+                $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+                    $('.dropdown-submenu .show').removeClass("show");
+                });
+
+
+                return false;
+            });
         </script>
         <script type="text/javascript">
             var ctx = document.getElementById("piechart").getContext("2d");

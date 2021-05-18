@@ -4,9 +4,9 @@
 
 <div class="container-fluid mt-5">
     <div class="row">
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-12">
             <div class="card">
-                <h4 class="text-center mt-2">DAFTAR LOKASI</h4>
+                <h4 class="text-center mt-2">DAFTAR PERSONIL</h4>
                 <div class="input-group mb-3 zaam-input w-80-zaam">
                     <input type="text" class="form-control " placeholder="Masukkan Nama / NIK / Area" aria-label="" aria-describedby="basic-addon1">
                     <div class="input-group-prepend">
@@ -15,20 +15,32 @@
                         </button>
                     </div>
                 </div>
-                <div class="card-content h-100">
-                    <nav class="nav-security w-75">
-                        <div class="nav nav-tabs nav-zaam" id="nav-tab" role="tablist">
-                            <?php foreach ($Lokasi as $L) : ?>
-                                <a class="nav-item nav-link active mt-3" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><?= $L['Nama_area']; ?></a>
-                            <?php endforeach; ?>
-                        </div>
-                    </nav>
+                <div class="card-content h-100 p-0">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Nama Area</th>
+                                <th scope="col">Nama Personil</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Pakuwon</td>
+                                <td>Axel</td>
+                                <td><a href="" class="btn btn-danger btn-sm">Detail</a></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
                 </div>
 
 
             </div>
         </div>
-        <div class="col-12 col-lg-6">
+        <!-- <div class="col-12 col-lg-6">
             <div class="card daftar-personil">
                 <h4 class="text-center mt-2">DAFTAR PERSONIL</h4>
                 <div class="input-group mb-3 zaam-input w-80-zaam">
@@ -73,7 +85,7 @@
                 </div>
             </div>
 
-        </div>
+        </div> -->
     </div>
 </div>
 

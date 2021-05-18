@@ -23,6 +23,33 @@ h6 {
     font-family: 'Quicksand', sans-serif;
 }
 
+.dropdown-submenu {
+    position: relative;
+    
+  }
+  
+  .dropdown-submenu a::after {
+    /* transform: rotate(-90deg); */
+    position: absolute;
+    right: 6px;
+    
+  }
+  
+  .submenu-active.active>a,
+a[aria-expanded="true"] {
+    border-right-style: solid;
+    border-width: 10px;
+    background-color: #CF2127;
+    color: #fff;
+}
+  
+  .dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-left: .1rem;
+    margin-right: .1rem;
+  }
+
 .dropdown-toggle.excel::after {
     display: block;
     position: unset !important;
