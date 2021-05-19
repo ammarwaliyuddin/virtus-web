@@ -30,8 +30,8 @@
                 <img src="/img/logo-virtus.png" alt="" style="width: 95%;">
             </div>
             <div class="sidebar-content">
-                <ul class="list-unstyled components">
-                    <li class="home-ul active">
+                <ul class="list-unstyled components nav-sidebar">
+                    <li class="home-ul ">
                         <a href="<?= base_url('Dashboard'); ?>">DASHBOARD</a>
                     </li>
                     <li>
@@ -41,11 +41,11 @@
                     <li>
                         <a href="<?= base_url('Shift'); ?>">SHIFT</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="<?= base_url('Location'); ?>">LOCATION</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item dropright drop-zaam">
-                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             SETTING
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -242,14 +242,29 @@
                 });
             });
 
-            $(function() {
-                $('#sidebar a').filter(function() {
-                    return this.href == location.href
-                }).parent().addClass('active').siblings().removeClass('active')
-                $('#sidebar a').click(function() {
-                    $(this).parent().addClass('active').siblings().removeClass('active')
-                })
-            })
+            // $(function() {
+            //     $('#sidebar ul li a').filter(function() {
+            //         return this.href == location.href
+                    
+            //     }).parent().addClass('active').siblings().removeClass('active')
+            //     $('#sidebar ul li a').click(function() {
+            //        $(this).parent().addClass('active').siblings().removeClass('active')
+                   
+            //     })
+            // })
+
+            $(document).ready(function () {
+            $("[href]").each(function () {
+                if (this.href == location.href) {
+           
+            $(this).parents('li').addClass("active");
+        }
+    });
+});
+
+          
+
+
         </script>
         <script>
             $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {

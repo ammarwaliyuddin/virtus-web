@@ -30,7 +30,7 @@
                                 <th scope="row">1</th>
                                 <td>Pakuwon</td>
                                 <td>Axel</td>
-                                <td><a href="" class="btn btn-danger btn-sm">Detail</a></td>
+                                <td><a href="Security/detail_personil" class="btn btn-danger btn-sm">Detail</a></td>
                             </tr>
 
                         </tbody>
