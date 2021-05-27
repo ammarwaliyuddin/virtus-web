@@ -235,12 +235,30 @@ a[data-toggle="collapse"] {
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+/* .overlay.show {
+    opacity: 1;
+}
+
+.overlay{
+
+    cursor: pointer;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 999;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.3);
+    transition: opacity 0.5s;} */
+
 /* awal content */
 
 #content {
     width: calc(100% - 200px);
     position: absolute;
     padding: 40px;
+    padding-top: 30px;
     top: 0;
     right: 0;
     transition: all 0.3s;

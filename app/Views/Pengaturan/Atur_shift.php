@@ -15,7 +15,9 @@
                         </button>
                     </div>
                 </div>
-                <a href="" class="btn btn-primary btn-sm">Tambah</a>
+                <div class="card-content justify-content-end ">
+                    <a href="" class="btn btn-primary btn-sm">Tambah</a>
+                </div>
                 <div class="card-content p-0">
 
 

@@ -70,13 +70,14 @@
             </div>
         </nav>
         <div id="content">
+            <button type="button" id="sidebarCollapse" class="btn bg-transparent text-danger mb-2">
+                <i class="fas fa-align-left"></i>
+                <span></span>
+            </button>
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid">
                     <h3>TOTAL PETUGAS <span>2</span></h3>
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        <span></span>
-                    </button>
+
                     <!-- login panel -->
                     <div class="login-panel">
                         <div class="img-profil"></div>
@@ -228,7 +229,6 @@
                     // console.log(p.sort());
                     // console.log(p.reverse());
                 }
-
             });
         </script>
 
@@ -240,31 +240,41 @@
                 $('#sidebarCollapse').on('click', function() {
                     $('#content').toggleClass('active');
                 });
+
+                if ($(window).width() < 960) {
+                    alert('Less than 960');
+                } else {
+                    alert('More than 960');
+                }
+
+                // if (screen.width < 768) {
+                //     $('#sidebar').on('click', function() {
+                //         $('#sidebar').removeClass('active');
+                //         $('#content').removeClass('active');
+                //     });
+                // }
+
             });
 
             // $(function() {
             //     $('#sidebar ul li a').filter(function() {
             //         return this.href == location.href
-                    
+
             //     }).parent().addClass('active').siblings().removeClass('active')
             //     $('#sidebar ul li a').click(function() {
             //        $(this).parent().addClass('active').siblings().removeClass('active')
-                   
+
             //     })
             // })
 
-            $(document).ready(function () {
-            $("[href]").each(function () {
-                if (this.href == location.href) {
-           
-            $(this).parents('li').addClass("active");
-        }
-    });
-});
+            $(document).ready(function() {
+                $("[href]").each(function() {
+                    if (this.href == location.href) {
 
-          
-
-
+                        $(this).parents('li').addClass("active");
+                    }
+                });
+            });
         </script>
         <script>
             $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
