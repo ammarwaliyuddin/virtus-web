@@ -118,8 +118,8 @@
         <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
         <!-- {{--Firebase Tasks--}} -->
 
-        <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
-        <!-- <script>
+        <!-- <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+        <script>
             // Initialize Firebase
             var config = {
                 apiKey: "AIzaSyDs7SdTvMQPTNqqYOvcOxcEOMGvFiJvJ_c",
@@ -203,33 +203,33 @@
 
             // });
 
-            $.ajax({
-                url: 'https://zaamstudio.com/virtus/personil_monitoring_app.php',
-                type: 'post',
-                crossdomain: true,
-                // contentType: 'application/x-www-form-urlencoded',
-                contentType: 'application/json',
-                headers: {
-                    'Access-Control-Allow-Origin': '*'
-                },
-                dataType: 'json',
-                data: {
-                    'Kode': 7,
-                    'Nama_area': 'The Pakubuono Signature',
-                    'tanggal': '2020-12-28'
-                },
-                success: function(result) {
-                    // var p = [];
+            // $.ajax({
+            //     url: 'https://zaamstudio.com/virtus/personil_monitoring_app.php',
+            //     type: 'post',
+            //     crossdomain: true,
+            //     // contentType: 'application/x-www-form-urlencoded',
+            //     contentType: 'application/json',
+            //     headers: {
+            //         'Access-Control-Allow-Origin': '*'
+            //     },
+            //     dataType: 'json',
+            //     data: {
+            //         'Kode': 7,
+            //         'Nama_area': 'The Pakubuono Signature',
+            //         'tanggal': '2020-12-28'
+            //     },
+            //     success: function(result) {
+            //         // var p = [];
 
-                    console.log(result);
-                    $.each(result, function(i, data) {
-                        console.log(data);
-                        // p.push(data.state);
-                    });
-                    // console.log(p.sort());
-                    // console.log(p.reverse());
-                }
-            });
+            //         console.log(result);
+            //         $.each(result, function(i, data) {
+            //             console.log(data);
+            //             // p.push(data.state);
+            //         });
+            //         // console.log(p.sort());
+            //         // console.log(p.reverse());
+            //     }
+            // });
         </script>
 
         <script>
@@ -241,11 +241,11 @@
                     $('#content').toggleClass('active');
                 });
 
-                if ($(window).width() < 960) {
-                    alert('Less than 960');
-                } else {
-                    alert('More than 960');
-                }
+                // if ($(window).width() < 960) {
+                //     alert('Less than 960');
+                // } else {
+                //     alert('More than 960');
+                // }
 
                 // if (screen.width < 768) {
                 //     $('#sidebar').on('click', function() {
@@ -319,6 +319,7 @@
             });
         </script>
         <?= $this->renderSection('datatable'); ?>
+        <?= $this->renderSection('script'); ?>
 
 </body>
 

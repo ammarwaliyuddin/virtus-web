@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 21, 2021 at 07:31 AM
+-- Generation Time: Jun 04, 2021 at 04:16 AM
 -- Server version: 10.4.15-MariaDB
 -- PHP Version: 7.2.34
 
@@ -64,9 +64,7 @@ INSERT INTO `data_area` (`ID_area`, `Nama_area`, `Lokasi`, `persentase_ngantuk`,
 (1, 'The Pakubuono New', 'Jakarta', '10', '0', '90'),
 (2, 'The Pakubuono Signature', 'Jakarta', '35', '5', '60'),
 (3, 'The Pakubuono Spring', 'Jakarta', '40', '40', '20'),
-(7, 'sarina', 'jaksel', '40', '30', '30'),
-(8, 'fx sudirman', 'jakarta', NULL, NULL, NULL),
-(9, 'ANDARA MALL', 'TANGGERANG', NULL, NULL, NULL);
+(7, 'sarina', 'jaksel', '40', '30', '30');
 
 -- --------------------------------------------------------
 
@@ -87,8 +85,9 @@ CREATE TABLE `data_jabatan` (
 
 INSERT INTO `data_jabatan` (`ID_jabatan`, `Jabatan`, `Nama_area`, `Deskripsi`) VALUES
 (2, 'Direktur', 'The Pakubuono Spring', 'Direktur the pakubuono spring'),
-(11, 'Supervisor', 'The Pakubuono Spring', 'Supervisor daerah'),
-(22, 'Direktur', 'The Pakubuono Signature', 'aa');
+(22, 'Direktur', 'The Pakubuono Signature', 'aa'),
+(25, 'sa', 'sarina', 'sa'),
+(26, 'q', 'sarina', 'saaaa');
 
 -- --------------------------------------------------------
 
@@ -100,15 +99,20 @@ CREATE TABLE `data_jam` (
   `ID_jam` int(11) NOT NULL,
   `merek` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `latitude` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `longitude` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `longitude` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lokasi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `data_jam`
 --
 
-INSERT INTO `data_jam` (`ID_jam`, `merek`, `latitude`, `longitude`) VALUES
-(4, 'Zeblaze', '0', '0');
+INSERT INTO `data_jam` (`ID_jam`, `merek`, `latitude`, `longitude`, `lokasi`) VALUES
+(1, 'Zeblase4', '7.0', '7.0', 'Jakarta'),
+(2, 'Zeblase4', '7.0', '7.0', 'Jakarta'),
+(3, 'Zeeblaze', '7.0', '7.0', 'Jakarta'),
+(4, 'samsung', '7.0', '7.0', 'Jakarta'),
+(5, 'alps', '7.0', '7.0', 'Jakarta');
 
 -- --------------------------------------------------------
 
@@ -155,8 +159,33 @@ CREATE TABLE `data_pelanggaran` (
 INSERT INTO `data_pelanggaran` (`ID_pelanggaran`, `NIK`, `tanggal`, `jam`, `Jenis_pelanggaran`) VALUES
 (1, '12345678', '2020-10-09', '11:57:01', 'Tidur'),
 (2, '12345678', '2020-11-10', '12:10:10', 'Terlambat'),
-(18, '12345678', '2021-04-18', '14:34:02', ''),
-(19, '12345678', '2021-04-18', '14:34:20', '');
+(20, '12345678', '2021-6-01', '21:30:31', ''),
+(21, '12345678', '2021-6-01', '21:31:01', ''),
+(22, '12345678', '2021-6-01', '21:33:26', ''),
+(23, '12345678', '2021-6-01', '21:33:56', ''),
+(24, '12345678', '2021-6-01', '21:36:09', ''),
+(25, '12345678', '2021-6-01', '21:36:39', ''),
+(26, '12345678', '2021-6-01', '21:37:09', ''),
+(27, '12345678', '2021-6-01', '21:38:07', ''),
+(28, '12345678', '2021-6-01', '21:38:37', ''),
+(29, '12345678', '2021-6-01', '21:39:07', ''),
+(30, '12345678', '2021-6-01', '21:40:07', ''),
+(31, '12345678', '2021-6-01', '21:40:37', ''),
+(32, '12345678', '2021-6-01', '21:41:07', ''),
+(33, '12345678', '2021-6-01', '21:46:15', ''),
+(34, '12345678', '2021-6-01', '21:47:30', ''),
+(35, '12345678', '2021-6-01', '21:48:00', ''),
+(36, '12345678', '2021-6-01', '21:49:07', ''),
+(37, '12345678', '2021-6-01', '21:49:37', ''),
+(38, '12345678', '2021-6-01', '21:50:07', ''),
+(39, '12345678', '2021-6-01', '21:51:08', ''),
+(40, '12345678', '2021-6-01', '21:51:38', ''),
+(41, '12345678', '2021-6-01', '21:52:08', ''),
+(42, 'A12345678', '2021-6-03', '11:11:30', ''),
+(43, 'A12345678', '2021-6-03', '11:12:00', ''),
+(44, 'A12345678', '2021-6-03', '11:13:15', ''),
+(45, 'A12345678', '2021-6-03', '11:15:16', ''),
+(46, 'A12345678', '2021-6-03', '11:15:46', '');
 
 -- --------------------------------------------------------
 
@@ -220,8 +249,7 @@ CREATE TABLE `data_shift_personil` (
 --
 
 INSERT INTO `data_shift_personil` (`ID_shift`, `NIK`, `Nama_area`) VALUES
-('1', '12345678', 'The Pakubuono Spring'),
-('1', '23456789', 'The Pakubuono Spring'),
+('2', '12345678', 'The Pakubuono Signature'),
 ('2', 'A12345678', 'The Pakubuono Signature');
 
 -- --------------------------------------------------------
@@ -247,7 +275,7 @@ CREATE TABLE `master_data_admin` (
 --
 
 INSERT INTO `master_data_admin` (`NIK`, `Nama`, `Password`, `Status`, `Foto`, `Jabatan`, `Email`, `Expiredate`, `Keterangan`) VALUES
-('A12345', 'Ammar Zaam', '12345', 0, 'qwerty_Ammar Zaam.jpg 	', 'Supervisor', 'ammarzaam@gmail.com', '4 Agustus 2040, 23:59', 'Aktif');
+('A12345', 'Axel Elcana D', '12345', 0, 'axel.jpeg', 'Direktur', 'axel@gmail.com', '06/08/1995', 'None');
 
 -- --------------------------------------------------------
 
@@ -288,18 +316,18 @@ CREATE TABLE `master_data_personil` (
   `Status` int(1) NOT NULL,
   `Foto` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `State` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Email` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `Email` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `heartrate` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `master_data_personil`
 --
 
-INSERT INTO `master_data_personil` (`NIK`, `PIN`, `Nama`, `Umur`, `Nomor_HP`, `Status`, `Foto`, `State`, `Email`) VALUES
-('12345678', '123456', 'Fajar Hamid', 23, '083000111333', 0, '12345678_Fajar Hamid Embutara.png', 'NORMAL', ''),
-('23456789', '123456', 'Ananda Rebel', 21, '088999000123', 0, '23456789_Ananda Rebel.png', '1', ''),
-('A12345678', '123456', 'Axel Elcana Duncan', 50, '0812345678', 0, 'A12345678_Axel Claloe Set.jpg', '2', ''),
-('NULL', '', '', 0, NULL, 0, NULL, ' ', NULL);
+INSERT INTO `master_data_personil` (`NIK`, `PIN`, `Nama`, `Umur`, `Nomor_HP`, `Status`, `Foto`, `State`, `Email`, `heartrate`) VALUES
+('12345678', '123456', 'Fajar Hamid', 23, '083000111333', 0, '12345678_Fajar Hamid Embutara.png', '0', '', '50'),
+('23456789', '123456', 'Ananda Rebel', 21, '088999000123', 0, '23456789_Ananda Rebel.png', 'NORMAL', '', '80'),
+('A12345678', '123456', 'Axel Elcana Duncan', 50, '0812345678', 0, 'A12345678_Axel Claloe Set.jpg', 'TIDUR', '', '65');
 
 --
 -- Indexes for dumped tables
@@ -395,13 +423,13 @@ ALTER TABLE `data_area`
 -- AUTO_INCREMENT for table `data_jabatan`
 --
 ALTER TABLE `data_jabatan`
-  MODIFY `ID_jabatan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `ID_jabatan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `data_jam`
 --
 ALTER TABLE `data_jam`
-  MODIFY `ID_jam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID_jam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `data_latih`
@@ -413,7 +441,7 @@ ALTER TABLE `data_latih`
 -- AUTO_INCREMENT for table `data_pelanggaran`
 --
 ALTER TABLE `data_pelanggaran`
-  MODIFY `ID_pelanggaran` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `ID_pelanggaran` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `data_role_user`

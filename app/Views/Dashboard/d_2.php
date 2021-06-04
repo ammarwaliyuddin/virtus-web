@@ -16,6 +16,7 @@
                     </div>
 
                 </div>
+
                 <nav>
                     <div class="nav nav-tabs nav-zaam" id="nav-tab" role="tablist">
                         <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Data Monitoring</a>
@@ -26,37 +27,57 @@
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                             <div class="row">
-                                <div class="col-6 text-white">
-                                    <a href="<?= base_url('Security_personil'); ?> ">
-                                        <div class="card-monitoring ">
-                                            <div class="ico-cardmonitoring">
-                                                <img src="" id="card_logo_status">
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <i class="fas fa-user fa-2x"></i>
-                                                </div>
-                                                <div class="col-9">
-                                                    <p class="text-white">A12345678</p>
-                                                    <p class="text-white">Fajar Hamid Embutara</p>
-                                                </div>
-                                                <div class="col-4">
-                                                    <img src="/img/ico/[WHITE ICON] smartwatch 1.png" alt="" srcset="">
-                                                    <p>001</p>
-                                                </div>
-                                                <div class="col-4">
-                                                    <img src="/img/ico/[WHITE ICON] heart rate 1.png" alt="" srcset="">
-                                                    <p id="detakfajar">0</p>
-                                                </div>
-                                                <div class="col-4">
-                                                    <img src="/img/ico/[WHITE ICON] location 1.png" alt="" srcset="">
-                                                    <p id="lokasifajar">Jakarta</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-6 text-white">
+                                <?php foreach ($Monitoring as $M) : ?>
+
+                                    <div class="col-6 text-white">
+                                        <a href="<?= base_url('Security_personil'); ?> ">
+                                            <?php if ($M['State'] == '0' or $M['State'] == 'TIDUR') { ?>
+                                                <div class="card-monitoring bg-zaamorange">
+                                                    <div class="ico-cardmonitoring">
+                                                        <img src="/img/ico/[red}ICON SLEEP 1.png" alt="" srcset="">
+                                                    </div>
+                                                <?php  } elseif ($M['State'] == '1' or $M['State'] == 'NGANTUK') { ?>
+                                                    <div class="card-monitoring bg-warning">
+                                                        <div class="ico-cardmonitoring">
+                                                            <img src="/img/ico/ICON DOZY 1.png" alt="" srcset="">
+                                                        </div>
+                                                    <?php } elseif ($M['State'] == '2' or $M['State'] == 'NORMAL') { ?>
+                                                        <div class="card-monitoring bg-success">
+                                                            <div class="ico-cardmonitoring">
+                                                                <img src="/img/ico/ICON WORK 1.png" alt="" srcset="">
+                                                            </div>
+                                                        <?php } ?>
+
+
+
+                                                        <div class="row">
+                                                            <div class="col-3">
+                                                                <i class="fas fa-user fa-2x"></i>
+                                                            </div>
+                                                            <div class="col-9">
+                                                                <p class="text-white"><?= $M['NIK']; ?></p>
+                                                                <p class="text-white"><?= $M['Nama']; ?></p>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <img src="/img/ico/[WHITE ICON] smartwatch 1.png" alt="" srcset="">
+                                                                <p>001</p>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <img src="/img/ico/[WHITE ICON] heart rate 1.png" alt="" srcset="">
+                                                                <p id="detak"><?= $M['heartrate']; ?> bpm</p>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <img src="/img/ico/[WHITE ICON] location 1.png" alt="" srcset="">
+                                                                <p id="lokasi"> <?= $M['Lokasi']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                        </a>
+                                    </div>
+
+                                <?php endforeach; ?>
+                                <!-- //ambil dri firebase -->
+                                <!-- <div class="col-6 text-white">
                                     <a href="<?= base_url('Security_personil'); ?> ">
                                         <div class="card-monitoring card-axel">
                                             <div class="ico-cardmonitoring ">
@@ -85,7 +106,7 @@
                                             </div>
                                         </div>
                                     </a>
-                                </div>
+                                </div> -->
 
                             </div>
                         </div>
@@ -137,3 +158,25 @@
 </div>
 
 <?= $this->endSection(); ?>
+
+<!-- <?= $this->section('script'); ?>
+<script>
+    card = document.querySelector('.card-monitoring');
+    if (value.state == 'NORMAL') {
+        // card.classList.remove('siang');
+        card.classList.add('bg-success');
+        var src1 = '/img/ico/ICON WORK 1.png';
+        $("#card_logo_status").attr("src", src1);
+    } else if (value.state == 'TIDUR') {
+        // card.classList.remove('siang');
+        card.classList.add('bg-zaamorange');
+        var src1 = '/img/ico/[red}ICON SLEEP 1.png';
+        $("#card_logo_status").attr("src", src1);
+    } else {
+        // card.classList.remove('siang');
+        card.classList.add('bg-warning');
+        var src1 = '/img/ico/ICON DOZY 1.png';
+        $("#card_logo_status").attr("src", src1);
+    }
+</script>
+<?= $this->endSection(); ?> -->

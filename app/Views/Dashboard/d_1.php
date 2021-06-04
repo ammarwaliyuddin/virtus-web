@@ -21,15 +21,13 @@
                 <div class="card-content">
                     <form action="" method="" class="w-100">
                         <?php foreach ($Lokasi as $L) : ?>
-                            <div class="status-card" onclick="window.location='<?= base_url("/Dashboard2/".$L['Nama_area']) ?>';">
+                            <div class="status-card" onclick="window.location='<?= base_url("/Dashboard2/" . $L['ID_area']) ?>';">
                                 <h6><?= $L['Nama_area']; ?></h6>
                                 <div class="monitoring-status">
-
                                     <div class="indikator">
                                         <img src="/img/ico/ICON SLEEP 1.png" alt="" srcset="">
                                         <p><?= $L['persentase_tidur']; ?>%</p>
                                     </div>
-
                                     <div class="indikator">
                                         <img src="/img/ico/tired-solid 1.png" alt="" srcset="">
                                         <p><?= $L['persentase_ngantuk']; ?>%</p>
@@ -40,8 +38,8 @@
                                     </div>
                                 </div>
                             </div>
-                         <?php endforeach; ?>
-                     </form>
+                        <?php endforeach; ?>
+                    </form>
                 </div>
             </div>
         </div>

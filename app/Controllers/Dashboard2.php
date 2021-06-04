@@ -15,10 +15,11 @@ class Dashboard2 extends BaseController
         $this->HistoryPelanggaran = new PersonilModel();
     }
 
-    public function index($Nama_area)
+    public function index($ID_area)
     {
-        //$area = $this->ShiftModel->where(['Nama_area' => $Nama_area])->getShift();
-        //dd($area);
+        // $ID_area = $this->ShiftModel->where(['ID_area' => $ID_area])->getShift();
+        $Monitoring = $this->ShiftModel->getAreaByID($ID_area);
+        // dd($Monitoring);
         $session = session();
         $session->get('user_name');
 
@@ -29,8 +30,10 @@ class Dashboard2 extends BaseController
 
         $data = [
             // 'Lokasi' => $Lokasi,
-            'History' => $History
+            'History' => $History,
+            'Monitoring' => $Monitoring
         ];
+        // dd($data);
         return view('Dashboard/d_2', $data);
     }
 }

@@ -18,4 +18,17 @@ class ShiftModel extends Model
             ->join('data_area', 'data_shift_personil.Nama_area=data_area.Nama_area')
             ->get()->getResultArray();
     }
+
+    public function getAreaByID($ID_area)
+    {
+
+        $db = \Config\Database::connect();
+        $builder = $db->table('data_area');
+        $builder->where(['ID_area' => $ID_area]);
+        $builder->join('data_shift_personil', 'data_shift_personil.Nama_area=data_area.Nama_area');
+        $builder->join('master_data_personil', 'master_data_personil.NIK=data_shift_personil.NIK');
+        $builder->orderBy('State ASC');
+        $monitoring = $builder->get()->getResultArray();
+        return $monitoring;
+    }
 }
