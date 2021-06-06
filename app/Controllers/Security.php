@@ -21,18 +21,43 @@ class Security extends BaseController
         $Lokasi = $this->LokasiModel->findAll();
         $Personil = $this->PersonilModel->findAll();
 
+
+        // dd($personil_lokasi);
+
+
+        $keyword = $this->request->getVar('keyword');
+
+
+        if ($keyword) {
+            $personil_lokasi = $this->PersonilModel->searchPersonil($keyword);
+        } else {
+            $personil_lokasi = $this->PersonilModel->getPersonil();
+        }
+        // dd($personil_lokasi = $this->PersonilModel->getPersonil());
         $data = [
-            'Lokasi' => $Lokasi,
-            'Personil' => $Personil
+            // 'Lokasi' => $Lokasi,
+            // 'Personil' => $Personil
+            'Personil_lokasi' => $personil_lokasi
         ];
 
-        //dd($data);
+        // dd($data);
         return view('Security/Security', $data);
     }
 
-    public function detail_personil()
+    public function detail_personil($detail)
     {
-        return view('Security/Detail_Personil');
+        $detail = $this->PersonilModel->detailPersonil($detail);
+        // dd($detail);
+        // dd($detail);
+        // $data = [
+        //     // 'Lokasi' => $Lokasi,
+        //     // 'Personil' => $Personil
+        //     'detail' => $detail
+        // ];
+
+        $data = ['detail' => $detail[0]];
+        // dd($data);
+        return view('Security/Detail_Personil', $data);
     }
     public function setting_personil()
     {

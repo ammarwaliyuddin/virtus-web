@@ -11,25 +11,26 @@
                     <div class="col-3">
                         <div class="personil-bio">
                             <div class="img-personil-bio">
-                                <img src="/img/poto_pajar.png" alt="" srcset="">
+                                <img src="/img/<?= $detail['Foto']; ?>" alt="" srcset="">
                             </div>
                             <div class="content-personil-bio">
                                 <table class="table">
+
                                     <tr>
                                         <td>NIK</td>
-                                        <td><span class="font-weight-bold">A12345678</span></td>
+                                        <td><span class="font-weight-bold"><?= $detail['NIK']; ?></span></td>
                                     </tr>
                                     <tr>
                                         <td>NAMA</td>
-                                        <td><span class="font-weight-bold">Fajar Hamid E.</span></td>
+                                        <td><span class="font-weight-bold"><?= $detail['Nama']; ?></span></td>
                                     </tr>
                                     <tr>
                                         <td>AREA</td>
-                                        <td><span class="font-weight-bold">BOTANICA</span></td>
+                                        <td><span class="font-weight-bold"><?= $detail['Nama_area']; ?></span></td>
                                     </tr>
                                     <tr>
                                         <td>SHIFT</td>
-                                        <td><span class="font-weight-bold">PAGI</span></td>
+                                        <td><span class="font-weight-bold"><?= $detail['shift']; ?></span></td>
                                     </tr>
                                 </table>
                             </div>
@@ -44,7 +45,8 @@
                                     <div class="col-6 my-1">
                                         <div class="m-personil p-1 ">
                                             <div class="m-personil-ico d-inline-block text-center" style="width:35px;">
-                                                <img src="/img/ico/m_peringatan.svg" alt=""></div>
+                                                <img src="/img/ico/m_peringatan.svg" alt="">
+                                            </div>
                                             <div class="m-personil-status d-inline-block">Tidur</div>
                                         </div>
 

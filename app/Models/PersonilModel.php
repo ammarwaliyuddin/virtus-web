@@ -24,4 +24,24 @@ class PersonilModel extends Model
             ->join('data_shift_personil', 'data_shift_personil.NIK=master_data_personil.NIK')
             ->get()->getResultArray();
     }
+
+    public function searchPersonil($keyword)
+    {
+        return $this->db->table('master_data_personil')
+            ->join('data_shift_personil', 'data_shift_personil.NIK=master_data_personil.NIK')
+            ->like('Nama', $keyword)
+            ->orLike('Nama_area', $keyword)
+            ->orLike('data_shift_personil.NIK', $keyword)
+            ->get()->getResultArray();
+    }
+    public function detailPersonil($detail)
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('master_data_personil');
+        $builder->where(['master_data_personil.NIK' => $detail]);
+        $builder->join('data_shift_personil', 'data_shift_personil.NIK=master_data_personil.NIK');
+        $builder->join('data_shift', 'data_shift_personil.ID_shift=data_shift.ID_shift');
+        $query = $builder->get()->getResultArray();
+        return $query;
+    }
 }
