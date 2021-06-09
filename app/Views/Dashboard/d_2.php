@@ -29,55 +29,55 @@
                             <div class="row">
                                 <?php foreach ($Monitoring as $M) : ?>
 
-                                    <div class="col-6 text-white">
-                                        <a href="<?= base_url('Security_personil'); ?> ">
-                                            <?php if ($M['State'] == '0' or $M['State'] == 'TIDUR') { ?>
-                                                <div class="card-monitoring bg-zaamorange">
-                                                    <div class="ico-cardmonitoring">
-                                                        <img src="/img/ico/[red}ICON SLEEP 1.png" alt="" srcset="">
-                                                    </div>
-                                                <?php  } elseif ($M['State'] == '1' or $M['State'] == 'NGANTUK') { ?>
-                                                    <div class="card-monitoring bg-warning">
-                                                        <div class="ico-cardmonitoring">
-                                                            <img src="/img/ico/ICON DOZY 1.png" alt="" srcset="">
-                                                        </div>
-                                                    <?php } elseif ($M['State'] == '2' or $M['State'] == 'NORMAL') { ?>
-                                                        <div class="card-monitoring bg-success">
+                                    <div class="col-12 col-md-6 text-white">
+                                        <a href="../Security/detail_personil/<?= $M['NIK'] ?> ">
+                                            <?php if ($M['State'] == '0' or $M['State'] == 'TIDUR') {
+                                                echo ' <div class="card-monitoring bg-zaamorange">
+                                                            <div class="ico-cardmonitoring">
+                                                                <img src="/img/ico/[red}ICON SLEEP 1.png" alt="" srcset="">
+                                                            </div>';
+                                            } elseif ($M['State'] == '1' or $M['State'] == 'NGANTUK') {
+                                                echo ' <div class="card-monitoring bg-success">
                                                             <div class="ico-cardmonitoring">
                                                                 <img src="/img/ico/ICON WORK 1.png" alt="" srcset="">
-                                                            </div>
-                                                        <?php } ?>
+                                                            </div>';
+                                            } elseif ($M['State'] == '2' or $M['State'] == 'NORMAL') {
+                                                echo ' <div class="card-monitoring bg-success">
+                                                            <div class="ico-cardmonitoring">
+                                                                <img src="/img/ico/ICON WORK 1.png" alt="" srcset="">
+                                                            </div>';
+                                            } ?>
 
 
 
-                                                        <div class="row">
-                                                            <div class="col-3">
-                                                                <i class="fas fa-user fa-2x"></i>
-                                                            </div>
-                                                            <div class="col-9">
-                                                                <p class="text-white"><?= $M['NIK']; ?></p>
-                                                                <p class="text-white"><?= $M['Nama']; ?></p>
-                                                            </div>
-                                                            <div class="col-4">
-                                                                <img src="/img/ico/[WHITE ICON] smartwatch 1.png" alt="" srcset="">
-                                                                <p>001</p>
-                                                            </div>
-                                                            <div class="col-4">
-                                                                <img src="/img/ico/[WHITE ICON] heart rate 1.png" alt="" srcset="">
-                                                                <p id="detak"><?= $M['heartrate']; ?> bpm</p>
-                                                            </div>
-                                                            <div class="col-4">
-                                                                <img src="/img/ico/[WHITE ICON] location 1.png" alt="" srcset="">
-                                                                <p id="lokasi"> <?= $M['Lokasi']; ?></p>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                        </a>
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <i class="fas fa-user fa-2x"></i>
+                                                </div>
+                                                <div class="col-9">
+                                                    <p class="text-white"><?= $M['NIK']; ?></p>
+                                                    <p class="text-white"><?= $M['Nama']; ?></p>
+                                                </div>
+                                                <div class="col-4">
+                                                    <img src="/img/ico/[WHITE ICON] smartwatch 1.png" alt="" srcset="">
+                                                    <p><?= $M['idjam']; ?></p>
+                                                </div>
+                                                <div class="col-4">
+                                                    <img src="/img/ico/[WHITE ICON] heart rate 1.png" alt="" srcset="">
+                                                    <p id="detak"><?= $M['heartrate']; ?> bpm</p>
+                                                </div>
+                                                <div class="col-4">
+                                                    <img src="/img/ico/[WHITE ICON] location 1.png" alt="" srcset="">
+                                                    <p id="lokasi"> <?= $M['location']; ?></p>
+                                                </div>
+                                            </div>
                                     </div>
+                                    </a>
+                            </div>
 
-                                <?php endforeach; ?>
-                                <!-- //ambil dri firebase -->
-                                <!-- <div class="col-6 text-white">
+                        <?php endforeach; ?>
+                        <!-- //ambil dri firebase -->
+                        <!-- <div class="col-6 text-white">
                                     <a href="<?= base_url('Security_personil'); ?> ">
                                         <div class="card-monitoring card-axel">
                                             <div class="ico-cardmonitoring ">
@@ -108,51 +108,51 @@
                                     </a>
                                 </div> -->
 
-                            </div>
                         </div>
-                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                            <div class="row">
-                                <div class="col-12">
-                                    <canvas id="piechart" width="100%" height="100"></canvas>
-                                </div>
-
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <div class="row">
+                            <div class="col-12">
+                                <canvas id="piechart" width="100%" height="100"></canvas>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
 
                 </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-6">
-            <div class="card">
-                <h4 class="text-center mt-2">HISTORY PELANGGARAN</h4>
-                <div class="card-content">
-                    <table class="table text-center">
-                        <thead>
-                            <tr>
-                                <th scope="col">Jam</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Pelanggaran</th>
-                                <th scope="col">Area</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($History as $H) : ?>
-                                <tr>
-                                    <td><?= $H['jam']; ?></td>
-                                    <td><?= $H['Nama']; ?></td>
-                                    <td><?= $H['Jenis_pelanggaran']; ?></td>
-                                    <td><?= $H['Nama_area']; ?></td>
-                                </tr>
-                            <?php endforeach; ?>
 
-                        </tbody>
-                    </table>
-                </div>
             </div>
         </div>
     </div>
+    <div class="col-12 col-lg-6">
+        <div class="card">
+            <h4 class="text-center mt-2">HISTORY PELANGGARAN</h4>
+            <div class="card-content">
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col">Jam</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Pelanggaran</th>
+                            <th scope="col">Area</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($History as $H) : ?>
+                            <tr>
+                                <td><?= $H['jam']; ?></td>
+                                <td><?= $H['Nama']; ?></td>
+                                <td><?= $H['Jenis_pelanggaran']; ?></td>
+                                <td><?= $H['Nama_area']; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
 </div>

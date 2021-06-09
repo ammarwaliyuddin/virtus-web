@@ -57,6 +57,7 @@ class Security extends BaseController
 
         $data = ['detail' => $detail[0]];
         // dd($data);
+        // dd($data);
         return view('Security/Detail_Personil', $data);
     }
     public function setting_personil()

@@ -56,7 +56,7 @@
                                             <div class="m-personil-ico d-inline-block text-center" style="width:35px;">
                                                 <img src="/img/ico/m_smart_id.svg" alt="">
                                             </div>
-                                            <div class="m-personil-status d-inline-block">001</div>
+                                            <div class="m-personil-status d-inline-block"><?= $detail['idjam']; ?></div>
                                         </div>
                                     </div>
                                     <div class="col-6 my-1">
@@ -64,7 +64,7 @@
                                             <div class="m-personil-ico d-inline-block text-center" style="width:35px;">
                                                 <img src="/img/ico/m_detak.svg" alt="">
                                             </div>
-                                            <div class="m-personil-status d-inline-block">40 bpm</div>
+                                            <div class="m-personil-status d-inline-block"><?= $detail['heartrate']; ?> bpm</div>
                                         </div>
                                     </div>
                                     <div class="col-6 my-1">
@@ -80,7 +80,7 @@
                                             <div class="m-personil-ico d-inline-block text-center" style="width:35px;">
                                                 <img src="/img/ico/m_lokasi.svg" alt="">
                                             </div>
-                                            <div class="m-personil-status d-inline-block">125</div>
+                                            <div class="m-personil-status d-inline-block"><?= $detail['location']; ?></div>
                                         </div>
                                     </div>
                                     <div class="col-6 my-1">

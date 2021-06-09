@@ -45,7 +45,7 @@
                                     <td><?= $pl['Nama']; ?></td>
                                     <td><?= $pl['NIK']; ?></td>
                                     <!-- <td><a href="Security/detail_personil/ " class="btn btn-danger btn-sm">Detail</a></td> -->
-                                    <td><a href="Security/detail_personil/<?= $pl['NIK'] ?> " class="btn btn-danger btn-sm">Detail</a></td>
+                                    <td><a href="Security/detail_personil/<?= $pl['NIK'] ?>" class="btn btn-danger btn-sm">Detail</a></td>
                                 </tr>
                             <?php endforeach; ?>
 

@@ -76,7 +76,7 @@
             </button>
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid">
-                    <h3>TOTAL PETUGAS <span>2</span></h3>
+                    <h3>TOTAL PETUGAS <span>3</span></h3>
 
                     <!-- login panel -->
                     <div class="login-panel">
