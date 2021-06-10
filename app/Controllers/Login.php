@@ -19,6 +19,8 @@ class Login extends BaseController
 		$NIK = $this->request->getVar('NIK');
 		$password = $this->request->getVar('password');
 		$data = $model->where('NIK', $NIK)->first();
+
+		// dd($data);
 		if ($data) {
 			$pass = $data['Password'];
 			//	$verify_pass = password_verify($password, $pass);
@@ -31,13 +33,14 @@ class Login extends BaseController
 				];
 				$session->set($ses_data);
 				return redirect()->to('/Dashboard');
+				// return view('Dashboard/d_1', $data);
 			} else {
-				$session->setFlashdata('msg', 'Wrong Password');
-				return redirect()->to('/Login');
+				$session->setFlashdata('msg', 'Password salah');
+				return redirect()->to('/');
 			}
 		} else {
-			$session->setFlashdata('msg', 'NIK not Found');
-			return redirect()->to('/Login');
+			$session->setFlashdata('msg', 'NIK tidak ditemukan');
+			return redirect()->to('/');
 		}
 	}
 
@@ -45,6 +48,8 @@ class Login extends BaseController
 	{
 		$session = session();
 		$session->destroy();
-		return redirect()->to('/Login');
+		// $this->session->sess_destroy();
+		// dd($session);
+		return redirect()->to('/');
 	}
 }

@@ -81,11 +81,12 @@
                     <!-- login panel -->
                     <div class="login-panel">
                         <div class="img-profil"></div>
+
                         <div class="btn-group dropdown">
-                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">ADMIN</button>
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"> <?= $_SESSION['Nama']  ?></button>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a href="#" class="dropdown-item">ACCOUNT</a>
-                                <a href="<?= base_url(); ?>" class="dropdown-item">LOGOUT</a>
+                                <a href="<?= base_url('logout'); ?>" class="dropdown-item">LOGOUT</a>
                             </div>
                         </div>
                     </div>
