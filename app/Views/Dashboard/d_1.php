@@ -22,21 +22,51 @@
                     <form action="" method="" class="w-100">
                         <?php foreach ($Lokasi as $L) : ?>
                             <div class="status-card" onclick="window.location='<?= base_url("/Dashboard2/" . $L['ID_area']) ?>';">
-                                <h6><?= $L['Nama_area']; ?></h6>
-                                <div class="monitoring-status">
-                                    <div class="indikator">
-                                        <img src="/img/ico/ICON SLEEP 1.png" alt="" srcset="">
-                                        <p><?= $L['persentase_tidur']; ?>%</p>
-                                    </div>
-                                    <div class="indikator">
-                                        <img src="/img/ico/tired-solid 1.png" alt="" srcset="">
-                                        <p><?= $L['persentase_ngantuk']; ?>%</p>
-                                    </div>
-                                    <div class="indikator">
-                                        <img src="/img/ico/briefcase-solid 1.png" alt="" srcset="">
-                                        <p><?= $L['persentase_kerja']; ?>%</p>
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h6><?= $L['Nama_area']; ?></h6>
                                     </div>
                                 </div>
+                                <div class="row m-1 mt-2">
+                                    <div class="col-4">
+                                        <div class="row align-items-center">
+                                            <div class="col-12 ">
+                                                <img src="/img/ico/tidur.png" class="ico-50px">
+                                                <div class="d-inline-block ico-persentase">
+
+                                                    <?= $L['persentase_tidur']; ?>%</div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="row align-items-center">
+                                            <div class="col-12 ">
+                                                <img src="/img/ico/ngantuk.png" class="ico-50px">
+                                                <div class="d-inline-block ico-persentase">
+
+                                                    <?= $L['persentase_ngantuk']; ?>%</div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 ">
+                                        <div class="row align-items-center">
+                                            <div class="col-12 ">
+                                                <img src="/img/ico/kerja.png" class="ico-50px">
+                                                <div class="d-inline-block ico-persentase">
+
+                                                    <?= $L['persentase_kerja']; ?>%</div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
                             </div>
                         <?php endforeach; ?>
                     </form>
@@ -44,9 +74,9 @@
             </div>
         </div>
 
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-6 h-margin">
             <div class="card">
-                <h4 class="text-center mt-2">HISTORY PELANGGARAN</h4>
+                <h4 class="text-center mt-2">HISTORI PELANGGARAN</h4>
                 <div class="card-content">
                     <table class="table text-center">
                         <thead>

@@ -85,6 +85,9 @@ a[aria-expanded="true"] {
 .bg-zaamorange {
     background-color: #EC644C;
 }
+.bg-zaamijo{
+    background-color: #1AB394;
+}
 
 .btn-zaam {
     border-radius: 20px !important;
@@ -409,7 +412,7 @@ a[data-toggle="collapse"] {
 .status-card {
     cursor: pointer;
     width: 100%;
-    height: 100px;
+    /* height: 100px; */
     border-radius: 10px;
     background-color: #CF2127;
     text-align: center;
@@ -417,8 +420,8 @@ a[data-toggle="collapse"] {
     color: white;
     margin: 8px 0px;
     position: relative;
-    display: flex;
-    flex-wrap: wrap-reverse;
+    /* display: flex;
+    flex-wrap: wrap-reverse; */
     justify-content: center;
     transition: 0.3s ease;
 }
@@ -457,6 +460,16 @@ a[data-toggle="collapse"] {
 
 .card-content .table {
     width: 80%;
+}
+.card-content .table.detail-personil {
+    width: 100%;
+}
+
+#map {
+    height: 200px;
+    /* The height is 400 pixels */
+    width: 100%;
+    /* The width is the width of the web page */
 }
 
 .card-content .col-6 {
@@ -653,10 +666,10 @@ a[data-toggle="collapse"] {
     #content {
         width: 100%;
     }
-
+/* 
     .col-12 {
         margin-bottom: 20px;
-    }
+    } */
 
     #content #sidebarCollapse {
         display: block;
@@ -666,4 +679,39 @@ a[data-toggle="collapse"] {
         margin-left: 0px;
     }
 
+}
+
+.ico-50px{
+    width:30px;
+}
+.ico-persentase{
+    width:50px;
+}
+@media screen and (max-width: 992px){
+    body {
+        overflow: unset;
+    }
+    .h-margin{
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width:480px) {
+    .ico-persentase{
+        width:40px;
+    }
+}
+
+@media screen and (max-width:435px){
+    .card-content {
+        
+        padding: 0 0 !important;
+    }
+}
+
+@media screen and (max-width:345px){
+    .col-12{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }

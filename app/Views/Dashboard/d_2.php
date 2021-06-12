@@ -37,12 +37,12 @@
                                                                 <img src="/img/ico/[red}ICON SLEEP 1.png" alt="" srcset="">
                                                             </div>';
                                             } elseif ($M['State'] == '1' or $M['State'] == 'NGANTUK') {
-                                                echo ' <div class="card-monitoring bg-success">
+                                                echo ' <div class="card-monitoring bg-warning">
                                                             <div class="ico-cardmonitoring">
                                                                 <img src="/img/ico/ICON WORK 1.png" alt="" srcset="">
                                                             </div>';
                                             } elseif ($M['State'] == '2' or $M['State'] == 'NORMAL') {
-                                                echo ' <div class="card-monitoring bg-success">
+                                                echo ' <div class="card-monitoring bg-zaamijo">
                                                             <div class="ico-cardmonitoring">
                                                                 <img src="/img/ico/ICON WORK 1.png" alt="" srcset="">
                                                             </div>';
@@ -124,9 +124,9 @@
             </div>
         </div>
     </div>
-    <div class="col-12 col-lg-6">
+    <div class="col-12 col-lg-6 h-margin">
         <div class="card">
-            <h4 class="text-center mt-2">HISTORY PELANGGARAN</h4>
+            <h4 class="text-center mt-2">HISTORI PELANGGARAN</h4>
             <div class="card-content">
                 <table class="table text-center">
                     <thead>
