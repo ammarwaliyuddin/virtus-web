@@ -39,7 +39,13 @@
                         <th>Nama Area</th>
                         <th>Nama Customer</th>
                         <th>Telepon Customer</th>
-                        <th>Nama PIC</>
+                        <th>Nama PIC
+                        </th>
+                        <th>Telepon PIC
+                        </th>
+                        <th>Email PIC
+                        </th>
+                        <th>Alamat PIC
                         </th>
                         <th>Aksi</th>
                     </thead>
@@ -50,8 +56,11 @@
                                 <td><?= $C['Nama_customer']; ?></td>
                                 <td><?= $C['Telepon_customer']; ?></td>
                                 <td><?= $C['Nama_PIC']; ?></td>
+                                <td><?= $C['Telepon_PIC']; ?></td>
+                                <td><?= $C['Email_PIC']; ?></td>
+                                <td><?= $C['Alamat_PIC']; ?></td>
                                 <td>
-                                    <a href="" class="btn btn-warning btn-sm">edit</a>
+                                    <a href="#" class="btn btn-warning btn-edit" data-id="<?= $C['ID_customer']; ?>" data-area="<?= $C['Area']; ?>" data-nama="<?= $C['Nama_customer']; ?>" data-PIC="<?= $C['Nama_PIC']; ?>" data-teleponcs="<?= $C['Telepon_customer']; ?>" data-telepon="<?= $C['Telepon_PIC']; ?>" data-email="<?= $C['Email_PIC']; ?>" data-alamat="<?= $C['Alamat_PIC']; ?>">edit</a>
 
                                     <form action="/Customer/<?= $C['ID_customer']; ?>" method="POST" class="d-inline">
                                         <?= csrf_field() ?>
@@ -120,5 +129,90 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="customerModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Customer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/Customer/update/<?= $C['ID_customer']; ?>" method="POST">
+                    <div class="form-group">
+                        <label for="Nama_customer">Nama Customer</label>
+                        <input name="Nama_customer" type="text" class="form-control Nama_customer" id="Nama_customer" aria-describedby="emailHelp" placeholder="Masukkan Nama Customer">
+                    </div>
+                    <div class="form-group">
+                        <label for="Nama_PIC">Nama PIC</label>
+                        <input name="Nama_PIC" type="text" class="form-control Nama_PIC" id="Nama_PIC" aria-describedby="emailHelp" placeholder="Masukkan Nama PIC">
+                    </div>
+                    <div class="form-group">
+                        <label for="Telepon_customer">Nomor tlp Kantor Customer</label>
+                        <input name="Telepon_customer" type="text" class="form-control Telepon_customer" id="Telepon_customer" aria-describedby="emailHelp" placeholder="Masukkan Nomor tlp Kantor Customer">
+                    </div>
+                    <div class="form-group">
+                        <label for="Telepon_PIC">Nomor Telpon PIC</label>
+                        <input name="Telepon_PIC" type="text" class="form-control Telepon_PIC" id="Telepon_PIC" aria-describedby="emailHelp" placeholder="Masukkan Nomor Telpon PIC">
+                    </div>
+                    <div class="form-group">
+                        <label for="Email_PIC">Email PIC</label>
+                        <input name="Email_PIC" type="email" class="form-control Email_PIC" id="Email_PIC" aria-describedby="emailHelp" placeholder="Masukkan Email PIC">
+                    </div>
+                    <div class="form-group">
+                        <label for="Alamat_PIC">Alamat Lengkap</label>
+                        <input name="Alamat_PIC" type="textarea" class="form-control Alamat_PIC" id="Alamat_PIC" aria-describedby="emailHelp" placeholder="Masukkan Alamat Lengkap">
+                    </div>
+                    <div class="form-group">
+                        <label for="Area">Area(s)</label>
+                        <input name="Area" type="text" class="form-control Area" id="Area" aria-describedby="emailHelp" placeholder="Masukkan Area(s)">
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">batal</button>
+                <button type="submit" class="btn btn-primary">simpan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?= $this->endSection(); ?>
+
+<?= $this->section('script'); ?>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script>
+    $(document).ready(function() {
+
+        // get Edit Product
+        $('.btn-edit').on('click', function() {
+            // get data from button edit
+            const id = $(this).data('id');
+            const area = $(this).data('area');
+            const nama = $(this).data('nama');
+            const teleponcs = $(this).data('teleponcs');
+            const pic = $(this).data('pic');
+            const telepon = $(this).data('telepon');
+            const alamat = $(this).data('alamat');
+            const email = $(this).data('email');
+            // Set data to Form Edit
+            $('.ID_customer').val(id);
+            $('.Area').val(area);
+            $('.Nama_customer').val(nama);
+            $('.Telepon_customer').val(teleponcs);
+            $('.Nama_PIC').val(pic);
+            $('.Telepon_PIC').val(telepon);
+            $('.Alamat_PIC').val(alamat);
+            $('.Email_PIC').val(email);
+            // Call Modal Edit
+            $('#customerModal2').modal('show');
+        });
+
+    });
+</script>
 
 <?= $this->endSection(); ?>

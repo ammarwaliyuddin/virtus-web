@@ -54,13 +54,43 @@ class Area extends BaseController
         return redirect()->to('/Area');
     }
 
-    public function edit($Nama_area)
+    public function update($ID_area)
     {
-        $this->LokasiModel->delete($Nama_area);
-
-        session()->setFlashdata('pesan', 'Data berhasil dihapus');
+        $AreaLama = $this->request->getVar('AreaLama');
+        $AreaBaru = $this->request->getVar('Nama_area');
+        if ($AreaLama == $AreaBaru) {
+            $this->LokasiModel->save([
+                'ID_area' => $ID_area,
+                'Lokasi' => $this->request->getVar('Lokasi'),
+                'persentase_ngantuk' => $this->request->getVar('persentase_ngantuk'),
+                'persentase_tidur' => $this->request->getVar('persentase_tidur'),
+                'persentase_kerja' => $this->request->getVar('persentase_kerja'),
+            ]);
+        } else {
+            if (!$this->validate([
+                'Nama_area' => [
+                    'rules' => 'is_unique[data_area.Nama_area]',
+                    'erors' => [
+                        'required' => '{field} field harus diisi.',
+                        'is_unique' => '{field} nama sudah terdaftar.'
+                    ]
+                ]
+            ])) {
+                return redirect()->to('/Area');
+            }
+            $this->LokasiModel->save([
+                'ID_area' => $ID_area,
+                'Nama_area' => $this->request->getVar('Nama_area'),
+                'Lokasi' => $this->request->getVar('Lokasi'),
+                'persentase_ngantuk' => $this->request->getVar('persentase_ngantuk'),
+                'persentase_tidur' => $this->request->getVar('persentase_tidur'),
+                'persentase_kerja' => $this->request->getVar('persentase_kerja'),
+            ]);
+        }
+        session()->setFlashdata('pesan', 'Data berhasil diubah');
         return redirect()->to('/Area');
     }
+
     public function reportpdf()
     {
         $Area = $this->LokasiModel->findAll();

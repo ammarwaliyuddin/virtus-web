@@ -47,13 +47,23 @@ class Customer extends BaseController
         return redirect()->to('/Customer');
     }
 
-    public function edit($ID_customer)
+    public function update($ID_customer)
     {
-        $this->CustomerModel->delete($ID_customer);
+        $this->CustomerModel->save([
+            'ID_customer' => $ID_customer,
+            'Nama_customer' => $this->request->getVar('Nama_customer'),
+            'Nama_PIC' => $this->request->getVar('Nama_PIC'),
+            'Telepon_customer' => $this->request->getVar('Telepon_customer'),
+            'Telepon_PIC' => $this->request->getVar('Telepon_PIC'),
+            'Email_PIC' => $this->request->getVar('Email_PIC'),
+            'Alamat_PIC' => $this->request->getVar('Alamat_PIC'),
+            'Area' => $this->request->getVar('Area')
+        ]);
 
-        session()->setFlashdata('pesan', 'Data berhasil dihapus');
+        session()->setFlashdata('pesan', 'Data berhasil diubah');
         return redirect()->to('/Customer');
     }
+
     public function reportpdf()
     {
         $Customer = $this->CustomerModel->findAll();

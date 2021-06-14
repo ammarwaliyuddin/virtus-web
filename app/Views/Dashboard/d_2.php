@@ -48,8 +48,6 @@
                                                             </div>';
                                             } ?>
 
-
-
                                             <div class="row">
                                                 <div class="col-3">
                                                     <i class="fas fa-user fa-2x"></i>
@@ -60,7 +58,7 @@
                                                 </div>
                                                 <div class="col-4">
                                                     <img src="/img/ico/[WHITE ICON] smartwatch 1.png" alt="" srcset="">
-                                                    <p><?= $M['idjam']; ?></p>
+                                                    <p><?= $M['IDjam']; ?></p>
                                                 </div>
                                                 <div class="col-4">
                                                     <img src="/img/ico/[WHITE ICON] heart rate 1.png" alt="" srcset="">

@@ -58,7 +58,7 @@
                                 <td><?= $A['Nama_area']; ?></td>
                                 <td><?= $A['Lokasi']; ?></td>
                                 <td>
-                                    <a href="" class="btn btn-warning btn-sm">edit</a>
+                                    <a href="#" class="btn btn-warning btn-edit" data-id="<?= $A['ID_area']; ?>" data-area="<?= $A['Nama_area']; ?>" data-lokasi="<?= $A['Lokasi']; ?>">edit</a>
 
                                     <form action="/Area/<?= $A['ID_area']; ?>" method="POST" class="d-inline">
                                         <?= csrf_field() ?>
@@ -108,5 +108,62 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="areaModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Area</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/Area/update/<?= $A['ID_area']; ?>" method="POST">
+                    <?= csrf_field() ?>
+                    <div class="form-group">
+                        <label for="Nama_area">Nama Area</label>
+                        <input name="Nama_area" type="text" class="form-control Nama_area" id="Nama_area" aria-describedby="emailHelp" placeholder="Masukkan Nama Area">
+                    </div>
+                    <div class="form-group">
+                        <label for="Lokasi">Lokasi</label>
+                        <input name="Lokasi" type="text" class="form-control Lokasi" id="Lokasi" aria-describedby="emailHelp" placeholder="Masukkan Lokasi">
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" name="AreaLama" type="text" class="form-control Nama_area" id="AreaLama" aria-describedby="emailHelp" placeholder="Masukkan Nama Area">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">batal</button>
+                <button type="submit" class="btn btn-primary">simpan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?= $this->endSection(); ?>
+
+<?= $this->section('script'); ?>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script>
+    $(document).ready(function() {
+
+        // get Edit Product
+        $('.btn-edit').on('click', function() {
+            // get data from button edit
+            const id = $(this).data('id');
+            const area = $(this).data('area');
+            const lokasi = $(this).data('lokasi');
+            // Set data to Form Edit
+            $('.ID_area').val(id);
+            $('.Nama_area').val(area);
+            $('.Lokasi').val(lokasi);
+
+            $('#areaModal2').modal('show');
+        });
+
+    });
+</script>
 
 <?= $this->endSection(); ?>
