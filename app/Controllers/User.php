@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\JabatanModel;
 use App\Models\UserModel;
 
 use App\Models\UserDelete;
@@ -14,15 +15,21 @@ class User extends BaseController
     {
         $this->UserModel = new UserModel();
         $this->UserDelete = new UserDelete();
+        $this->JabatanModel = new JabatanModel();
+        $this->builder   = \Config\Database::connect()->table('master_data_admin');
     }
 
     public function index()
     {
-        $User = $this->UserDelete->getUser();
+        $User = $this->UserDelete->findAll();
+        // $User = $this->UserDelete->getUser();
+        $Jabatan = $this->JabatanModel->findAll();
 
         $data = [
-            'User' => $User
+            'User' => $User,
+            'Jabatan' => $Jabatan
         ];
+
 
         return view('Pengaturan/User', $data);
     }
@@ -53,11 +60,35 @@ class User extends BaseController
         return redirect()->to('/User');
     }
 
-    public function edit($Nama)
+    public function edit($NIK)
     {
-        $this->UserModell->delete($Nama);
+        $NIK = $this->request->getVar('NIK');
+        $Nama = $this->request->getVar('Nama');
+        $Jabatan = $this->request->getVar('Jabatan');
+        $Email = $this->request->getVar('Email');
+        $Password = $this->request->getVar('Password');
+        $Foto = $this->request->getVar('Foto');
+        $Expiredate = $this->request->getVar('Expiredate');
+        $Status = $this->request->getVar('Status');
+        $Keterangan = $this->request->getVar('Keterangan');
 
-        session()->setFlashdata('pesan', 'Data berhasil dihapus');
+        $data = [
+            'NIK' => $NIK,
+            'Nama' => $Nama,
+            'Jabatan' => $Jabatan,
+            'Email' => $Email,
+            'Jabatan' => $Jabatan,
+            'Password' => $Password,
+            'Foto' => $Foto,
+            'Expiredate' => $Expiredate,
+            'Status' => $Status,
+            'Keterangan' => $Keterangan
+        ];
+
+        $this->builder->where('NIK', $NIK);
+        $this->builder->update($data);
+
+        session()->setFlashdata('pesan', 'Data berhasil diubah');
         return redirect()->to('/User');
     }
     public function reportpdf()
