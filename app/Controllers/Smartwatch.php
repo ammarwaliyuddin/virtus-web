@@ -7,9 +7,11 @@ use App\Models\SmartwatchModel;
 class Smartwatch extends BaseController
 {
     protected $JabatanModel;
+    public $builder;
     public function __construct()
     {
         $this->SmartwatchModel = new SmartwatchModel();
+        $this->builder   = \Config\Database::connect()->table('data_jam');
     }
 
     public function index()
@@ -19,6 +21,7 @@ class Smartwatch extends BaseController
         $data = [
             'Smartwatch' => $Smartwatch
         ];
+
 
         return view('Pengaturan/Smartwatch', $data);
     }
@@ -45,9 +48,26 @@ class Smartwatch extends BaseController
 
     public function edit($ID_jam)
     {
-        $this->SmartwatchModel->delete($ID_jam);
 
-        session()->setFlashdata('pesan', 'Data berhasil dihapus');
+        $merek = $this->request->getVar('merek');
+        $latitude = $this->request->getVar('latitude');
+        $longitude = $this->request->getVar('longitude');
+        $lokasi = $this->request->getVar('lokasi');
+
+        $data = [
+            'ID_jam' => $ID_jam,
+            'merek' => $merek,
+            'latitude' => $latitude,
+            'longitude' => $longitude,
+            'lokasi' => $lokasi
+        ];
+
+        // dd($data);
+
+        $this->builder->where('ID_jam', $ID_jam);
+        $this->builder->update($data);
+
+        session()->setFlashdata('pesan', 'Data berhasil diubah');
         return redirect()->to('/Smartwatch');
     }
     public function reportpdf()

@@ -715,3 +715,12 @@ a[data-toggle="collapse"] {
         padding-right: 10px;
     }
 }
+
+.card-table{
+    margin: 0px 0px 0 0px !important; 
+    padding: 0 0 !important;
+  
+}
+.card-table-setting{
+    width: 100% !important;
+}
