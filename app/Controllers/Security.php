@@ -18,13 +18,10 @@ class Security extends BaseController
 
     public function index()
     {
-        $Lokasi = $this->LokasiModel->findAll();
-        $Personil = $this->PersonilModel->findAll();
-
+        // $Lokasi = $this->LokasiModel->findAll();
+        // $Personil = $this->PersonilModel->findAll();
 
         // dd($personil_lokasi);
-
-
         $keyword = $this->request->getVar('keyword');
 
 
@@ -42,6 +39,25 @@ class Security extends BaseController
 
         // dd($data);
         return view('Security/Security', $data);
+    }
+
+    public function save()
+    {
+        $this->PersonilModel->save([
+            'Nama' => $this->request->getVar('Nama'),
+            'Umur' => $this->request->getVar('Umur'),
+            'Nomor_HP' => $this->request->getVar('Nomor_HP'),
+            'Status' => $this->request->getVar('Status'),
+            'Email' => $this->request->getVar('Email'),
+            'Nama_area' => $this->request->getVar('Nama_area'),
+            'NIK' => $this->request->getVar('NIK'),
+            'Foto' => $this->request->getVar('Foto')
+        ]);
+
+
+
+        session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
+        return redirect()->to('/Security/setting_personil');
     }
 
     public function detail_personil($detail)
@@ -62,6 +78,13 @@ class Security extends BaseController
     }
     public function setting_personil()
     {
-        return view('Pengaturan/Personil');
+        $personilAll = $this->PersonilModel->getPersonil();
+        $Area = $this->LokasiModel->findAll();
+        $data = [
+            'personilAll' => $personilAll,
+            'Area' => $Area
+        ];
+
+        return view('Pengaturan/Personil', $data);
     }
 }

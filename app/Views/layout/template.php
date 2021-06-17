@@ -116,74 +116,7 @@
         </script>
         <script src="/js/Chart.js"></script>
 
-        <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-        <!-- {{--Firebase Tasks--}} -->
 
-        <!-- <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
-        <script>
-            // Initialize Firebase
-            var config = {
-                apiKey: "AIzaSyDs7SdTvMQPTNqqYOvcOxcEOMGvFiJvJ_c",
-                authDomain: "smartsystemsecurity-45be9.firebaseapp.com",
-                databaseURL: "https://smartsystemsecurity-45be9.firebaseio.com",
-                storageBucket: "smartsystemsecurity-45be9.appspot.com",
-            };
-            firebase.initializeApp(config);
-
-            var database = firebase.database();
-            database.ref('users/12345678').on('value', function(snapshot) {
-                var value = snapshot.val();
-                $('#detakfajar').html(value.heartrate + " bpm");
-                $('#lokasifajar').html(value.location);
-                $('#statefajar').html(value.state);
-                console.log("User UID : " + value.heartrate);
-                console.log(value.state)
-                card = document.querySelector('.card-monitoring');
-                if (value.state == 'NORMAL') {
-                    // card.classList.remove('siang');
-                    card.classList.add('bg-success');
-                    var src1 = '/img/ico/ICON WORK 1.png';
-                    $("#card_logo_status").attr("src", src1);
-                } else if (value.state == 'TIDUR') {
-                    // card.classList.remove('siang');
-                    card.classList.add('bg-zaamorange');
-                    var src1 = '/img/ico/[red}ICON SLEEP 1.png';
-                    $("#card_logo_status").attr("src", src1);
-                } else {
-                    // card.classList.remove('siang');
-                    card.classList.add('bg-warning');
-                    var src1 = '/img/ico/ICON DOZY 1.png';
-                    $("#card_logo_status").attr("src", src1);
-                }
-            });
-
-            var database2 = firebase.database();
-            database2.ref('users/23456789').on('value', function(snapshot) {
-                var value = snapshot.val();
-                $('#detakaxel').html(value.heartrate + " bpm");
-                $('#lokasiaxel').html(value.location);
-                $('#stateaxel').html(value.state);
-                console.log("User UID : " + value.heartrate);
-                value.state = 'TIDUR';
-                card = document.querySelector('.card-monitoring.card-axel');
-                if (value.state == 'NORMAL') {
-                    // card.classList.remove('siang');
-                    card.classList.add('bg-success');
-                    var src1 = '/img/ico/ICON WORK 1.png';
-                    $(".card-axel #card_logo_status").attr("src", src1);
-                } else if (value.state == 'TIDUR') {
-                    // card.classList.remove('siang');
-                    card.classList.add('bg-zaamorange');
-                    var src1 = '/img/ico/[red}ICON SLEEP 1.png';
-                    $(".card-axel #card_logo_status").attr("src", src1);
-                } else {
-                    // card.classList.remove('siang');
-                    card.classList.add('bg-warning');
-                    var src1 = '/img/ico/ICON DOZY 1.png';
-                    $(".card-axel #card_logo_status").attr("src", src1);
-                }
-            });
-        </script> -->
 
         <script>
             // $.ajax({
