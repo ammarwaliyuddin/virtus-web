@@ -46,6 +46,11 @@
                                                             <div class="ico-cardmonitoring">
                                                                 <img src="/img/ico/ICON WORK 1.png" alt="" srcset="">
                                                             </div>';
+                                            } else {
+                                                echo ' <div class="card-monitoring bg-secondary">
+                                                            <div class="ico-cardmonitoring">
+                                                                <img src="/img/ico/ICON WORK 1.png" alt="" srcset="">
+                                                            </div>';
                                             } ?>
 
                                             <div class="row">
@@ -58,7 +63,7 @@
                                                 </div>
                                                 <div class="col-4">
                                                     <img src="/img/ico/[WHITE ICON] smartwatch 1.png" alt="" srcset="">
-                                                    <p><?= $M['IDjam']; ?></p>
+                                                    <p><?= $M['idjam']; ?></p>
                                                 </div>
                                                 <div class="col-4">
                                                     <img src="/img/ico/[WHITE ICON] heart rate 1.png" alt="" srcset="">

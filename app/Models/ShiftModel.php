@@ -31,4 +31,15 @@ class ShiftModel extends Model
         $monitoring = $builder->get()->getResultArray();
         return $monitoring;
     }
+    public function searchShift($keyword)
+    {
+        return $this->db->table('data_shift')
+            ->join('data_shift_personil', 'data_shift_personil.ID_shift=data_shift.ID_shift')
+            ->join('master_data_personil', 'data_shift_personil.NIK=master_data_personil.NIK')
+            ->join('data_area', 'data_shift_personil.Nama_area=data_area.Nama_area')
+            ->like('master_data_personil.Nama', $keyword)
+            ->orLike('data_area.Nama_area', $keyword)
+            // ->orLike('data_shift_personil.NIK', $keyword)
+            ->get()->getResultArray();
+    }
 }

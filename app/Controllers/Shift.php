@@ -17,13 +17,24 @@ class Shift extends BaseController
 
     public function index()
     {
-        $Shift = $this->ShiftModel->getShift();
+
+
+        $keyword = $this->request->getVar('keyword');
+
+
+        // $Shift = $this->ShiftModel->searchShift($keyword);
+        if ($keyword) {
+            $Shift = $this->ShiftModel->searchShift($keyword);
+        } else {
+            $Shift = $this->ShiftModel->getShift();
+        }
+        // dd($Shift);
 
         $data = [
             'Shift' => $Shift,
         ];
 
-        //dd($data);
+        // dd($data);
         return view('Shift/Shift', $data);
     }
     public function setting_shift()
