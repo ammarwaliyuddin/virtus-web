@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\JabatanModel;
+use App\Models\AreaModel;
 use CodeIgniter\Validation\Rules;
 use PDO;
 use \Mpdf\Mpdf;
@@ -15,17 +16,25 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 class Jabatan extends BaseController
 {
     protected $JabatanModel;
+    public $builder;
     public function __construct()
     {
         $this->JabatanModel = new JabatanModel();
+        $this->areaModel = new AreaModel();
+        $this->builder   = \Config\Database::connect()->table('data_jabatan');
     }
 
     public function index()
     {
-        $data = $this->JabatanModel->findAll();
-        // var_dump($data);
-        // die;
-        return view('Pengaturan/Jabatan', ['Jabatan' => $data]);
+        $Jabatan = $this->JabatanModel->findAll();
+        $Area = $this->areaModel->findAll();
+
+        $data = [
+            'Jabatan' => $Jabatan,
+            'Area' => $Area
+        ];
+
+        return view('Pengaturan/Jabatan', $data);
     }
 
     public function save()
@@ -50,9 +59,20 @@ class Jabatan extends BaseController
 
     public function edit($ID_jabatan)
     {
-        $this->JabatanModel->delete($ID_jabatan);
+        $Jabatan = $this->request->getVar('Jabatan');
+        $Nama_area = $this->request->getVar('Nama_area');
+        $Deskripsi = $this->request->getVar('deskripsi');
+        $data = [
+            'ID_Jabatan' => $ID_jabatan,
+            'Jabatan' => $Jabatan,
+            'Nama_area' => $Nama_area,
+            'Deskripsi' => $Deskripsi
+        ];
 
-        session()->setFlashdata('pesan', 'Data berhasil dihapus');
+        $this->builder->where('ID_jabatan', $ID_jabatan);
+        $this->builder->update($data);
+
+        session()->setFlashdata('pesan', 'Data berhasil diubah');
         return redirect()->to('/Jabatan');
     }
 
@@ -102,12 +122,10 @@ class Jabatan extends BaseController
                 $Nama_area = $row[2];
                 $Deskripsi = $row[3];
 
-                $db = \Config\Database::connect();
 
-                $builder = $db->table('data_jabatan');
-                $builder->where(['Jabatan' => $Jabatan]);
-                $builder->where(['Nama_area' => $Nama_area]);
-                $cekdata = $builder->get();
+                $this->builder->where(['Jabatan' => $Jabatan]);
+                $this->builder->where(['Nama_area' => $Nama_area]);
+                $cekdata = $this->builder->get();
 
                 // $cekNama_area =  $db->table('data_area')->getWhere(['Nama_area' => $Nama_area])->getResult();
                 if (count($cekdata->getResult()) > 0) {
@@ -121,7 +139,7 @@ class Jabatan extends BaseController
                     $datasimpan = [
                         'Jabatan' => $Jabatan,  'Deskripsi' => $Deskripsi, 'Nama_area' => $Nama_area,
                     ];
-                    $db->table('data_jabatan')->insert($datasimpan);
+                    $this->builder->insert($datasimpan);
                     $jumlahsukses++;
                 }
             }

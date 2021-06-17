@@ -54,13 +54,14 @@
                         <th>Aksi</th>
                     </thead>
                     <tbody>
-
                         <?php foreach ($Jabatan as $J) : ?>
                             <tr>
                                 <td><?= $J['Jabatan']; ?></td>
                                 <td><?= $J['Nama_area']; ?></td>
                                 <td>
-                                    <a href="/Jabatan/edit/<?= $J['ID_jabatan']; ?>" class="btn btn-warning btn-sm">edit</a>
+
+
+                                    <a href="#" class="btn btn-warning btn-sm btn-edit " data-id="<?= $J['ID_jabatan']; ?>" data-jabatan="<?= $J['Jabatan']; ?>" data-lokasi="<?= $J['Nama_area']; ?>" data-deskripsi="<?= $J['Deskripsi']; ?>">edit</a>
 
                                     <form action="/Jabatan/<?= $J['ID_jabatan']; ?>" method="POST" class="d-inline">
                                         <?= csrf_field() ?>
@@ -135,7 +136,13 @@
                     </div>
                     <div class="form-group">
                         <label for="Nama_area">Nama Area</label>
-                        <input name="Nama_area" type="text" class="form-control" id="Nama_area" aria-describedby="emailHelp" placeholder="Masukkan Nama Area">
+                        <select class="form-control" name="Nama_area">
+                            <?php foreach ($Area as $a) : ?>
+                                <option><?= $a['Nama_area']; ?></option>
+                            <?php endforeach ?>
+                        </select>
+                        <!-- <input name="Nama_area" type="text" class="form-control" id="Nama_area" aria-describedby="emailHelp" placeholder="Masukkan Nama Area"> -->
+
                     </div>
             </div>
             <div class="modal-footer">
@@ -146,5 +153,77 @@
         </div>
     </div>
 </div>
+<!-- modal edit -->
+<div class="modal fade" id="jabatanModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <h5 class="modal-title" id="exampleModalLabel">Update Jabatan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/Jabatan/edit/<?= $J['ID_jabatan']; ?>" method="POST">
+                    <?= csrf_field() ?>
+                    <div class="form-group">
+                        <label for="Jabatan">Nama Jabatan</label>
+                        <input name="Jabatan" type="text" class="form-control Jabatan" id="Jabatan" placeholder="Masukkan Nama Area">
+                    </div>
+                    <div class="form-group">
+                        <label for="Nama_area">Lokasi</label>
+                        <select class="form-control " name="Nama_area">
+
+                            <?php foreach ($Area as $a) : ?>
+                                <option><?= $a['Nama_area']; ?></option>
+                            <?php endforeach ?>
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="deskripsi">Deskripsi</label>
+                        <input name="deskripsi" type="text" class="form-control deskripsi" id="deskripsi" placeholder="Masukkan deskripsi">
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" name="AreaLama" type="text" class="form-control Nama_area" id="AreaLama" aria-describedby="emailHelp" placeholder="Masukkan Nama Area">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">batal</button>
+                <button type="submit" class="btn btn-primary">simpan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<?= $this->endSection(); ?>
+<?= $this->section('script'); ?>
+
+<!-- <script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script> -->
+<script>
+    $(document).ready(function() {
+
+        // get Edit Product
+        $('.btn-edit').on('click', function() {
+
+            // get data from button edit
+            const id = $(this).data('id');
+            const jabatan = $(this).data('jabatan');
+            const lokasi = $(this).data('lokasi');
+            const deskripsi = $(this).data('deskripsi');
+
+            console.log(lokasi);
+            // Set data to Form Edit
+            $('.ID_Jabatan').val(id);
+            $('.Jabatan').val(jabatan);
+            $('.Nama_area').val(lokasi);
+            $('.deskripsi').val(deskripsi);
+
+            $('#jabatanModal2').modal('show');
+        });
+
+    });
+</script>
 
 <?= $this->endSection(); ?>
