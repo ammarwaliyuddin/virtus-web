@@ -28,7 +28,7 @@ class Shift extends BaseController
         $keyword = $this->request->getVar('keyword');
 
 
-        // $Shift = $this->ShiftModel->searchShift($keyword);
+
         if ($keyword) {
             $Shift = $this->ShiftModel->searchShift($keyword);
         } else {
@@ -53,12 +53,6 @@ class Shift extends BaseController
         ];
         return view('Pengaturan/Shift', $data);
     }
-    public function setting_atur_shift()
-    {
-
-        return view('Pengaturan/Atur_shift');
-    }
-
     public function save()
     {
         $data = [
@@ -98,5 +92,32 @@ class Shift extends BaseController
 
         session()->setFlashdata('pesan', 'Data berhasil diubah');
         return redirect()->to('/Shift/setting_shift');
+    }
+    public function setting_atur_shift()
+    {
+
+        $data = [
+            'atur_shift' => $this->ShiftModel->atur_shift(),
+            'nama_personil' => $this->ShiftModel->Personil_Shift(),
+            'data_shift' => $this->ShiftModel->findAll()
+
+
+        ];
+
+        // dd($data);
+        return view('Pengaturan/Atur_shift', $data);
+    }
+    public function atur_shit_save()
+    {
+        $data = [
+            'NIK' => $this->request->getVar('Nama'),
+            'ID_shift' => $this->request->getVar('shift'),
+        ];
+
+        // dd($data);
+        $this->ShiftModel->atur_shit_save($data);
+
+        session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
+        return redirect()->to('/Shift/setting_atur_shift');
     }
 }
