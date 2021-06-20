@@ -79,37 +79,6 @@
                             </div>
 
                         <?php endforeach; ?>
-                        <!-- //ambil dri firebase -->
-                        <!-- <div class="col-6 text-white">
-                                    <a href="<?= base_url('Security_personil'); ?> ">
-                                        <div class="card-monitoring card-axel">
-                                            <div class="ico-cardmonitoring ">
-                                                <img src="" id="card_logo_status">
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <i class="fas fa-user fa-2x"></i>
-                                                </div>
-                                                <div class="col-9">
-                                                    <p class="text-white">2345678</p>
-                                                    <p class="text-white">Ananda Rebel</p>
-                                                </div>
-                                                <div class="col-4">
-                                                    <img src="/img/ico/[WHITE ICON] smartwatch 1.png" alt="" srcset="">
-                                                    <p>001</p>
-                                                </div>
-                                                <div class="col-4">
-                                                    <img src="/img/ico/[WHITE ICON] heart rate 1.png" alt="" srcset="">
-                                                    <p id="detakaxel">0 bpm</p>
-                                                </div>
-                                                <div class="col-4">
-                                                    <img src="/img/ico/[WHITE ICON] location 1.png" alt="" srcset="">
-                                                    <p id="lokasiaxel">None</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div> -->
 
                         </div>
                     </div>
@@ -162,24 +131,34 @@
 
 <?= $this->endSection(); ?>
 
-<!-- <?= $this->section('script'); ?>
-<script>
-    card = document.querySelector('.card-monitoring');
-    if (value.state == 'NORMAL') {
-        // card.classList.remove('siang');
-        card.classList.add('bg-success');
-        var src1 = '/img/ico/ICON WORK 1.png';
-        $("#card_logo_status").attr("src", src1);
-    } else if (value.state == 'TIDUR') {
-        // card.classList.remove('siang');
-        card.classList.add('bg-zaamorange');
-        var src1 = '/img/ico/[red}ICON SLEEP 1.png';
-        $("#card_logo_status").attr("src", src1);
-    } else {
-        // card.classList.remove('siang');
-        card.classList.add('bg-warning');
-        var src1 = '/img/ico/ICON DOZY 1.png';
-        $("#card_logo_status").attr("src", src1);
-    }
+<?= $this->section('script'); ?>
+<script type="text/javascript">
+    var ctx = document.getElementById("piechart").getContext("2d");
+    const ngantuk = <?= $Lokasi['0']['persentase_ngantuk']; ?>;
+    const tidur = <?= $Lokasi['0']['persentase_tidur']; ?>;
+    const kerja = <?= $Lokasi['0']['persentase_kerja']; ?>;
+
+    var data = {
+        labels: ['Semangat', 'Mengantuk', 'Tidur'],
+        datasets: [{
+            label: "grafik pelanggaran",
+            data: [kerja, ngantuk, tidur],
+            backgroundColor: [
+                '#1AB394',
+                '#F8AB59',
+                '#EC644C',
+
+            ],
+            hoverOffset: 4
+        }]
+    };
+
+    var myPieChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: data,
+        options: {
+            responsive: true
+        }
+    });
 </script>
-<?= $this->endSection(); ?> -->
+<?= $this->endSection(); ?>

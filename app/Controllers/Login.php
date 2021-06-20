@@ -16,9 +16,16 @@ class Login extends BaseController
 	{
 		$session = session();
 		$model = new LoginModel();
+
 		$NIK = $this->request->getVar('NIK');
 		$password = $this->request->getVar('password');
 		$data = $model->where('NIK', $NIK)->first();
+
+		$db      = \Config\Database::connect();
+		$builder = $db->table('master_data_personil');
+		$builder->selectCount('NIK');
+		$query = $builder->get()->getResultArray();
+
 
 		// dd($data);
 		if ($data) {
@@ -29,8 +36,10 @@ class Login extends BaseController
 					'NIK'       => $data['NIK'],
 					'Nama'     => $data['Nama'],
 					'Status'    => $data['Status'],
+					'jumlah' => $query,
 					'logged_in'     => TRUE
 				];
+				// dd($ses_data);
 				$session->set($ses_data);
 				return redirect()->to('/Dashboard');
 				// return view('Dashboard/d_1', $data);

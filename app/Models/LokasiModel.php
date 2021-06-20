@@ -14,4 +14,11 @@ class LokasiModel extends Model
     {
         return $this->findAll();
     }
+    public function area($ID_area)
+    {
+        $builder = $this->db->table('data_area');
+        $builder->where(['ID_area' => $ID_area]);
+        $area = $builder->get()->getResultArray();
+        return $area;
+    }
 }

@@ -76,7 +76,7 @@
             </button>
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid">
-                    <h3>TOTAL PETUGAS <span>3</span></h3>
+                    <h3>TOTAL PETUGAS <span><?= $_SESSION['jumlah'][0]['NIK']  ?></span></h3>
 
                     <!-- login panel -->
                     <div class="login-panel">
@@ -119,51 +119,7 @@
 
 
         <script>
-            // $.ajax({
-            //     url: 'https://smartsystemsecurity-45be9.firebaseio.com/users.json?',
-            //     // type: 'get',
-            //     // dataType: 'json',
-            //     // data: {
-            //     //     // 'print': 'pretty'
-            //     // },
-            //     success: function(result) {
-            //         var p = [];
-            //         $.each(result, function(i, data) {
-            //             p.push(data.state);
-            //         });
-            //         console.log(p.sort());
-            //         console.log(p.reverse());
-            //     }
 
-            // });
-
-            // $.ajax({
-            //     url: 'https://zaamstudio.com/virtus/personil_monitoring_app.php',
-            //     type: 'post',
-            //     crossdomain: true,
-            //     // contentType: 'application/x-www-form-urlencoded',
-            //     contentType: 'application/json',
-            //     headers: {
-            //         'Access-Control-Allow-Origin': '*'
-            //     },
-            //     dataType: 'json',
-            //     data: {
-            //         'Kode': 7,
-            //         'Nama_area': 'The Pakubuono Signature',
-            //         'tanggal': '2020-12-28'
-            //     },
-            //     success: function(result) {
-            //         // var p = [];
-
-            //         console.log(result);
-            //         $.each(result, function(i, data) {
-            //             console.log(data);
-            //             // p.push(data.state);
-            //         });
-            //         // console.log(p.sort());
-            //         // console.log(p.reverse());
-            //     }
-            // });
         </script>
 
         <script>
@@ -227,31 +183,7 @@
                 return false;
             });
         </script>
-        <script type="text/javascript">
-            var ctx = document.getElementById("piechart").getContext("2d");
-            var data = {
-                labels: ['Semangat', 'Mengantuk', 'Tidur'],
-                datasets: [{
-                    label: "grafik pelanggaran",
-                    data: [1, 0, 1],
-                    backgroundColor: [
-                        '#1AB394',
-                        '#F8AB59',
-                        '#EC644C',
 
-                    ],
-                    hoverOffset: 4
-                }]
-            };
-
-            var myPieChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: data,
-                options: {
-                    responsive: true
-                }
-            });
-        </script>
         <?= $this->renderSection('datatable'); ?>
         <?= $this->renderSection('script'); ?>
 

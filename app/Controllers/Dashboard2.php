@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ShiftModel;
 use App\Models\PersonilModel;
+use App\Models\LokasiModel;
 
 class Dashboard2 extends BaseController
 {
@@ -13,6 +14,7 @@ class Dashboard2 extends BaseController
     {
         $this->ShiftModel = new ShiftModel();
         $this->HistoryPelanggaran = new PersonilModel();
+        $this->LokasiModel = new LokasiModel();
     }
 
     public function index($ID_area)
@@ -23,13 +25,12 @@ class Dashboard2 extends BaseController
         $session = session();
         $session->get('user_name');
 
-        // $Lokasi = $this->LokasiModel->findAll();
+        $Lokasi = $this->LokasiModel->area($ID_area);
         //  $History = $this->HistoryPelanggaran->findAll();
         $History = $this->HistoryPelanggaran->getNama();
         //  $data['siswa'] = $model->getSiswa();
-
         $data = [
-            // 'Lokasi' => $Lokasi,
+            'Lokasi' => $Lokasi,
             'History' => $History,
             'Monitoring' => $Monitoring
         ];

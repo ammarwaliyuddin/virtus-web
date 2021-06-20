@@ -17,7 +17,6 @@
                     </div>
 
                 </div>
-
                 <div class="card-content">
                     <form action="" method="" class="w-100">
                         <?php foreach ($Lokasi as $L) : ?>
@@ -87,6 +86,7 @@
                                 <th scope="col">Area</th>
                             </tr>
                         </thead>
+
                         <tbody>
                             <?php foreach ($History as $H) : ?>
                                 <tr>
