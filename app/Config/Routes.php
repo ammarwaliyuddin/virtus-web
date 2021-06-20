@@ -44,6 +44,7 @@ $routes->get('/Dashboard2/(:segment)', 'Dashboard2::index/$1', ['filter' => 'aut
 $routes->get('/Security', 'Security::index', ['filter' => 'auth']);
 $routes->get('/Security_personil', 'Security::detail_personil', ['filter' => 'auth']);
 $routes->get('/Security2', 'Security2::index', ['filter' => 'auth']);
+$routes->delete('/Security/(:any)', 'Security::delete/$1', ['filter' => 'auth']);
 
 $routes->get('/Shift', 'Shift::index', ['filter' => 'auth']);
 

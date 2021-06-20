@@ -37,18 +37,19 @@
                     </div>
                 </div>
                 <div class="jabatan-header mt-4 mb-2">
-                    <h4>PERSONIL</h4>
+                    <h4>DAFTAR PERSONIL</h4>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#PersonilModal">
                         Tambah
                     </button>
                 </div>
-                <?php d($personilAll); ?>
+
                 <div class="card-content card-table">
                     <table class="table card-table-setting table-hover table-borderless">
                         <th scope="col">No</th>
-                        <th scope="col">Nama Area</th>
                         <th scope="col">Nama Personil</th>
+                        <th scope="col">NIK</th>
+                        <th scope="col">Email</th>
                         <th scope="col">Action</th>
                         </thead>
                         <tbody>
@@ -56,11 +57,13 @@
                             <?php foreach ($personilAll as $p) : ?>
                                 <tr>
                                     <th scope="row"><?= $i++; ?></th>
-                                    <td><?= $p['Nama_area']; ?></td>
                                     <td><?= $p['Nama']; ?></td>
+                                    <td><?= $p['NIK']; ?></td>
+                                    <td><?= $p['Email']; ?></td>
+
                                     <td>
-                                        <a href="#" class="btn btn-warning btn-sm btn-edit">edit</a>
-                                        <form action="" method="POST" class="d-inline">
+                                        <a href="#" class="btn btn-warning btn-edit btn-sm" data-nik="<?= $p['NIK']; ?>" data-nama="<?= $p['Nama']; ?>" data-pin="<?= $p['PIN']; ?>" data-Umur="<?= $p['Umur']; ?>" data-nomor="<?= $p['Nomor_HP']; ?>" data-email="<?= $p['Email']; ?>" data-foto="<?= $p['Foto']; ?>">edit</a>
+                                        <form action="/Security/<?= $p['NIK']; ?>" method="POST" class="d-inline">
                                             <?= csrf_field() ?>
                                             <input type="hidden" name="_method" value="DELETE">
                                             <button type="submit" class="btn btn-danger btn-sm">hapus</button>
@@ -75,7 +78,7 @@
         </div>
     </div>
 </div>
-<!-- Modal jabatan -->
+<!-- Modal personil -->
 <div class="modal fade" id="PersonilModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -109,22 +112,10 @@
                         <input name="Nomor_HP" type="text" class="form-control" id="Nomor_HP" placeholder="Masukkan Nomor HP">
                     </div>
                     <div class="form-group">
-                        <label for="Status">Status</label>
-                        <input name="Status" type="text" class="form-control" id="Status" placeholder="Masukkan status">
-                    </div>
-                    <div class="form-group">
                         <label for="Email">Email</label>
                         <input name="Email" type="text" class="form-control" id="Email" placeholder="Masukkan Email" required>
                     </div>
-                    <div class="form-group">
-                        <label for="Nama_area">Nama Area</label>
-                        <select class="form-control " name="Nama_area">
-                            <?php foreach ($Area as $a) : ?>
-                                <option><?= $a['Nama_area']; ?></option>
-                            <?php endforeach ?>
 
-                        </select>
-                    </div>
                     <div class="form-group">
                         <label for="Foto">Foto</label>
                         <input name="Foto" type="file" class="form-control-file" placeholder="Masukkan Foto">
@@ -139,5 +130,96 @@
         </div>
     </div>
 </div>
+
+<!-- update personil -->
+<div class="modal fade" id="personilModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <h5 class="modal-title" id="exampleModalLabel">Update Personil</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="POST" id="editForm">
+                    <?= csrf_field() ?>
+
+                    <div class="form-group">
+                        <label for="NIK">NIK</label>
+                        <input name="NIK" type="text" class="form-control NIK" placeholder="Masukkan NIK">
+                    </div>
+                    <div class="form-group">
+                        <label for="nama">nama</label>
+                        <input name="Nama" type="text" class="form-control nama" placeholder="Masukkan nama">
+                    </div>
+                    <div class="form-group">
+                        <label for="pin">pin</label>
+                        <input name="PIN" type="text" class="form-control pin" placeholder="Masukkan pin">
+                    </div>
+                    <div class="form-group">
+                        <label for="umur">umur</label>
+                        <input name="Umur" type="text" class="form-control umur" placeholder="Masukkan umur">
+                    </div>
+                    <div class="form-group">
+                        <label for="nomor">nomor</label>
+                        <input name="Nomor_HP" type="text" class="form-control nomor" placeholder="Masukkan nomor">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">email</label>
+                        <input name="Email" type="text" class="form-control email" placeholder="Masukkan email">
+                    </div>
+                    <div class="form-group">
+                        <label for="Foto">Foto</label>
+                        <input name="Foto" type="file" class="form-control-file" placeholder="Masukkan Foto">
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" name="AreaLama" type="text" class="form-control Nama_area" id="AreaLama" aria-describedby="emailHelp" placeholder="Masukkan Nama Area">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">batal</button>
+                <button type="submit" class="btn btn-primary">simpan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?= $this->endSection(); ?>
+<?= $this->section('script'); ?>
+<script>
+    $(document).ready(function() {
+
+        // get Edit Product
+        $('.btn-edit').on('click', function() {
+            // get data from button edit
+            const NIK = $(this).data('nik');
+            const nama = $(this).data('nama');
+            const pin = $(this).data('pin');
+            const umur = $(this).data('umur');
+            const nomor = $(this).data('nomor');
+            const email = $(this).data('email');
+            const foto = $(this).data('foto');
+            const URL = '/Security/edit/' + NIK;
+
+
+            console.log(URL);
+
+
+            // Set data to Form Edit
+            $('.NIK').val(NIK);
+            $('.nama').val(nama);
+            $('.pin').val(pin);
+            $('.umur').val(umur);
+            $('.nomor').val(nomor);
+            $('.email').val(email);
+            $('.foto').val(foto);
+
+            $('#editForm').attr('action', URL)
+            $('#personilModalEdit').modal('show');
+        });
+
+    });
+</script>
 
 <?= $this->endSection(); ?>

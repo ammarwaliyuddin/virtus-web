@@ -8,7 +8,7 @@ class PersonilModel extends Model
 {
     protected $table = 'master_data_personil';
     protected $primaryKey = 'NIK';
-    protected $allowedFields = ['Nama', 'Umur', 'Status', 'Foto',];
+    protected $allowedFields = ['Nama', 'Umur', 'Status', 'Foto', 'PIN', 'Nomor_HP', 'Email', 'NIK'];
 
     public function getNama()
     {

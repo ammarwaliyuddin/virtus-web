@@ -10,10 +10,12 @@ class Security extends BaseController
 {
     protected $PersonilModel;
     protected $LokasiModel;
+    protected $builder;
     public function __construct()
     {
         $this->LokasiModel = new LokasiModel();
         $this->PersonilModel = new PersonilModel();
+        $this->builder      = \Config\Database::connect()->table('master_data_personil');
     }
 
     public function index()
@@ -43,18 +45,19 @@ class Security extends BaseController
 
     public function save()
     {
-        $this->PersonilModel->save([
+        $data = [
             'Nama' => $this->request->getVar('Nama'),
             'Umur' => $this->request->getVar('Umur'),
             'Nomor_HP' => $this->request->getVar('Nomor_HP'),
             'Status' => $this->request->getVar('Status'),
             'Email' => $this->request->getVar('Email'),
-            'Nama_area' => $this->request->getVar('Nama_area'),
             'NIK' => $this->request->getVar('NIK'),
-            'Foto' => $this->request->getVar('Foto')
-        ]);
+            'Foto' => $this->request->getVar('Foto'),
+            'PIN' => $this->request->getVar('PIN'),
+            'Status' => '0'
+        ];
 
-
+        $this->builder->insert($data);
 
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
         return redirect()->to('/Security/setting_personil');
@@ -78,13 +81,44 @@ class Security extends BaseController
     }
     public function setting_personil()
     {
-        $personilAll = $this->PersonilModel->getPersonil();
-        $Area = $this->LokasiModel->findAll();
+        // $personilAll = $this->PersonilModel->getPersonil();
+        $personilAll = $this->PersonilModel->findAll();
+        // $Area = $this->LokasiModel->findAll();
         $data = [
-            'personilAll' => $personilAll,
-            'Area' => $Area
+            'personilAll' => $personilAll
+            // 'Area' => $Area
         ];
 
         return view('Pengaturan/Personil', $data);
+    }
+    public function delete($NIK)
+    {
+        $this->PersonilModel->delete($NIK);
+
+        session()->setFlashdata('pesan', 'Data berhasil dihapus');
+        return redirect()->to('/Security/setting_personil');
+    }
+    public function edit($NIK)
+    {
+
+        $data = [
+            'Nama' => $this->request->getVar('Nama'),
+            'Umur' => $this->request->getVar('Umur'),
+            'Nomor_HP' => $this->request->getVar('Nomor_HP'),
+            'Email' => $this->request->getVar('Email'),
+            'NIK' => $this->request->getVar('NIK'),
+            'Foto' => $this->request->getVar('Foto'),
+            'PIN' => $this->request->getVar('PIN'),
+            'Status' => '0'
+        ];
+
+
+        // dd($data);
+
+        $this->builder->where('NIK', $NIK);
+        $this->builder->update($data);
+
+        session()->setFlashdata('pesan', 'Data berhasil diubah');
+        return redirect()->to('/Security/setting_personil');
     }
 }
