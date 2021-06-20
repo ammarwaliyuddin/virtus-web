@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="jabatan-header mt-4 mb-2">
-                    <h4>DAFTAR PERSONIL</h4>
+                    <h4>DAFTAR SHIFT</h4>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#shiftModal">
                         Tambah
