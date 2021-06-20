@@ -8,7 +8,7 @@ class ShiftModel extends Model
 {
     protected $table = 'data_shift';
     protected $primaryKey = 'ID_shift';
-    protected $allowedFields = ['shift', 'hari', 'jam', 'Nama_area'];
+    protected $allowedFields = ['shift', 'hari', 'jam', 'Nama_area', 'tanggali'];
 
     public function getShift()
     {
