@@ -59,9 +59,12 @@ class Shift extends BaseController
             'Nama_area' => $this->request->getVar('Nama_area'),
             'Hari' => $this->request->getVar('Hari'),
             'Jam' => $this->request->getVar('Jam'),
-            'tanggali' => date("Y-m-d")
-        ];
+            'tanggali' => date("Y-m-d"),
+            // 'ID_shift' => '8'
 
+
+        ];
+        // dd($data);
 
         $this->builder->insert($data);
 
