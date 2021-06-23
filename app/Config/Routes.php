@@ -61,7 +61,7 @@ $routes->delete('/Jabatan/(:num)', 'Jabatan::delete/$1');
 
 
 $routes->get('/Role_user', 'Role_user::index', ['filter' => 'auth']);
-$routes->delete('/Role_user/(:num)', 'Role_user::delete/$1', ['filter' => 'auth']);
+$routes->delete('/Role_user/(:any)', 'Role_user::delete/$1', ['filter' => 'auth']);
 $routes->get('/Role_user/(:any)', 'Role_user::index/$1', ['filter' => 'auth']);
 
 $routes->get('/Tambah_role_user', 'Tambah_role_user::index', ['filter' => 'auth']);
