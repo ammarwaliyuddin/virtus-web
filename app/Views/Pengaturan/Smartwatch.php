@@ -100,15 +100,15 @@
                     <?= csrf_field() ?>
                     <div class="form-group">
                         <label for="merek">Nama Smartwatch</label>
-                        <input name="merek" type="text" class="form-control" id="merek" placeholder="Masukkan Nama Smartwatch">
+                        <input name="merek" type="text" class="form-control" id="merek" placeholder="Masukkan Nama Smartwatch" required>
                     </div>
                     <div class="form-group">
                         <label for="Longitude">Longitude</label>
-                        <input name="longitude" type="text" class="form-control" id="longitude" placeholder="Masukkan Area">
+                        <input name="longitude" type="text" class="form-control" id="longitude" placeholder="Masukkan Area" required>
                     </div>
                     <div class="form-group">
                         <label for="latitude">Latitude</label>
-                        <input name="latitude" type="text" class="form-control" id="latitude" placeholder="Masukkan Area">
+                        <input name="latitude" type="text" class="form-control" id="latitude" placeholder="Masukkan Area" required>
                     </div>
             </div>
             <div class="modal-footer">
@@ -135,19 +135,19 @@
                     <?= csrf_field() ?>
                     <div class="form-group">
                         <label for="merek">Merek</label>
-                        <input name="merek" type="text" class="form-control merek" placeholder="Masukkan Nama merek">
+                        <input name="merek" type="text" class="form-control merek" placeholder="Masukkan Nama merek" required>
                     </div>
                     <div class="form-group">
                         <label for="latitude">Latitude</label>
-                        <input name="latitude" type="text" class="form-control latitude" placeholder="Masukkan latitude">
+                        <input name="latitude" type="text" class="form-control latitude" placeholder="Masukkan latitude" required>
                     </div>
                     <div class="form-group">
                         <label for="longitude">Longitude</label>
-                        <input name="longitude" type="text" class="form-control longitude" placeholder="Masukkan longitude">
+                        <input name="longitude" type="text" class="form-control longitude" placeholder="Masukkan longitude" required>
                     </div>
                     <div class="form-group">
                         <label for="lokasi">Lokasi</label>
-                        <input name="lokasi" type="text" class="form-control lokasi" placeholder="Masukkan lokasi">
+                        <input name="lokasi" type="text" class="form-control lokasi" placeholder="Masukkan lokasi" required>
                     </div>
 
             </div>

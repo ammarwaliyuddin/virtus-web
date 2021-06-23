@@ -106,23 +106,23 @@
                 <form action="/Customer/save" method="POST">
                     <div class="form-group">
                         <label for="Nama_customer">Nama Customer</label>
-                        <input name="Nama_customer" type="text" class="form-control" id="Nama_customer" aria-describedby="emailHelp" placeholder="Masukkan Nama Customer">
+                        <input name="Nama_customer" type="text" class="form-control" placeholder="Masukkan Nama Customer" required>
                     </div>
                     <div class="form-group">
                         <label for="Nama_PIC">Nama PIC</label>
-                        <input name="Nama_PIC" type="text" class="form-control" id="Nama_PIC" aria-describedby="emailHelp" placeholder="Masukkan Nama PIC">
+                        <input name="Nama_PIC" type="text" class="form-control" placeholder="Masukkan Nama PIC" required>
                     </div>
                     <div class="form-group">
                         <label for="Telepon_customer">Nomor tlp Kantor Customer</label>
-                        <input name="Telepon_customer" type="text" class="form-control" id="Telepon_customer" aria-describedby="emailHelp" placeholder="Masukkan Nomor tlp Kantor Customer">
+                        <input name="Telepon_customer" type="text" class="form-control" placeholder="Masukkan Nomor tlp Kantor Customer" required maxlength="12">
                     </div>
                     <div class="form-group">
                         <label for="Telepon_PIC">Nomor Telpon PIC</label>
-                        <input name="Telepon_PIC" type="text" class="form-control" id="Telepon_PIC" aria-describedby="emailHelp" placeholder="Masukkan Nomor Telpon PIC">
+                        <input name="Telepon_PIC" type="text" class="form-control" placeholder="Masukkan Nomor Telpon PIC" required maxlength="12">
                     </div>
                     <div class="form-group">
                         <label for="Email_PIC">Email PIC</label>
-                        <input name="Email_PIC" type="email" class="form-control" id="Email_PIC" aria-describedby="emailHelp" placeholder="Masukkan Email PIC">
+                        <input name="Email_PIC" type="email" class="form-control" placeholder="Masukkan Email PIC" required>
                     </div>
                     <div class="form-group">
                         <label for="Alamat_PIC">Alamat Lengkap</label>
@@ -130,7 +130,7 @@
                     </div>
                     <div class="form-group">
                         <label for="Area">Area(s)</label>
-                        <input name="Area" type="text" class="form-control" id="Area" aria-describedby="emailHelp" placeholder="Masukkan Area(s)">
+                        <input name="Area" type="text" class="form-control" placeholder="Masukkan Area(s)" required>
                     </div>
             </div>
             <div class="modal-footer">
@@ -155,31 +155,31 @@
                 <form action="/Customer/update/<?= $C['ID_customer']; ?>" method="POST">
                     <div class="form-group">
                         <label for="Nama_customer">Nama Customer</label>
-                        <input name="Nama_customer" type="text" class="form-control Nama_customer" id="Nama_customer" aria-describedby="emailHelp" placeholder="Masukkan Nama Customer">
+                        <input name="Nama_customer" type="text" class="form-control Nama_customer" placeholder="Masukkan Nama Customer" required>
                     </div>
                     <div class="form-group">
                         <label for="Nama_PIC">Nama PIC</label>
-                        <input name="Nama_PIC" type="text" class="form-control Nama_PIC" id="Nama_PIC" aria-describedby="emailHelp" placeholder="Masukkan Nama PIC">
+                        <input name="Nama_PIC" type="text" class="form-control Nama_PIC" placeholder="Masukkan Nama PIC" required>
                     </div>
                     <div class="form-group">
                         <label for="Telepon_customer">Nomor tlp Kantor Customer</label>
-                        <input name="Telepon_customer" type="text" class="form-control Telepon_customer" id="Telepon_customer" aria-describedby="emailHelp" placeholder="Masukkan Nomor tlp Kantor Customer">
+                        <input name="Telepon_customer" type="text" class="form-control Telepon_customer" placeholder="Masukkan Nomor tlp Kantor Customer" required maxlength="12">
                     </div>
                     <div class="form-group">
                         <label for="Telepon_PIC">Nomor Telpon PIC</label>
-                        <input name="Telepon_PIC" type="text" class="form-control Telepon_PIC" id="Telepon_PIC" aria-describedby="emailHelp" placeholder="Masukkan Nomor Telpon PIC">
+                        <input name="Telepon_PIC" type="text" class="form-control Telepon_PIC" id="Telepon_PIC" aria-describedby="emailHelp" placeholder="Masukkan Nomor Telpon PIC" required maxlength="12">
                     </div>
                     <div class="form-group">
                         <label for="Email_PIC">Email PIC</label>
-                        <input name="Email_PIC" type="email" class="form-control Email_PIC" id="Email_PIC" aria-describedby="emailHelp" placeholder="Masukkan Email PIC">
+                        <input name="Email_PIC" type="email" class="form-control Email_PIC" id="Email_PIC" aria-describedby="emailHelp" placeholder="Masukkan Email PIC" required>
                     </div>
                     <div class="form-group">
                         <label for="Alamat_PIC">Alamat Lengkap</label>
-                        <input name="Alamat_PIC" type="textarea" class="form-control Alamat_PIC" id="Alamat_PIC" aria-describedby="emailHelp" placeholder="Masukkan Alamat Lengkap">
+                        <input name="Alamat_PIC" type="textarea" class="form-control Alamat_PIC" id="Alamat_PIC" aria-describedby="emailHelp" placeholder="Masukkan Alamat Lengkap" required>
                     </div>
                     <div class="form-group">
                         <label for="Area">Area(s)</label>
-                        <input name="Area" type="text" class="form-control Area" id="Area" aria-describedby="emailHelp" placeholder="Masukkan Area(s)">
+                        <input name="Area" type="text" class="form-control Area" id="Area" aria-describedby="emailHelp" placeholder="Masukkan Area(s)" required>
                     </div>
             </div>
             <div class="modal-footer">

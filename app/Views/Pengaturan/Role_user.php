@@ -103,19 +103,19 @@
 
                     <div class="form-group">
                         <label for="Nama">Nama</label>
-                        <input name="Nama" type="text" class="form-control" placeholder="Masukkan Nama">
+                        <input name="Nama" type="text" class="form-control" placeholder="Masukkan Nama" required>
                     </div>
                     <div class="form-group">
                         <label for="NIK">NIK</label>
-                        <input name="NIK" type="text" class="form-control" placeholder="Masukkan NIK">
+                        <input name="NIK" type="text" class="form-control" placeholder="Masukkan NIK" required maxlength="8" minlength="8">
                     </div>
                     <div class="form-group">
                         <label for="Password">Password</label>
-                        <input name="Password" type="password" class="form-control" placeholder="Masukkan Password">
+                        <input name="Password" type="password" class="form-control" placeholder="Masukkan Password" required>
                     </div>
                     <div class="form-group">
                         <label for="Email">Email</label>
-                        <input name="Email" type="email" class="form-control" placeholder="Masukkan Email">
+                        <input name="Email" type="email" class="form-control" placeholder="Masukkan Email" required>
                     </div>
                     <div class="form-group">
                         <label for="Jabatan">Jabatan</label>
@@ -171,19 +171,19 @@
 
                     <div class="form-group">
                         <label for="Nama">Nama</label>
-                        <input name="Nama" type="text" class="form-control nama" placeholder="Masukkan Nama">
+                        <input name="Nama" type="text" class="form-control nama" placeholder="Masukkan Nama" required>
                     </div>
                     <div class="form-group">
                         <label for="NIK">NIK</label>
-                        <input name="NIK" type="text" class="form-control NIK" placeholder="Masukkan NIK">
+                        <input name="NIK" type="text" class="form-control NIK" placeholder="Masukkan NIK" required maxlength="12">
                     </div>
                     <div class="form-group">
                         <label for="Password">Password</label>
-                        <input name="Password" type="password" class="form-control password" placeholder="Masukkan Password">
+                        <input name="Password" type="password" class="form-control password" placeholder="Masukkan Password" required>
                     </div>
                     <div class="form-group">
                         <label for="Email">Email</label>
-                        <input name="Email" type="email" class="form-control email" placeholder="Masukkan Email">
+                        <input name="Email" type="email" class="form-control email" placeholder="Masukkan Email" required>
                     </div>
                     <div class="form-group">
                         <label for="Jabatan">Jabatan</label>

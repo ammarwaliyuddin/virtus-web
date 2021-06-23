@@ -161,11 +161,11 @@
                     <?= csrf_field() ?>
                     <div class="form-group">
                         <label for="NIK">NIK</label>
-                        <input name="NIK" type="text" class="form-control NIK" placeholder="Masukkan NIK">
+                        <input name="NIK" type="text" class="form-control NIK" placeholder="Masukkan NIK" required maxlength="12">
                     </div>
                     <div class="form-group">
                         <label for="Nama">Nama Lengkap</label>
-                        <input name="Nama" type="text" class="form-control Nama" placeholder="Masukkan Nama">
+                        <input name="Nama" type="text" class="form-control Nama" placeholder="Masukkan Nama" required>
                     </div>
                     <div class="form-group">
                         <label for="Jabatan">Jabatan</label>

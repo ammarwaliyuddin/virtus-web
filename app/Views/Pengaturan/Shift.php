@@ -112,11 +112,11 @@
                     </div>
                     <div class="form-group">
                         <label for="Hari">Hari</label>
-                        <input name="Hari" type="text" class="form-control" placeholder="Masukkan Hari">
+                        <input name="Hari" type="text" class="form-control" placeholder="Masukkan Hari" required>
                     </div>
                     <div class="form-group">
                         <label for="Jam">Jam</label>
-                        <input name="Jam" type="text" class="form-control" placeholder="Masukkan Jam">
+                        <input name="Jam" type="text" class="form-control" placeholder="Masukkan Jam" required>
                     </div>
 
             </div>
@@ -154,11 +154,11 @@
                     </div>
                     <div class="form-group">
                         <label for="Hari">Hari</label>
-                        <input name="Hari" type="text" class="form-control hari" placeholder="Masukkan Hari">
+                        <input name="Hari" type="text" class="form-control hari" placeholder="Masukkan Hari" required>
                     </div>
                     <div class="form-group">
                         <label for="Jam">Jam</label>
-                        <input name="Jam" type="text" class="form-control jam" placeholder="Masukkan Jam">
+                        <input name="Jam" type="text" class="form-control jam" placeholder="Masukkan Jam" required>
                     </div>
 
             </div>

@@ -93,11 +93,11 @@
                     <?= csrf_field() ?>
                     <div class="form-group">
                         <label for="Nama_area">Nama Area</label>
-                        <input name="Nama_area" type="text" class="form-control" id="Nama_area" aria-describedby="emailHelp" placeholder="Masukkan Nama Area">
+                        <input name="Nama_area" type="text" class="form-control" id="Nama_area" placeholder="Masukkan Nama Area" required>
                     </div>
                     <div class="form-group">
                         <label for="Lokasi">Lokasi</label>
-                        <input name="Lokasi" type="text" class="form-control" id="Lokasi" aria-describedby="emailHelp" placeholder="Masukkan Lokasi">
+                        <input name="Lokasi" type="text" class="form-control" id="Lokasi" aria-describedby="emailHelp" placeholder="Masukkan Lokasi" required>
                     </div>
             </div>
             <div class="modal-footer">
@@ -124,11 +124,11 @@
                     <?= csrf_field() ?>
                     <div class="form-group">
                         <label for="Nama_area">Nama Area</label>
-                        <input name="Nama_area" type="text" class="form-control Nama_area" id="Nama_area" aria-describedby="emailHelp" placeholder="Masukkan Nama Area">
+                        <input name="Nama_area" type="text" class="form-control Nama_area" id="Nama_area" aria-describedby="emailHelp" placeholder="Masukkan Nama Area" required>
                     </div>
                     <div class="form-group">
                         <label for="Lokasi">Lokasi</label>
-                        <input name="Lokasi" type="text" class="form-control Lokasi" id="Lokasi" aria-describedby="emailHelp" placeholder="Masukkan Lokasi">
+                        <input name="Lokasi" type="text" class="form-control Lokasi" id="Lokasi" aria-describedby="emailHelp" placeholder="Masukkan Lokasi" required>
                     </div>
             </div>
             <div class="modal-footer">

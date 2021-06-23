@@ -93,23 +93,23 @@
                     <?= csrf_field() ?>
                     <div class="form-group">
                         <label for="NIK">NIK</label>
-                        <input name="NIK" type="text" class="form-control" id="NIK" placeholder="Masukkan NIK">
+                        <input name="NIK" type="text" class="form-control" id="NIK" placeholder="Masukkan NIK" required maxlength="8">
                     </div>
                     <div class="form-group">
                         <label for="Nama">Nama</label>
-                        <input name="Nama" type="text" class="form-control" id="Nama" placeholder="Masukkan Nama">
+                        <input name="Nama" type="text" class="form-control" id="Nama" placeholder="Masukkan Nama" required>
                     </div>
                     <div class="form-group">
                         <label for="PIN">PIN</label>
-                        <input name="PIN" type="text" class="form-control" id="PIN" placeholder="Masukkan PIN">
+                        <input name="PIN" type="text" class="form-control" id="PIN" placeholder="Masukkan PIN" required>
                     </div>
                     <div class="form-group">
                         <label for="Umur">Umur</label>
-                        <input name="Umur" type="text" class="form-control" id="Umur" placeholder="Masukkan Umur">
+                        <input name="Umur" type="text" class="form-control" id="Umur" placeholder="Masukkan Umur" required>
                     </div>
                     <div class="form-group">
                         <label for="Nomor_HP">Nomor HP</label>
-                        <input name="Nomor_HP" type="text" class="form-control" id="Nomor_HP" placeholder="Masukkan Nomor HP">
+                        <input name="Nomor_HP" type="text" class="form-control" id="Nomor_HP" placeholder="Masukkan Nomor HP" required maxlength="12">
                     </div>
                     <div class="form-group">
                         <label for="Email">Email</label>
@@ -147,27 +147,27 @@
 
                     <div class="form-group">
                         <label for="NIK">NIK</label>
-                        <input name="NIK" type="text" class="form-control NIK" placeholder="Masukkan NIK">
+                        <input name="NIK" type="text" class="form-control NIK" placeholder="Masukkan NIK" required maxlength="12">
                     </div>
                     <div class="form-group">
                         <label for="nama">nama</label>
-                        <input name="Nama" type="text" class="form-control nama" placeholder="Masukkan nama">
+                        <input name="Nama" type="text" class="form-control nama" placeholder="Masukkan nama" required>
                     </div>
                     <div class="form-group">
                         <label for="pin">pin</label>
-                        <input name="PIN" type="text" class="form-control pin" placeholder="Masukkan pin">
+                        <input name="PIN" type="text" class="form-control pin" placeholder="Masukkan pin" required>
                     </div>
                     <div class="form-group">
                         <label for="umur">umur</label>
-                        <input name="Umur" type="text" class="form-control umur" placeholder="Masukkan umur">
+                        <input name="Umur" type="text" class="form-control umur" placeholder="Masukkan umur" required>
                     </div>
                     <div class="form-group">
                         <label for="nomor">nomor</label>
-                        <input name="Nomor_HP" type="text" class="form-control nomor" placeholder="Masukkan nomor">
+                        <input name="Nomor_HP" type="text" class="form-control nomor" placeholder="Masukkan nomor" required maxlength="12">
                     </div>
                     <div class="form-group">
                         <label for="email">email</label>
-                        <input name="Email" type="text" class="form-control email" placeholder="Masukkan email">
+                        <input name="Email" type="text" class="form-control email" placeholder="Masukkan email" required>
                     </div>
                     <div class="form-group">
                         <label for="Foto">Foto</label>

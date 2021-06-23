@@ -18,6 +18,7 @@
               </div>';
             }
             ?>
+
             <div class="card p-5">
                 <div class="btngrp-zaam mt-2  w-100">
                     <a href="/Jabatan/reportpdf" class="btn btn-danger mr-2">Unduh PDF</a>
@@ -59,8 +60,6 @@
                                 <td><?= $J['Jabatan']; ?></td>
                                 <td><?= $J['Nama_area']; ?></td>
                                 <td>
-
-
                                     <a href="#" class="btn btn-warning btn-sm btn-edit " data-id="<?= $J['ID_jabatan']; ?>" data-jabatan="<?= $J['Jabatan']; ?>" data-lokasi="<?= $J['Nama_area']; ?>" data-deskripsi="<?= $J['Deskripsi']; ?>">edit</a>
 
                                     <form action="/Jabatan/<?= $J['ID_jabatan']; ?>" method="POST" class="d-inline">
@@ -77,7 +76,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 <!-- modal import excel -->
@@ -111,8 +109,6 @@
     </div>
 </div>
 
-
-
 <!-- Modal jabatan -->
 <div class="modal fade" id="jabatanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -128,11 +124,12 @@
                     <?= csrf_field() ?>
                     <div class="form-group">
                         <label for="Jabatan">Nama Jabatan</label>
-                        <input name="Jabatan" type="text" class="form-control" id="Jabatan" aria-describedby="emailHelp" placeholder="Masukkan Nama Jabatan">
+                        <input name="Jabatan" type="text" class="form-control" placeholder="Masukkan Nama Jabatan" required>
+
                     </div>
                     <div class="form-group">
                         <label for="Deskripsi">Deskripsi</label>
-                        <input name="Deskripsi" type="text" class="form-control" id="Deskripsi" aria-describedby="emailHelp" placeholder="Masukkan Deskripsi">
+                        <input name="Deskripsi" type="text" class="form-control" placeholder="Masukkan Deskripsi">
                     </div>
                     <div class="form-group">
                         <label for="Nama_area">Nama Area</label>
@@ -142,7 +139,6 @@
                             <?php endforeach ?>
                         </select>
                         <!-- <input name="Nama_area" type="text" class="form-control" id="Nama_area" aria-describedby="emailHelp" placeholder="Masukkan Nama Area"> -->
-
                     </div>
             </div>
             <div class="modal-footer">
@@ -168,7 +164,7 @@
                     <?= csrf_field() ?>
                     <div class="form-group">
                         <label for="Jabatan">Nama Jabatan</label>
-                        <input name="Jabatan" type="text" class="form-control Jabatan" id="Jabatan" placeholder="Masukkan Nama Area">
+                        <input name="Jabatan" type="text" class="form-control Jabatan" id="Jabatan" placeholder="Masukkan Nama Area" required>
                     </div>
                     <div class="form-group">
                         <label for="Nama_area">Lokasi</label>
@@ -182,7 +178,7 @@
                     </div>
                     <div class="form-group">
                         <label for="deskripsi">Deskripsi</label>
-                        <input name="deskripsi" type="text" class="form-control deskripsi" id="deskripsi" placeholder="Masukkan deskripsi">
+                        <input name="deskripsi" type="text" class="form-control deskripsi" id="deskripsi" placeholder="Masukkan deskripsi" required>
                     </div>
             </div>
             <div class="modal-footer">

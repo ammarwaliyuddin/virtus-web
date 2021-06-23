@@ -17,6 +17,7 @@ class Jabatan extends BaseController
 {
     protected $JabatanModel;
     public $builder;
+
     public function __construct()
     {
         $this->JabatanModel = new JabatanModel();
@@ -39,6 +40,8 @@ class Jabatan extends BaseController
 
     public function save()
     {
+
+
         $this->JabatanModel->save([
             'Jabatan' => $this->request->getVar('Jabatan'),
             'Deskripsi' => $this->request->getVar('Deskripsi'),
