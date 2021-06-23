@@ -144,7 +144,7 @@
 
                     <div class="form-group">
                         <label for="Nama_area">Nama Area</label>
-                        <select class="form-control " name="Nama_area">
+                        <select class="form-control area" name="Nama_area">
 
                             <?php foreach ($area as $a) : ?>
                                 <option><?= $a['Nama_area']; ?></option>

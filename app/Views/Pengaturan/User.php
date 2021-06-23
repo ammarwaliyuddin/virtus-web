@@ -169,7 +169,7 @@
                     </div>
                     <div class="form-group">
                         <label for="Jabatan">Jabatan</label>
-                        <select class="form-control" name="Jabatan">
+                        <select class="form-control Jabatan" name="Jabatan">
                             <?php foreach ($Jabatan as $j) : ?>
                                 <option><?= $j['Jabatan']; ?></option>
                             <?php endforeach ?>
@@ -192,8 +192,11 @@
                         <input name="Expiredate" type="text" class="form-control Expiredate" placeholder="Masukkan Expiredate">
                     </div>
                     <div class="form-group">
-                        <label for="Status">Status (0/1)</label>
-                        <input name="Status" type="text" class="form-control Status" placeholder="Masukkan Status" required>
+                        <label for="Status">Status</label>
+                        <select class="form-control Status" name="Status">
+                            <option value="1">aktiv</option>
+                            <option value="0">tidak aktiv</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="Keterangan">Keterangan</label>

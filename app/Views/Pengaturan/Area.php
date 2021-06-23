@@ -58,7 +58,7 @@
                                 <td><?= $A['Nama_area']; ?></td>
                                 <td><?= $A['Lokasi']; ?></td>
                                 <td>
-                                    <a href="#" class="btn btn-warning btn-edit" data-id="<?= $A['ID_area']; ?>" data-area="<?= $A['Nama_area']; ?>" data-lokasi="<?= $A['Lokasi']; ?>">edit</a>
+                                    <a href="#" class="btn btn-warning btn-edit btn-sm" data-id="<?= $A['ID_area']; ?>" data-area="<?= $A['Nama_area']; ?>" data-lokasi="<?= $A['Lokasi']; ?>">edit</a>
 
                                     <form action="/Area/<?= $A['ID_area']; ?>" method="POST" class="d-inline">
                                         <?= csrf_field() ?>

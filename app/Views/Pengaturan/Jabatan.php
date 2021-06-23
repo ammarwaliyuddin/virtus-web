@@ -172,7 +172,7 @@
                     </div>
                     <div class="form-group">
                         <label for="Nama_area">Lokasi</label>
-                        <select class="form-control " name="Nama_area">
+                        <select class="form-control Nama_area" name="Nama_area">
 
                             <?php foreach ($Area as $a) : ?>
                                 <option><?= $a['Nama_area']; ?></option>
