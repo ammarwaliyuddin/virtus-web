@@ -15,7 +15,6 @@
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
-
                 </div>
                 <div class="card-content">
                     <form action="" method="" class="w-100">

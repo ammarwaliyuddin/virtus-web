@@ -18,6 +18,7 @@
                                     <img src="/img/<?= $detail['Foto']; ?>" alt="" width="100%">
                                 </div>
                             </div>
+
                             <div class="content-personil-bio">
                                 <table class="table detail-personil">
                                     <tr>
@@ -203,11 +204,13 @@
 
 <script>
     // Initialize and add the map
+
+
     function initMap() {
         // The location of Uluru
         const uluru = {
-            lat: -6.2233854,
-            lng: 106.8412092
+            lat: <?= $detail['latitude']; ?>,
+            lng: <?= $detail['longitude']; ?>
         };
         // The map, centered at Uluru
         const map = new google.maps.Map(document.getElementById("map"), {
