@@ -12,12 +12,14 @@ class Shift extends BaseController
     protected $ShiftModel;
     protected $AreaModel;
     protected $builder;
+    protected $aturshift;
 
     public function __construct()
     {
         $this->ShiftModel = new ShiftModel();
         $this->AreaModel = new AreaModel();
         $this->builder      = \Config\Database::connect()->table('data_shift');
+        $this->aturshift      = \Config\Database::connect()->table('data_shift_personil');
     }
 
 
@@ -55,12 +57,16 @@ class Shift extends BaseController
     }
     public function save()
     {
+
+        $this->builder->selectMax('ID_shift');
+        $max = $this->builder->get()->getResultArray();
+        $result = $max['0']['ID_shift'];
         $data = [
             'Nama_area' => $this->request->getVar('Nama_area'),
             'Hari' => $this->request->getVar('Hari'),
             'Jam' => $this->request->getVar('Jam'),
             'tanggali' => date("Y-m-d"),
-            // 'ID_shift' => '8'
+            'ID_shift' => $result + 1
 
 
         ];
@@ -113,7 +119,7 @@ class Shift extends BaseController
     public function atur_shit_save()
     {
         $data = [
-            'NIK' => $this->request->getVar('Nama'),
+            'NIK' => $this->request->getVar('NIK'),
             'ID_shift' => $this->request->getVar('shift'),
         ];
 
@@ -121,6 +127,30 @@ class Shift extends BaseController
         $this->ShiftModel->atur_shit_save($data);
 
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
+        return redirect()->to('/Shift/setting_atur_shift');
+    }
+    public function atur_shit_edit($id)
+    {
+        $data = [
+            'NIK' => $this->request->getVar('NIK'),
+            'ID_shift' => $this->request->getVar('shift'),
+        ];
+
+        $this->aturshift->where('id', $id);
+        $this->aturshift->update($data);
+        // dd($data);
+
+        session()->setFlashdata('pesan', 'Data berhasil diupdate');
+        return redirect()->to('/Shift/setting_atur_shift');
+    }
+    public function atur_shit_hapus($id)
+    {
+
+
+        $this->aturshift->where('id', $id);
+        $this->aturshift->delete();
+
+        session()->setFlashdata('pesan', 'Data berhasil hapus');
         return redirect()->to('/Shift/setting_atur_shift');
     }
 }

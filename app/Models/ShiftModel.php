@@ -15,7 +15,7 @@ class ShiftModel extends Model
         return $this->db->table('data_shift')
             ->join('data_shift_personil', 'data_shift.ID_shift=data_shift_personil.ID_shift')
             ->join('master_data_personil', 'data_shift_personil.NIK=master_data_personil.NIK')
-            ->join('data_area', 'data_shift_personil.Nama_area=data_area.Nama_area')
+            ->join('data_area', 'data_shift.Nama_area=data_area.Nama_area')
             ->get()->getResultArray();
     }
 
@@ -23,7 +23,8 @@ class ShiftModel extends Model
     {
         $builder = $this->db->table('data_area');
         $builder->where(['ID_area' => $ID_area]);
-        $builder->join('data_shift_personil', 'data_shift_personil.Nama_area=data_area.Nama_area');
+        $builder->join('data_shift', 'data_shift.Nama_area=data_area.Nama_area');
+        $builder->join('data_shift_personil', 'data_shift_personil.ID_shift=data_shift.ID_shift');
         $builder->join('master_data_personil', 'master_data_personil.NIK=data_shift_personil.NIK');
         $builder->orderBy('State ASC');
         $monitoring = $builder->get()->getResultArray();
@@ -46,7 +47,7 @@ class ShiftModel extends Model
         $builder = $this->db->table('data_shift_personil');
         $builder->join('master_data_personil', 'master_data_personil.NIK=data_shift_personil.NIK');
         $builder->join('data_shift', 'data_shift_personil.ID_shift=data_shift.ID_shift');
-        $builder->select('master_data_personil.NIK, master_data_personil.Nama, data_shift.Nama_area, data_shift.Jam,data_shift.Hari');
+        $builder->select('master_data_personil.NIK, master_data_personil.Nama, data_shift.Nama_area, data_shift.Jam,data_shift.Hari,data_shift_personil.id,data_shift.ID_shift');
         return $builder->get()->getResultArray();
     }
     public function Personil_Shift()

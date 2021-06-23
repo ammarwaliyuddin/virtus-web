@@ -74,8 +74,8 @@
                                                     <p id="lokasi"> <?= $M['location']; ?></p>
                                                 </div>
                                             </div>
+                                        </a>
                                     </div>
-                                    </a>
                             </div>
 
                         <?php endforeach; ?>
