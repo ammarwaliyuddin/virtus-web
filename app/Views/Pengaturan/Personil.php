@@ -89,7 +89,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/Security/save" method="POST">
+                <form action="/Security/save" method="POST" enctype="multipart/form-data">
                     <?= csrf_field() ?>
                     <div class="form-group">
                         <label for="NIK">NIK</label>
@@ -142,7 +142,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="POST" id="editForm">
+                <form action="" method="POST" id="editForm" enctype="multipart/form-data">
                     <?= csrf_field() ?>
 
                     <div class="form-group">
@@ -170,8 +170,8 @@
                         <input name="Email" type="text" class="form-control email" placeholder="Masukkan email" required>
                     </div>
                     <div class="form-group">
-                        <label for="Foto">Foto</label>
-                        <input name="Foto" type="file" class="form-control-file" placeholder="Masukkan Foto">
+                        <label for="Foto">Upload</label>
+                        <input type="file" name="Foto" class="form-control-file">
                     </div>
 
             </div>

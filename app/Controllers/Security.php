@@ -45,22 +45,47 @@ class Security extends BaseController
 
     public function save()
     {
-        $data = [
-            'Nama' => $this->request->getVar('Nama'),
-            'Umur' => $this->request->getVar('Umur'),
-            'Nomor_HP' => $this->request->getVar('Nomor_HP'),
-            'Status' => $this->request->getVar('Status'),
-            'Email' => $this->request->getVar('Email'),
-            'NIK' => $this->request->getVar('NIK'),
-            'Foto' => $this->request->getVar('Foto'),
-            'PIN' => $this->request->getVar('PIN'),
-            'Status' => '0'
-        ];
+        $validation = \Config\Services::validation();
 
-        $this->builder->insert($data);
+        $valid = $this->validate([
+            'Foto' => [
+                'label' => 'inputan file',
+                'rules' => 'uploaded[Foto]|mime_in[Foto,image/jpg,image/jpeg,image/gif,image/png]|max_size[Foto,4096]',
+                'errors' => [
+                    'uploaded' => '{field} wajib diisi',
+                    'mime_in' => '{field} harus ekstensi jpg/png/jpeg',
+                    'max_size' => '{field} terlalu besar'
+                ]
+            ]
+        ]);
 
-        session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
-        return redirect()->to('/Security/setting_personil');
+        if ($valid == FALSE) {
+
+            session()->setFlashdata('pesan', $validation->getError('Foto'));
+            return redirect()->to('/Security/setting_personil');
+        } else {
+
+            $avatar = $this->request->getFile('Foto');
+            $avatar->move(ROOTPATH . 'public/img');
+
+            $data = [
+                'Nama' => $this->request->getVar('Nama'),
+                'Umur' => $this->request->getVar('Umur'),
+                'Nomor_HP' => $this->request->getVar('Nomor_HP'),
+                'Email' => $this->request->getVar('Email'),
+                'NIK' => $this->request->getVar('NIK'),
+                'Foto' =>  $avatar->getName(),
+                'PIN' => $this->request->getVar('PIN'),
+                'Status' => '0'
+            ];
+
+
+
+            $this->builder->insert($data);
+
+            session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
+            return redirect()->to('/Security/setting_personil');
+        }
     }
 
     public function detail_personil($detail)
@@ -100,26 +125,51 @@ class Security extends BaseController
     }
     public function edit($NIK)
     {
+        $validation = \Config\Services::validation();
 
-        $data = [
-            'Nama' => $this->request->getVar('Nama'),
-            'Umur' => $this->request->getVar('Umur'),
-            'Nomor_HP' => $this->request->getVar('Nomor_HP'),
-            'Email' => $this->request->getVar('Email'),
-            'NIK' => $this->request->getVar('NIK'),
-            'Foto' => $this->request->getVar('Foto'),
-            'PIN' => $this->request->getVar('PIN'),
-            'Status' => '0'
-        ];
+        $valid = $this->validate([
+            'Foto' => [
+                'label' => 'inputan file',
+                'rules' => 'uploaded[Foto]|mime_in[Foto,image/jpg,image/jpeg,image/gif,image/png]|max_size[Foto,4096]',
+                'errors' => [
+                    'uploaded' => '{field} wajib diisi',
+                    'mime_in' => '{field} harus ekstensi jpg/png/jpeg',
+                    'max_size' => '{field} terlalu besar'
+                ]
+            ]
+        ]);
+
+        if ($valid == FALSE) {
+
+            session()->setFlashdata('pesan', $validation->getError('Foto'));
+            return redirect()->to('/Security/setting_personil');
+        } else {
+
+            $avatar = $this->request->getFile('Foto');
+            $avatar->move(ROOTPATH . 'public/img');
+
+            $data = [
+                'Nama' => $this->request->getVar('Nama'),
+                'Umur' => $this->request->getVar('Umur'),
+                'Nomor_HP' => $this->request->getVar('Nomor_HP'),
+                'Email' => $this->request->getVar('Email'),
+                'NIK' => $this->request->getVar('NIK'),
+                'Foto' =>  $avatar->getName(),
+                'PIN' => $this->request->getVar('PIN'),
+                'Status' => $this->request->getVar('Status'),
+            ];
+
+            $this->builder->where('NIK', $NIK);
+            $this->builder->update($data);
+            session()->setFlashdata('pesan', 'Data berhasil diubah');
+            return redirect()->to('/Security/setting_personil');
+        }
+
+
 
 
         // dd($data);
 
-        $this->builder->where('NIK', $NIK);
-        $this->builder->update($data);
-
-        session()->setFlashdata('pesan', 'Data berhasil diubah');
-        return redirect()->to('/Security/setting_personil');
     }
     // export pdf
     public function reportpdf()
