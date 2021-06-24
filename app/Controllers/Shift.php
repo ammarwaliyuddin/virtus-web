@@ -171,4 +171,19 @@ class Shift extends BaseController
 
         return redirect()->to($mpdf->Output('filename.pdf', 'I'));
     }
+
+    public function atur_reportpdf()
+    {
+        $data = [
+            'atur_shift' => $this->ShiftModel->atur_shift(),
+
+        ];
+        $mpdf = new \Mpdf\Mpdf();
+
+        $html = view('Template_pdf/atur_shift_pdf', $data);
+        $mpdf->AddPage("P", "", "", "", "", "15", "15", "15", "15", "", "", "", "", "", "", "", "", "", "", "", "A4");
+        $mpdf->WriteHTML($html);
+
+        return redirect()->to($mpdf->Output('filename.pdf', 'I'));
+    }
 }
