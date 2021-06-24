@@ -30,7 +30,7 @@
                             <a class="dropdown-item" data-toggle="modal" data-target="#import_excel" href="#">
                                 Import
                             </a>
-                            <a class="dropdown-item" href="/Jabatan/export_excel">
+                            <a class="dropdown-item" href="<?= base_url('export'); ?>">
                                 Export
                             </a>
                         </div>

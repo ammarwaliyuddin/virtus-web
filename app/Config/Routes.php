@@ -73,8 +73,9 @@ $routes->delete('/Role_user/(:any)', 'Role_user::delete/$1', ['filter' => 'auth'
 $routes->get('/Role_user/(:any)', 'Role_user::index/$1', ['filter' => 'auth']);
 
 $routes->get('/Tambah_role_user', 'Tambah_role_user::index', ['filter' => 'auth']);
-// role print pdf
+// role import export
 $routes->get('/role_reportpdf', 'Role_user::reportpdf', ['filter' => 'auth']);
+$routes->get('/export', 'Role_user::export_excel', ['filter' => 'auth']);
 
 
 // print user laporan
