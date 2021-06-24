@@ -153,4 +153,22 @@ class Shift extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil hapus');
         return redirect()->to('/Shift/setting_atur_shift');
     }
+
+    // export pdf
+    public function reportpdf()
+    {
+        $shift = $this->ShiftModel->findAll();
+
+
+
+        $mpdf = new \Mpdf\Mpdf();
+
+        $html = view('Template_pdf/shift_pdf', [
+            'shift' => $shift,
+        ]);
+        $mpdf->AddPage("P", "", "", "", "", "15", "15", "15", "15", "", "", "", "", "", "", "", "", "", "", "", "A4");
+        $mpdf->WriteHTML($html);
+
+        return redirect()->to($mpdf->Output('filename.pdf', 'I'));
+    }
 }
