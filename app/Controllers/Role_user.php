@@ -101,7 +101,6 @@ class Role_user extends BaseController
         return redirect()->to($mpdf->Output('filename.pdf', 'I'));
     }
 
-    //export excel
     // export excel
     public function export_excel()
     {

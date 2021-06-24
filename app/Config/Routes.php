@@ -73,6 +73,7 @@ $routes->delete('/Role_user/(:any)', 'Role_user::delete/$1', ['filter' => 'auth'
 $routes->get('/Role_user/(:any)', 'Role_user::index/$1', ['filter' => 'auth']);
 
 $routes->get('/Tambah_role_user', 'Tambah_role_user::index', ['filter' => 'auth']);
+
 // role import export
 $routes->get('/role_reportpdf', 'Role_user::reportpdf', ['filter' => 'auth']);
 $routes->get('/export', 'Role_user::export_excel', ['filter' => 'auth']);
@@ -101,6 +102,7 @@ $routes->get('/Customer_reportpdf', 'Customer::reportpdf', ['filter' => 'auth'])
 $routes->get('/User', 'User::index', ['filter' => 'auth']);
 $routes->delete('/User/(:any)', 'User::delete/$1', ['filter' => 'auth']);
 $routes->get('/User/(:any)', 'User::index/$1', ['filter' => 'auth']);
+$routes->get('/user/export', 'User::export', ['filter' => 'auth']);
 
 $routes->get('/Smartwatch', 'Smartwatch::index');
 $routes->delete('/Smartwatch/(:num)', 'Smartwatch::delete/$1', ['filter' => 'auth']);
