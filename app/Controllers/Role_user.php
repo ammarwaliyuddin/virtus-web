@@ -36,20 +36,44 @@ class Role_user extends BaseController
 
     public function save()
     {
-        $data = [
-            'Nama' => $this->request->getVar('Nama'),
-            'NIK' => $this->request->getVar('NIK'),
-            'Password' => $this->request->getVar('Password'),
-            'Jabatan' => $this->request->getVar('Jabatan'),
-            'Email' => $this->request->getVar('Email'),
-            'Keterangan' => $this->request->getVar('Keterangan'),
-            'Foto' => $this->request->getVar('Foto'),
-            'Role' => $this->request->getVar('Role')
-        ];
-        $this->RoleUserModel->simpan($data);
+        $validation = \Config\Services::validation();
 
-        session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
-        return redirect()->to('/Role_user');
+        $valid = $this->validate([
+            'Foto' => [
+                'label' => 'inputan file',
+                'rules' => 'uploaded[Foto]|mime_in[Foto,image/jpg,image/jpeg,image/gif,image/png]|max_size[Foto,4096]',
+                'errors' => [
+                    'uploaded' => '{field} wajib diisi',
+                    'mime_in' => '{field} harus ekstensi jpg/png/jpeg',
+                    'max_size' => '{field} terlalu besar'
+                ]
+            ]
+        ]);
+
+        if ($valid == FALSE) {
+
+            session()->setFlashdata('pesan', $validation->getError('Foto'));
+            return redirect()->to('/Role_user');
+        } else {
+
+            $avatar = $this->request->getFile('Foto');
+            $avatar->move(ROOTPATH . 'public/img');
+
+            $data = [
+                'Nama' => $this->request->getVar('Nama'),
+                'NIK' => $this->request->getVar('NIK'),
+                'Password' => $this->request->getVar('Password'),
+                'Jabatan' => $this->request->getVar('Jabatan'),
+                'Email' => $this->request->getVar('Email'),
+                'Keterangan' => $this->request->getVar('Keterangan'),
+                'Foto' =>  $avatar->getName(),
+                'Role' => $this->request->getVar('Role')
+            ];
+            $this->RoleUserModel->simpan($data);
+
+            session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
+            return redirect()->to('/Role_user');
+        }
     }
 
     public function delete($NIK)
@@ -62,25 +86,46 @@ class Role_user extends BaseController
 
     public function edit($NIK)
     {
+        $validation = \Config\Services::validation();
 
-        $data = [
-            'Nama' => $this->request->getVar('Nama'),
-            'NIK' => $this->request->getVar('NIK'),
-            'Password' => $this->request->getVar('Password'),
-            'Jabatan' => $this->request->getVar('Jabatan'),
-            'Email' => $this->request->getVar('Email'),
-            'Keterangan' => $this->request->getVar('Keterangan'),
-            'Foto' => $this->request->getVar('Foto'),
-            'Status' => $this->request->getVar('status'),
-            'role' => $this->request->getVar('role')
-        ];
-        // dd($data);
-        $this->RoleUserModel->edit($NIK, $data);
+        $valid = $this->validate([
+            'Foto' => [
+                'label' => 'inputan file',
+                'rules' => 'uploaded[Foto]|mime_in[Foto,image/jpg,image/jpeg,image/gif,image/png]|max_size[Foto,4096]',
+                'errors' => [
+                    'uploaded' => '{field} wajib diisi',
+                    'mime_in' => '{field} harus ekstensi jpg/png/jpeg',
+                    'max_size' => '{field} terlalu besar'
+                ]
+            ]
+        ]);
 
+        if ($valid == FALSE) {
 
+            session()->setFlashdata('pesan', $validation->getError('Foto'));
+            return redirect()->to('/Role_user');
+        } else {
 
-        session()->setFlashdata('pesan', 'Data berhasil diubah');
-        return redirect()->to('/Role_user');
+            $avatar = $this->request->getFile('Foto');
+            $avatar->move(ROOTPATH . 'public/img');
+
+            $data = [
+                'Nama' => $this->request->getVar('Nama'),
+                'NIK' => $this->request->getVar('NIK'),
+                'Password' => $this->request->getVar('Password'),
+                'Jabatan' => $this->request->getVar('Jabatan'),
+                'Email' => $this->request->getVar('Email'),
+                'Keterangan' => $this->request->getVar('Keterangan'),
+                'Foto' =>  $avatar->getName(),
+                'Status' => $this->request->getVar('status'),
+                'role' => $this->request->getVar('role')
+            ];
+            // dd($data);
+            $this->RoleUserModel->edit($NIK, $data);
+
+            session()->setFlashdata('pesan', 'Data berhasil diubah');
+            return redirect()->to('/Role_user');
+        }
     }
 
     // export pdf

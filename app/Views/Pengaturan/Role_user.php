@@ -124,7 +124,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/Role_user/save" method="POST">
+                <form action="/Role_user/save" method="POST" enctype="multipart/form-data">
                     <?= csrf_field() ?>
 
                     <div class="form-group">
@@ -192,7 +192,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="POST" id="editForm">
+                <form action="" method="POST" id="editForm" enctype="multipart/form-data">
                     <?= csrf_field() ?>
 
                     <div class="form-group">

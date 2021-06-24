@@ -164,10 +164,6 @@ class Security extends BaseController
             session()->setFlashdata('pesan', 'Data berhasil diubah');
             return redirect()->to('/Security/setting_personil');
         }
-
-
-
-
         // dd($data);
 
     }
