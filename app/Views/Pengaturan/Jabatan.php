@@ -18,7 +18,6 @@
               </div>';
             }
             ?>
-
             <div class="card p-5">
                 <div class="btngrp-zaam mt-2  w-100">
                     <a href="/Jabatan/reportpdf" class="btn btn-danger mr-2">Unduh PDF</a>
@@ -65,8 +64,9 @@
                                     <form action="/Jabatan/<?= $J['ID_jabatan']; ?>" method="POST" class="d-inline">
                                         <?= csrf_field() ?>
                                         <input type="hidden" name="_method" value="DELETE">
-                                        <button type="submit" class="btn btn-danger btn-sm">hapus</button>
+                                        <button type="submit" class="btn btn-danger btn-sm " onclick="return confirm('Yakin untuk menghapus?');">hapus</button>
                                     </form>
+
 
                                 </td>
                             </tr>
@@ -218,5 +218,4 @@
 
     });
 </script>
-
 <?= $this->endSection(); ?>

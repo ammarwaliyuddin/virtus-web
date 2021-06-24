@@ -10,7 +10,7 @@
             $session = \Config\Services::session();
             if (!empty($session->getFlashdata('pesan'))) {
 
-                echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
                 ' . $session->getFlashdata('pesan') . '
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
@@ -70,7 +70,7 @@
                                         <form action="/Smartwatch/<?= $S['ID_jam']; ?>" method="POST" class="d-inline">
                                             <?= csrf_field() ?>
                                             <input type="hidden" name="_method" value="DELETE">
-                                            <button type="submit" class="btn btn-danger btn-sm">hapus</button>
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin untuk menghapus?');">hapus</button>
                                         </form>
                                     </td>
                                 </tr>

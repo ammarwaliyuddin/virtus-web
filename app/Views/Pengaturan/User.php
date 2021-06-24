@@ -147,20 +147,23 @@
                         <input name="Password" type="password" class="form-control" id="Password" placeholder="Masukkan Password" required>
                     </div>
                     <div class="form-group">
-                        <label for="Foto">Foto (upload foto)</label>
+                        <label for="Foto">Foto</label>
                         <input name="Foto" type="file" class="form-control-file" id="Foto" placeholder="Masukkan Foto">
                     </div>
                     <div class="form-group">
                         <label for="Expiredate">Expiredate</label>
-                        <input name="Expiredate" type="text" class="form-control" id="Expiredate" placeholder="Masukkan Expiredate">
+                        <input name="Expiredate" type="date" class="form-control" placeholder="Masukkan Expiredate">
                     </div>
                     <div class="form-group">
-                        <label for="Status">Status (0/1)</label>
-                        <input name="Status" type="text" class="form-control" id="Status" placeholder="Masukkan Status" required>
+                        <label for="Status">Status</label>
+                        <select class="form-control Status" name="Status">
+                            <option value="1">aktiv</option>
+                            <option value="0">tidak aktiv</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="Keterangan">Keterangan</label>
-                        <input name="Keterangan" type="text" class="form-control" id="Keterangan" placeholder="Masukkan Keterangan">
+                        <textarea name="Keterangan" type="text" class="form-control" placeholder="Masukkan Keterangan"> </textarea>
                     </div>
             </div>
             <div class="modal-footer">
@@ -210,12 +213,12 @@
                         <input name="Password" type="password" class="form-control Password" placeholder="Masukkan Password" required>
                     </div>
                     <div class="form-group">
-                        <label for="Foto">Foto (upload foto)</label>
+                        <label for="Foto">Foto </label>
                         <input name="Foto" type="file" class="form-control-file" placeholder="Masukkan Foto">
                     </div>
                     <div class="form-group">
                         <label for="Expiredate">Expiredate</label>
-                        <input name="Expiredate" type="text" class="form-control Expiredate" placeholder="Masukkan Expiredate">
+                        <input name="Expiredate" type="date" class="form-control Expiredate" placeholder="Masukkan Expiredate">
                     </div>
                     <div class="form-group">
                         <label for="Status">Status</label>

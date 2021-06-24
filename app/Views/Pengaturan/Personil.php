@@ -66,7 +66,7 @@
                                         <form action="/Security/<?= $p['NIK']; ?>" method="POST" class="d-inline">
                                             <?= csrf_field() ?>
                                             <input type="hidden" name="_method" value="DELETE">
-                                            <button type="submit" class="btn btn-danger btn-sm">hapus</button>
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin untuk menghapus?');">hapus</button>
                                         </form>
                                     </td>
                                 </tr>

@@ -116,12 +116,6 @@
         </script>
         <script src="/js/Chart.js"></script>
 
-
-
-        <script>
-
-        </script>
-
         <script>
             $(document).ready(function() {
                 $('#sidebarCollapse').on('click', function() {
