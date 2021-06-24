@@ -77,4 +77,22 @@ class Role_user extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil diubah');
         return redirect()->to('/Role_user');
     }
+
+    // export pdf
+    public function reportpdf()
+    {
+        $role = $this->RoleUserModel->findAll();
+        // dd($role);
+        // die;
+
+        $mpdf = new \Mpdf\Mpdf();
+
+        $html = view('Template_pdf/role_pdf', [
+            'role' => $role
+        ]);
+        $mpdf->AddPage("P", "", "", "", "", "15", "15", "15", "15", "", "", "", "", "", "", "", "", "", "", "", "A4");
+        $mpdf->WriteHTML($html);
+
+        return redirect()->to($mpdf->Output('filename.pdf', 'I'));
+    }
 }
