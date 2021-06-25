@@ -45,35 +45,64 @@
                         Tambah
                     </button>
                 </div>
+                <div class="card-content card-table">
+                    <table class="table card-table-setting table-hover table-borderless">
+                        <thead>
+                            <th>Nama Area</th>
+                            <th>Lokasi</th>
+                            <th>Aksi</th>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($Area as $A) : ?>
+                                <tr>
+                                    <td><?= $A['Nama_area']; ?></td>
+                                    <td><?= $A['Lokasi']; ?></td>
+                                    <td>
+                                        <a href="#" class="btn btn-warning btn-edit btn-sm" data-id="<?= $A['ID_area']; ?>" data-area="<?= $A['Nama_area']; ?>" data-lokasi="<?= $A['Lokasi']; ?>">edit</a>
 
-                <table class="table table-hover table-borderless">
-                    <thead>
-                        <th>Nama Area</th>
-                        <th>Lokasi</th>
-                        <th>Aksi</th>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($Area as $A) : ?>
-                            <tr>
-                                <td><?= $A['Nama_area']; ?></td>
-                                <td><?= $A['Lokasi']; ?></td>
-                                <td>
-                                    <a href="#" class="btn btn-warning btn-edit btn-sm" data-id="<?= $A['ID_area']; ?>" data-area="<?= $A['Nama_area']; ?>" data-lokasi="<?= $A['Lokasi']; ?>">edit</a>
-
-                                    <form action="/Area/<?= $A['ID_area']; ?>" method="POST" class="d-inline">
-                                        <?= csrf_field() ?>
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin untuk menghapus?');">hapus</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                                        <form action="/Area/<?= $A['ID_area']; ?>" method="POST" class="d-inline">
+                                            <?= csrf_field() ?>
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin untuk menghapus?');">hapus</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 
+</div>
+
+<!-- modal import excel -->
+<div class="modal fade" id="import_excel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Import Excel </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <?= form_open_multipart('Area/import') ?>
+
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <input type="file" name="fileimport" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Import data</button>
+            </div>
+            <?= form_close(); ?>
+        </div>
+    </div>
 </div>
 
 

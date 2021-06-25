@@ -19,8 +19,6 @@
             }
             ?>
             <div class="card p-5">
-
-
                 <div class="btngrp-zaam mt-2  w-100">
                     <a href="/Smartwatch_reportpdf" class="btn btn-danger mr-2">Unduh PDF</a>
                     <div class="btn-group mr-2">
