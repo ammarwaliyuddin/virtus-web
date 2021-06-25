@@ -31,7 +31,7 @@
                             <a class="dropdown-item" data-toggle="modal" data-target="#import_excel" href="#">
                                 Import
                             </a>
-                            <a class="dropdown-item" href="/Jabatan/export_excel">
+                            <a class="dropdown-item" href="/Customer_export">
                                 Export
                             </a>
                         </div>
@@ -46,51 +46,75 @@
                     </button>
                 </div>
 
-                <table class="table table-hover table-borderless">
-                    <thead>
-                        <th>Nama Area</th>
-                        <th>Nama Customer</th>
-                        <th>Telepon Customer</th>
-                        <th>Nama PIC
-                        </th>
-                        <th>Telepon PIC
-                        </th>
-                        <th>Email PIC
-                        </th>
-                        <th>Alamat PIC
-                        </th>
-                        <th>Aksi</th>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($Customer as $C) : ?>
-                            <tr>
-                                <td><?= $C['Area']; ?></td>
-                                <td><?= $C['Nama_customer']; ?></td>
-                                <td><?= $C['Telepon_customer']; ?></td>
-                                <td><?= $C['Nama_PIC']; ?></td>
-                                <td><?= $C['Telepon_PIC']; ?></td>
-                                <td><?= $C['Email_PIC']; ?></td>
-                                <td><?= $C['Alamat_PIC']; ?></td>
-                                <td>
-                                    <a href="#" class="btn btn-warning btn-edit btn-sm" data-id="<?= $C['ID_customer']; ?>" data-area="<?= $C['Area']; ?>" data-nama="<?= $C['Nama_customer']; ?>" data-PIC="<?= $C['Nama_PIC']; ?>" data-teleponcs="<?= $C['Telepon_customer']; ?>" data-telepon="<?= $C['Telepon_PIC']; ?>" data-email="<?= $C['Email_PIC']; ?>" data-alamat="<?= $C['Alamat_PIC']; ?>">edit</a>
+                <div class="card-content card-table">
+                    <table class="table card-table-setting table-hover table-borderless">
+                        <thead>
+                            <th>Nama Area</th>
+                            <th>Nama Customer</th>
+                            <th>Telepon Customer</th>
+                            <th>Nama PIC</th>
+                            <th>Telepon PIC</th>
+                            <th>Email PIC</th>
+                            <th>Alamat PIC</th>
+                            <th>Aksi</th>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($Customer as $C) : ?>
+                                <tr>
+                                    <td><?= $C['Area']; ?></td>
+                                    <td><?= $C['Nama_customer']; ?></td>
+                                    <td><?= $C['Telepon_customer']; ?></td>
+                                    <td><?= $C['Nama_PIC']; ?></td>
+                                    <td><?= $C['Telepon_PIC']; ?></td>
+                                    <td><?= $C['Email_PIC']; ?></td>
+                                    <td><?= $C['Alamat_PIC']; ?></td>
+                                    <td>
+                                        <a href="#" class="btn btn-warning btn-edit btn-sm" data-id="<?= $C['ID_customer']; ?>" data-area="<?= $C['Area']; ?>" data-nama="<?= $C['Nama_customer']; ?>" data-PIC="<?= $C['Nama_PIC']; ?>" data-teleponcs="<?= $C['Telepon_customer']; ?>" data-telepon="<?= $C['Telepon_PIC']; ?>" data-email="<?= $C['Email_PIC']; ?>" data-alamat="<?= $C['Alamat_PIC']; ?>">edit</a>
 
-                                    <form action="/Customer/<?= $C['ID_customer']; ?>" method="POST" class="d-inline">
-                                        <?= csrf_field() ?>
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin untuk menghapus?');">hapus</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                                        <form action="/Customer/<?= $C['ID_customer']; ?>" method="POST" class="d-inline">
+                                            <?= csrf_field() ?>
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin untuk menghapus?');">hapus</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 
 </div>
 
+<!-- modal import excel -->
+<div class="modal fade" id="import_excel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Import Excel </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <?= form_open_multipart('Customer/import') ?>
 
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <input type="file" name="fileimport" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Import data</button>
+            </div>
+            <?= form_close(); ?>
+        </div>
+    </div>
+</div>
 
 <!-- Modal jabatan -->
 <div class="modal fade" id="customerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

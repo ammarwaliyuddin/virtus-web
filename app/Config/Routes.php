@@ -97,6 +97,7 @@ $routes->delete('/Customer/(:num)', 'Customer::delete/$1', ['filter' => 'auth'])
 $routes->get('/Customer/(:any)', 'Customer::index/$1', ['filter' => 'auth']);
 // customer print pdf
 $routes->get('/Customer_reportpdf', 'Customer::reportpdf', ['filter' => 'auth']);
+$routes->get('/Customer_export', 'Customer::export', ['filter' => 'auth']);
 
 
 $routes->get('/User', 'User::index', ['filter' => 'auth']);

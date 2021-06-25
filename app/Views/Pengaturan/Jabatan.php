@@ -47,32 +47,34 @@
                     </button>
                 </div>
 
-                <table class="table table-hover table-borderless">
-                    <thead>
-                        <th>Nama Jabatan</th>
-                        <th>Area</th>
-                        <th>Aksi</th>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($Jabatan as $J) : ?>
-                            <tr>
-                                <td><?= $J['Jabatan']; ?></td>
-                                <td><?= $J['Nama_area']; ?></td>
-                                <td>
-                                    <a href="#" class="btn btn-warning btn-sm btn-edit " data-id="<?= $J['ID_jabatan']; ?>" data-jabatan="<?= $J['Jabatan']; ?>" data-lokasi="<?= $J['Nama_area']; ?>" data-deskripsi="<?= $J['Deskripsi']; ?>">edit</a>
+                <div class="card-content card-table">
+                    <table class="table card-table-setting table-hover table-borderless">
+                        <thead>
+                            <th>Nama Jabatan</th>
+                            <th>Area</th>
+                            <th>Aksi</th>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($Jabatan as $J) : ?>
+                                <tr>
+                                    <td><?= $J['Jabatan']; ?></td>
+                                    <td><?= $J['Nama_area']; ?></td>
+                                    <td>
+                                        <a href="#" class="btn btn-warning btn-sm btn-edit " data-id="<?= $J['ID_jabatan']; ?>" data-jabatan="<?= $J['Jabatan']; ?>" data-lokasi="<?= $J['Nama_area']; ?>" data-deskripsi="<?= $J['Deskripsi']; ?>">edit</a>
 
-                                    <form action="/Jabatan/<?= $J['ID_jabatan']; ?>" method="POST" class="d-inline">
-                                        <?= csrf_field() ?>
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <button type="submit" class="btn btn-danger btn-sm " onclick="return confirm('Yakin untuk menghapus?');">hapus</button>
-                                    </form>
+                                        <form action="/Jabatan/<?= $J['ID_jabatan']; ?>" method="POST" class="d-inline">
+                                            <?= csrf_field() ?>
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" class="btn btn-danger btn-sm " onclick="return confirm('Yakin untuk menghapus?');">hapus</button>
+                                        </form>
 
 
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
