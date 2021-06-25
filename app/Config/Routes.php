@@ -110,6 +110,8 @@ $routes->delete('/Smartwatch/(:num)', 'Smartwatch::delete/$1', ['filter' => 'aut
 $routes->get('/Smartwatch/(:any)', 'Smartwatch::index/$1', ['filter' => 'auth']);
 // print pdf
 $routes->get('/Smartwatch_reportpdf', 'Smartwatch::reportpdf', ['filter' => 'auth']);
+$routes->get('/sw_export', 'Smartwatch::export', ['filter' => 'auth']);
+
 
 /**
  * --------------------------------------------------------------------

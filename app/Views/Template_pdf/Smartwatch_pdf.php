@@ -28,6 +28,7 @@
             <th>Nama Smartwatch</th>
             <th>Latitude</th>
             <th>Longitude</th>
+            <th>Lokasi</th>
         </tr>
         <?php $i = 1; ?>
         <?php foreach ($Smartwatch as $S) : ?>
@@ -36,6 +37,7 @@
                 <td><?= $S['merek']; ?></td>
                 <td><?= $S['latitude']; ?></td>
                 <td><?= $S['longitude']; ?></td>
+                <td><?= $S['lokasi']; ?></td>
 
             </tr>
         <?php endforeach; ?>
