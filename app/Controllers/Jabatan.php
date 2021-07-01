@@ -27,15 +27,21 @@ class Jabatan extends BaseController
 
     public function index()
     {
-        $Jabatan = $this->JabatanModel->findAll();
-        $Area = $this->areaModel->findAll();
+        if ($_SESSION['role'] == 'user') {
+            session()->setFlashdata('pesan', 'tidak ada akses');
+            return redirect()->to('/Dashboard');
+        } else {
 
-        $data = [
-            'Jabatan' => $Jabatan,
-            'Area' => $Area
-        ];
+            $Jabatan = $this->JabatanModel->findAll();
+            $Area = $this->areaModel->findAll();
 
-        return view('Pengaturan/Jabatan', $data);
+            $data = [
+                'Jabatan' => $Jabatan,
+                'Area' => $Area
+            ];
+
+            return view('Pengaturan/Jabatan', $data);
+        }
     }
 
     public function save()

@@ -4,8 +4,21 @@
 
 
 <div class="container-fluid mt-5">
+    <?php
+    $session = \Config\Services::session();
+    if (!empty($session->getFlashdata('pesan'))) {
+
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                ' . $session->getFlashdata('pesan') . '
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>';
+    }
+    ?>
     <div class="row">
         <div class="col-12 col-lg-6">
+
             <div class="card">
                 <h4 class="text-center mt-2">DAFTAR LOKASI</h4>
                 <div class="input-group mb-3 zaam-input" style="width:80%;">

@@ -23,15 +23,20 @@ class Role_user extends BaseController
 
     public function index()
     {
-        $RoleUser = $this->RoleUserModel->findAll();
-        $Jabatan = $this->JabatanModel->findAll();
+        if ($_SESSION['role'] == 'user' or $_SESSION['role'] == 'admin') {
+            session()->setFlashdata('pesan', 'tidak ada akses');
+            return redirect()->to('/Dashboard');
+        } else {
+            $RoleUser = $this->RoleUserModel->findAll();
+            $Jabatan = $this->JabatanModel->findAll();
 
-        $data = [
-            'RoleUser' => $RoleUser,
-            'Jabatan' => $Jabatan
-        ];
+            $data = [
+                'RoleUser' => $RoleUser,
+                'Jabatan' => $Jabatan
+            ];
 
-        return view('Pengaturan/Role_user', $data);
+            return view('Pengaturan/Role_user', $data);
+        }
     }
 
     public function save()

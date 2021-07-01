@@ -47,13 +47,19 @@ class Shift extends BaseController
     }
     public function setting_shift()
     {
-        $shift = $this->ShiftModel->findAll();
-        $area = $this->AreaModel->findAll();
-        $data = [
-            'shift' => $shift,
-            'area' => $area
-        ];
-        return view('Pengaturan/Shift', $data);
+        if ($_SESSION['role'] == 'user') {
+            session()->setFlashdata('pesan', 'tidak ada akses');
+            return redirect()->to('/Dashboard');
+        } else {
+
+            $shift = $this->ShiftModel->findAll();
+            $area = $this->AreaModel->findAll();
+            $data = [
+                'shift' => $shift,
+                'area' => $area
+            ];
+            return view('Pengaturan/Shift', $data);
+        }
     }
     public function save()
     {
@@ -106,17 +112,22 @@ class Shift extends BaseController
     }
     public function setting_atur_shift()
     {
+        if ($_SESSION['role'] == 'user') {
+            session()->setFlashdata('pesan', 'tidak ada akses');
+            return redirect()->to('/Dashboard');
+        } else {
 
-        $data = [
-            'atur_shift' => $this->ShiftModel->atur_shift(),
-            'nama_personil' => $this->ShiftModel->Personil_Shift(),
-            'data_shift' => $this->ShiftModel->findAll()
+            $data = [
+                'atur_shift' => $this->ShiftModel->atur_shift(),
+                'nama_personil' => $this->ShiftModel->Personil_Shift(),
+                'data_shift' => $this->ShiftModel->findAll()
 
 
-        ];
+            ];
 
-        // dd($data);
-        return view('Pengaturan/Atur_shift', $data);
+            // dd($data);
+            return view('Pengaturan/Atur_shift', $data);
+        }
     }
     public function atur_shit_save()
     {

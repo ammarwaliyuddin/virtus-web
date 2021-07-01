@@ -109,15 +109,21 @@ class Security extends BaseController
     }
     public function setting_personil()
     {
-        // $personilAll = $this->PersonilModel->getPersonil();
-        $personilAll = $this->PersonilModel->findAll();
-        // $Area = $this->LokasiModel->findAll();
-        $data = [
-            'personilAll' => $personilAll
-            // 'Area' => $Area
-        ];
+        if ($_SESSION['role'] == 'user') {
+            session()->setFlashdata('pesan', 'tidak ada akses');
+            return redirect()->to('/Dashboard');
+        } else {
 
-        return view('Pengaturan/Personil', $data);
+            // $personilAll = $this->PersonilModel->getPersonil();
+            $personilAll = $this->PersonilModel->findAll();
+            // $Area = $this->LokasiModel->findAll();
+            $data = [
+                'personilAll' => $personilAll
+                // 'Area' => $Area
+            ];
+
+            return view('Pengaturan/Personil', $data);
+        }
     }
     public function delete($NIK)
     {

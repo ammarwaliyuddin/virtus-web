@@ -157,8 +157,8 @@
                         <select class="form-control " name="Role">
 
                             <option>super admin</option>
-                            <option>Admin</option>
-                            <option>User</option>
+                            <option>admin</option>
+                            <option>user</option>
 
                         </select>
                     </div>
@@ -224,8 +224,8 @@
                         <label for="Role">Role</label>
                         <select class="form-control role" name="role">
                             <option>super admin</option>
-                            <option>Admin</option>
-                            <option>User</option>
+                            <option>admin</option>
+                            <option>user</option>
                         </select>
                     </div>
                     <div class="form-group">

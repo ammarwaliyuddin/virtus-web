@@ -18,14 +18,18 @@ class Smartwatch extends BaseController
 
     public function index()
     {
-        $Smartwatch = $this->SmartwatchModel->findAll();
+        if ($_SESSION['role'] == 'user') {
+            session()->setFlashdata('pesan', 'tidak ada akses');
+            return redirect()->to('/Dashboard');
+        } else {
 
-        $data = [
-            'Smartwatch' => $Smartwatch
-        ];
+            $Smartwatch = $this->SmartwatchModel->findAll();
 
-
-        return view('Pengaturan/Smartwatch', $data);
+            $data = [
+                'Smartwatch' => $Smartwatch
+            ];
+            return view('Pengaturan/Smartwatch', $data);
+        }
     }
 
     public function save()

@@ -18,13 +18,19 @@ class Customer extends BaseController
 
     public function index()
     {
-        $Customer = $this->CustomerModel->findAll();
+        if ($_SESSION['role'] == 'user') {
+            session()->setFlashdata('pesan', 'tidak ada akses');
+            return redirect()->to('/Dashboard');
+        } else {
 
-        $data = [
-            'Customer' => $Customer
-        ];
+            $Customer = $this->CustomerModel->findAll();
 
-        return view('Pengaturan/Customer', $data);
+            $data = [
+                'Customer' => $Customer
+            ];
+
+            return view('Pengaturan/Customer', $data);
+        }
     }
 
     public function save()

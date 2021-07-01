@@ -36,6 +36,8 @@ class Login extends BaseController
 					'NIK'       => $data['NIK'],
 					'Nama'     => $data['Nama'],
 					'Status'    => $data['Status'],
+					'role' => $data['role'],
+					'Foto' => $data['Foto'],
 					'jumlah' => $query,
 					'logged_in'     => TRUE
 				];

@@ -31,6 +31,7 @@
             </div>
             <div class="sidebar-content">
                 <ul class="list-unstyled components nav-sidebar">
+
                     <li class="home-ul ">
                         <a href="<?= base_url('Dashboard'); ?>">DASHBOARD</a>
                     </li>
@@ -41,30 +42,34 @@
                     <li>
                         <a href="<?= base_url('Shift'); ?>">SHIFT</a>
                     </li>
-                    <!-- <li>
-                        <a href="<?= base_url('Location'); ?>">LOCATION</a>
-                    </li> -->
-                    <li class="nav-item dropright drop-zaam">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            SETTING
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="<?= base_url('Jabatan'); ?>">JABATAN</a></li>
-                            <li><a href="<?= base_url('Role_user'); ?>" class="dropdown-item">ROLE USER</a></li>
-                            <li><a href="<?= base_url('user'); ?>" class="dropdown-item">USER</a></li>
-                            <li><a href="<?= base_url('Area'); ?>" class="dropdown-item">AREA</a></li>
-                            <li><a href="<?= base_url('Customer'); ?>" class="dropdown-item">CUSTOMER</a></li>
-                            <li><a href="<?= base_url('Smartwatch'); ?>" class="dropdown-item">SMARTWATCH</a></li>
-                            <li><a href="<?= base_url('Security/setting_personil'); ?>" class="dropdown-item">PERSONIL</a></li>
-                            <li class="dropdown-submenu submenu-active"><a class="dropdown-item dropdown-toggle" href="#">SHIFT PERSONIL</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="<?= base_url('Shift/setting_shift'); ?>">SHIFT</a></li>
-                                    <li><a class="dropdown-item" href="<?= base_url('Shift/setting_atur_shift'); ?>">ATUR SHIFT</a></li>
 
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
+                    <?php if ($_SESSION['role'] == 'super admin' or $_SESSION['role'] == 'admin') : ?>
+                        <li class="nav-item dropright drop-zaam">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                SETTING
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="<?= base_url('Jabatan'); ?>">JABATAN</a></li>
+
+                                <?php if ($_SESSION['role'] == 'super admin') : ?>
+                                    <li><a href="<?= base_url('Role_user'); ?>" class="dropdown-item">ROLE USER</a></li>
+                                <?php endif ?>
+
+                                <li><a href="<?= base_url('user'); ?>" class="dropdown-item">USER</a></li>
+                                <li><a href="<?= base_url('Area'); ?>" class="dropdown-item">AREA</a></li>
+                                <li><a href="<?= base_url('Customer'); ?>" class="dropdown-item">CUSTOMER</a></li>
+                                <li><a href="<?= base_url('Smartwatch'); ?>" class="dropdown-item">SMARTWATCH</a></li>
+                                <li><a href="<?= base_url('Security/setting_personil'); ?>" class="dropdown-item">PERSONIL</a></li>
+                                <li class="dropdown-submenu submenu-active"><a class="dropdown-item dropdown-toggle" href="#">SHIFT PERSONIL</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="<?= base_url('Shift/setting_shift'); ?>">SHIFT</a></li>
+                                        <li><a class="dropdown-item" href="<?= base_url('Shift/setting_atur_shift'); ?>">ATUR SHIFT</a></li>
+
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    <?php endif ?>
 
                 </ul>
             </div>
@@ -80,13 +85,22 @@
 
                     <!-- login panel -->
                     <div class="login-panel">
-                        <div class="img-profil"></div>
 
+
+                        <div style=" text-transform: capitalize;cursor: context-menu;">
+                            <?= $_SESSION['Nama']  ?>
+                        </div>
                         <div class="btn-group dropdown">
-                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"> <?= $_SESSION['Nama']  ?></button>
+                            <button type="button" class="btn dropdown-toggle btn-profile" data-toggle="dropdown">
+                                <div class="img-profil">
+                                    <img src="<?= base_url('img') . '/' . $_SESSION['Foto'] ?> " alt="" class="img-thumbnail">
+                                </div>
+                            </button>
+
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a href="#" class="dropdown-item">ACCOUNT</a>
                                 <a href="<?= base_url('logout'); ?>" class="dropdown-item">LOGOUT</a>
+
                             </div>
                         </div>
                     </div>

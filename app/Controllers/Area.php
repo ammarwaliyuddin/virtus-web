@@ -30,13 +30,19 @@ class Area extends BaseController
 
     public function index()
     {
-        $Area = $this->LokasiModel->findAll();
+        if ($_SESSION['role'] == 'user') {
+            session()->setFlashdata('pesan', 'tidak ada akses');
+            return redirect()->to('/Dashboard');
+        } else {
 
-        $data = [
-            'Area' => $Area
-        ];
+            $Area = $this->LokasiModel->findAll();
 
-        return view('Pengaturan/Area', $data);
+            $data = [
+                'Area' => $Area
+            ];
+
+            return view('Pengaturan/Area', $data);
+        }
     }
 
     public function save()
