@@ -79,6 +79,8 @@ class Shift extends BaseController
     }
     public function delete($ID_shift)
     {
+        $this->aturshift->where('ID_shift', $ID_shift);
+        $this->aturshift->delete();
         $this->ShiftModel->delete($ID_shift);
 
         session()->setFlashdata('pesan', 'Data berhasil dihapus');

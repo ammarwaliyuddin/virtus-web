@@ -8,7 +8,6 @@
             <?php
             $session = \Config\Services::session();
             if (!empty($session->getFlashdata('pesan'))) {
-
                 echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
                 ' . $session->getFlashdata('pesan') . '
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -30,7 +29,7 @@
                             <a class="dropdown-item" data-toggle="modal" data-target="#import_excel" href="#">
                                 Import
                             </a>
-                            <a class="dropdown-item" href="">
+                            <a class="dropdown-item" href="/personil_export">
                                 Export
                             </a>
                         </div>

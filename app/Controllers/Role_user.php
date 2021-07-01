@@ -112,7 +112,7 @@ class Role_user extends BaseController
             $data = [
                 'Nama' => $this->request->getVar('Nama'),
                 'NIK' => $this->request->getVar('NIK'),
-                'Password' => $this->request->getVar('Password'),
+                'Password' => password_hash($this->request->getVar('Password'), PASSWORD_BCRYPT),
                 'Jabatan' => $this->request->getVar('Jabatan'),
                 'Email' => $this->request->getVar('Email'),
                 'Keterangan' => $this->request->getVar('Keterangan'),

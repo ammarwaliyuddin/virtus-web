@@ -6,6 +6,9 @@ use App\Models\LokasiModel;
 
 use App\Models\PersonilModel;
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Security extends BaseController
 {
     protected $PersonilModel;
@@ -183,5 +186,44 @@ class Security extends BaseController
         $mpdf->WriteHTML($html);
 
         return redirect()->to($mpdf->Output('filename.pdf', 'I'));
+    }
+    // export excel
+    public function export()
+    {
+
+        $personilAll = $this->PersonilModel->findAll();
+
+        $spreadsheet = new Spreadsheet;
+        $spreadsheet->setActiveSheetIndex(0)
+            ->setCellValue('A1', 'No')
+            ->setCellValue('B1', 'Nama')
+            ->setCellValue('C1', 'Umur')
+            ->setCellValue('D1', 'Nomor_HP')
+            ->setCellValue('E1', 'Email')
+            ->setCellValue('F1', 'NIK');
+
+        $kolom = 2;
+        $nomor = 1;
+        $i = 1;
+        foreach ($personilAll as $P) {
+            $spreadsheet->setActiveSheetIndex(0)
+                ->setCellValue('A' . $kolom, $i++)
+                ->setCellValue('B' . $kolom, $P['Nama'])
+                ->setCellValue('C' . $kolom, $P['Umur'])
+                ->setCellValue('D' . $kolom, $P['Nomor_HP'])
+                ->setCellValue('E' . $kolom, $P['Email'])
+                ->setCellValue('F' . $kolom, $P['NIK']);
+
+            $kolom++;
+            $nomor++;
+        }
+
+        $writer = new Xlsx($spreadsheet);
+
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="rekap.xlsx"');
+        header('Cache-Control: max-age=0');
+
+        $writer->save('php://output');
     }
 }

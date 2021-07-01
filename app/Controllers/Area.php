@@ -8,6 +8,8 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 use App\Models\AreaModel;
+use App\Models\ShiftModel;
+
 
 use PDO;
 use \Mpdf\Mpdf;
@@ -16,10 +18,14 @@ class Area extends BaseController
 {
     protected $LokasiModel;
     protected $builder;
+    protected $ShiftModel;
+    protected $aturshift;
     public function __construct()
     {
         $this->LokasiModel = new LokasiModel();
+        $this->ShiftModel = new ShiftModel();
         $this->builder   = \Config\Database::connect()->table('data_area');
+        $this->aturshift      = \Config\Database::connect()->table('data_shift_personil');
     }
 
     public function index()
@@ -50,7 +56,30 @@ class Area extends BaseController
 
     public function delete($ID_area)
     {
+
+        // opsi 1
+        // $shift = $this->ShiftModel->select('ID_shift');
+        // $shift =  $this->ShiftModel->getWhere(['ID_area' => $ID_area])->getResultArray();
+
+        //opsi 2
+        $area =  $this->LokasiModel->select('Nama_area');
+        $area =  $this->LokasiModel->getWhere(['ID_area' => $ID_area])->getResultArray();
+        $Nama_area = $area[0]['Nama_area'];
+
+        $shift = $this->ShiftModel->select('ID_shift');
+        $shift =  $this->ShiftModel->getWhere(['Nama_area' => $Nama_area])->getResultArray();
+
+
+        //akhir opsi
+
+        $ID_shift = $shift[0]['ID_shift'];
+
+        $this->aturshift->where('ID_shift', $ID_shift);
+        $this->aturshift->delete();
+        $this->ShiftModel->delete($ID_area);
         $this->LokasiModel->delete($ID_area);
+
+
 
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/Area');

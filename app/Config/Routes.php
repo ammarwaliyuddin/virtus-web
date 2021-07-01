@@ -46,8 +46,11 @@ $routes->get('/Security_personil', 'Security::detail_personil', ['filter' => 'au
 $routes->get('/Security2', 'Security2::index', ['filter' => 'auth']);
 $routes->delete('/Security/(:any)', 'Security::delete/$1', ['filter' => 'auth']);
 
+
 // print pdf daftar personil
 $routes->get('/personil_reportpdf', 'Security::reportpdf', ['filter' => 'auth']);
+
+$routes->get('/personil_export', 'Security::export', ['filter' => 'auth']);
 
 $routes->get('/Shift', 'Shift::index', ['filter' => 'auth']);
 $routes->delete('/Shift/(:any)', 'Shift::delete/$1', ['filter' => 'auth']);

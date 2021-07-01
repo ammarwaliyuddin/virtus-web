@@ -43,7 +43,7 @@ class User extends BaseController
         $this->UserModel->save([
             'NIK' => $this->request->getVar('NIK'),
             'Nama' => $this->request->getVar('Nama'),
-            'Password' => $this->request->getVar('Password'),
+            'Password' => password_hash($this->request->getVar('Password'), PASSWORD_BCRYPT),
             'Status' => $this->request->getVar('Status'),
             'Foto' => $this->request->getVar('Foto'),
             'Jabatan' => $this->request->getVar('Jabatan'),
@@ -70,7 +70,7 @@ class User extends BaseController
         $Nama = $this->request->getVar('Nama');
         $Jabatan = $this->request->getVar('Jabatan');
         $Email = $this->request->getVar('Email');
-        $Password = $this->request->getVar('Password');
+        $Password = password_hash($this->request->getVar('Password'), PASSWORD_BCRYPT);
         $Foto = $this->request->getVar('Foto');
         $Expiredate = $this->request->getVar('Expiredate');
         $Status = $this->request->getVar('Status');
