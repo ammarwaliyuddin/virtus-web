@@ -282,10 +282,16 @@ class Shift extends BaseController
                     //     'Nama_area' => $Nama_area
                     // ];
                 } else {
+                    $this->builder->selectMax('ID_shift');
+                    $max = $this->builder->get()->getResultArray();
+                    $result = $max['0']['ID_shift'];
+
                     $datasimpan = [
                         'Nama_area' => $Nama_area,
                         'hari' => $hari,
                         'jam' => $jam,
+                        'ID_shift' => $result + 1,
+                        'tanggali' => date("Y-m-d")
                     ];
                     $this->builder->insert($datasimpan);
                     $jumlahsukses++;
