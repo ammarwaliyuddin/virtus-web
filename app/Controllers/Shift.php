@@ -269,6 +269,8 @@ class Shift extends BaseController
 
 
                 $this->builder->where(['Nama_area' => $Nama_area]);
+                $this->builder->where(['hari' => $hari]);
+                $this->builder->where(['jam' => $jam]);
                 $cekdata = $this->builder->get();
 
                 // $cekNama_area =  $db->table('data_area')->getWhere(['Nama_area' => $Nama_area])->getResult();
