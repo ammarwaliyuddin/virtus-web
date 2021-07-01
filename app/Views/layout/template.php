@@ -70,7 +70,6 @@
                             </ul>
                         </li>
                     <?php endif ?>
-
                 </ul>
             </div>
         </nav>

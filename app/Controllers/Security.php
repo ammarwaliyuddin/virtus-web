@@ -232,4 +232,84 @@ class Security extends BaseController
 
         $writer->save('php://output');
     }
+    //import excel
+    public function import()
+    {
+        $validation = \Config\Services::validation();
+        $valid = $this->validate(
+            [
+                'fileimport' => [
+                    'label' => 'inputan file',
+                    'rules' => 'uploaded[fileimport]|ext_in[fileimport,xls,xlsx]',
+                    'errors' => [
+                        'uploaded' => '{field} wajib diisi',
+                        'ext_in' => '{field} harus ekstensi xls & xlsx'
+                    ]
+                ]
+            ]
+        );
+
+        if (!$valid) {
+
+            $this->session->setFlashdata('pesan', $validation->getError('fileimport'));
+            return redirect()->to('/Security/setting_personil');
+        } else {
+            $file_excel = $this->request->getFile('fileimport');
+
+            $ext = $file_excel->getClientExtension();
+            if ($ext == 'xls') {
+                $render = new \PhpOffice\PhpSpreadsheet\Reader\Xls();
+            } else {
+                $render = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+            }
+            $spreadsheet = $render->load($file_excel);
+            $data = $spreadsheet->getActiveSheet()->toArray();
+
+            $pesan_error = [];
+            $jumlaherror = 0;
+            $jumlahsukses = 0;
+
+            foreach ($data as $x => $row) {
+                if ($x == 0) {
+                    continue;
+                }
+
+                $Nama = $row[1];
+                $Umur = $row[2];
+                $Nomor_HP = $row[3];
+                $Email = $row[4];
+                $NIK = $row[5];
+
+
+                $this->builder->where(['NIK' => $NIK]);
+                $cekdata = $this->builder->get();
+
+                // $cekNama_area =  $db->table('data_area')->getWhere(['Nama_area' => $Nama_area])->getResult();
+                if (count($cekdata->getResult()) > 0) {
+                    $jumlaherror++;
+                    // // $pesan_error[] = "Jabatan : $Jabatan, dan Nama Area $Nama_area, sudah ada<br>";
+                    // $pesan_error = [
+                    //     'Jabatan' => $Jabatan,
+                    //     'Nama_area' => $Nama_area
+                    // ];
+                } else {
+                    $datasimpan = [
+                        'Nama' => $Nama,
+                        'Umur' => $Umur,
+                        'Nomor_HP' => $Nomor_HP,
+                        'Email' => $Email,
+                        'NIK' => $NIK,
+                    ];
+                    $this->builder->insert($datasimpan);
+                    $jumlahsukses++;
+                }
+            }
+            // foreach ($pesan_error as $error) {
+            //     echo $error;
+            // }
+
+            $this->session->setFlashdata('pesan', "$jumlaherror Data tidak diimport karna memiliki kesamaan pada data yang sudah ada <br> $jumlahsukses Data berhasil di import");
+            return redirect()->to('/Security/setting_personil');
+        }
+    }
 }
