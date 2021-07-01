@@ -97,7 +97,7 @@
                             </button>
 
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a href="#" class="dropdown-item">ACCOUNT</a>
+                                <a href="<?= base_url('/Profile'); ?>" class="dropdown-item">ACCOUNT</a>
                                 <a href="<?= base_url('logout'); ?>" class="dropdown-item">LOGOUT</a>
 
                             </div>

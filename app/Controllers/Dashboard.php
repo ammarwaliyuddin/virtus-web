@@ -22,10 +22,17 @@ class Dashboard extends BaseController
         $session = session();
         $session->get('user_name');
 
-        $Lokasi = $this->LokasiModel->findAll();
-        //  $History = $this->HistoryPelanggaran->findAll();
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $Lokasi = $this->LokasiModel->searchLokasi($keyword);
+        } else {
+            $Lokasi = $this->LokasiModel->findAll();
+        }
+
+
+
+
         $History = $this->HistoryPelanggaran->getNama();
-        //  $data['siswa'] = $model->getSiswa();
 
         $data = [
             'Lokasi' => $Lokasi,

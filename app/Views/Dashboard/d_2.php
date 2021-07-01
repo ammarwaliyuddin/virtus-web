@@ -7,7 +7,7 @@
         <div class="col-12 col-lg-6">
             <div class="card">
                 <h4 class="text-center mt-2">DAFTAR LOKASI</h4>
-                <div class="input-group mb-3 zaam-input" style="width:80%;">
+                <!-- <div class="input-group mb-3 zaam-input" style="width:80%;">
                     <input type="text" class="form-control " placeholder="Masukkan Nama / NIK / Area" aria-label="" aria-describedby="basic-addon1">
                     <div class="input-group-prepend">
                         <button class="btn btn-outline-secondary" type="button">
@@ -15,9 +15,9 @@
                         </button>
                     </div>
 
-                </div>
+                </div> -->
 
-                <nav>
+                <nav class="mt-5">
                     <div class="nav nav-tabs nav-zaam" id="nav-tab" role="tablist">
                         <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Data Monitoring</a>
                         <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Persentase</a>

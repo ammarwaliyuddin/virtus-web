@@ -21,4 +21,10 @@ class LokasiModel extends Model
         $area = $builder->get()->getResultArray();
         return $area;
     }
+    public function searchLokasi($keyword)
+    {
+        return $this->db->table('data_area')
+            ->like('Nama_area', $keyword)
+            ->get()->getResultArray();
+    }
 }

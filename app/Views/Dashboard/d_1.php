@@ -1,7 +1,7 @@
 <?= $this->extend('layout/template'); ?>
 
 <?= $this->section('content'); ?>
-
+<?php file_get_contents("http://zaamstudio.com/virtus/percentage.php"); ?>
 
 <div class="container-fluid mt-5">
     <?php
@@ -21,14 +21,24 @@
 
             <div class="card">
                 <h4 class="text-center mt-2">DAFTAR LOKASI</h4>
-                <div class="input-group mb-3 zaam-input" style="width:80%;">
-                    <input type="text" class="form-control " placeholder="Masukkan Nama / NIK / Area" aria-label="" aria-describedby="basic-addon1">
-                    <div class="input-group-prepend">
-                        <button class="btn btn-outline-secondary" type="button">
-                            <i class="fas fa-search"></i>
-                        </button>
+                <form action="" method="POST" class="w-100 d-flex justify-content-center">
+                    <div class="input-group mb-3 zaam-input w-80-zaam">
+                        <input type="text" class="form-control " placeholder="Masukkan Nama Area ......" name="keyword">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <?php if (isset($_POST['keyword'])) : ?>
+                            <div class="input-group-prepend">
+                                <a href="">
+                                    <button class="btn btn-outline-secondary" type="button"> Reset filter
+                                    </button>
+                                </a>
+                            </div>
+                        <?php endif; ?>
                     </div>
-                </div>
+                </form>
                 <div class="card-content">
                     <form action="" method="" class="w-100">
                         <?php foreach ($Lokasi as $L) : ?>
