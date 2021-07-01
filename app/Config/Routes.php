@@ -54,9 +54,13 @@ $routes->get('/personil_export', 'Security::export', ['filter' => 'auth']);
 
 $routes->get('/Shift', 'Shift::index', ['filter' => 'auth']);
 $routes->delete('/Shift/(:any)', 'Shift::delete/$1', ['filter' => 'auth']);
+
 // print pdf
 $routes->get('/shift_reportpdf', 'Shift::reportpdf', ['filter' => 'auth']);
+$routes->get('/shift_export', 'Shift::export', ['filter' => 'auth']);
+
 $routes->get('/aturshift_pdf', 'Shift::atur_reportpdf', ['filter' => 'auth']);
+$routes->get('/aturshift_export', 'Shift::atur_export', ['filter' => 'auth']);
 
 $routes->delete('/Atur_shift/(:any)', 'Shift::atur_shit_hapus/$1', ['filter' => 'auth']);
 

@@ -50,6 +50,13 @@ class ShiftModel extends Model
         $builder->select('master_data_personil.NIK, master_data_personil.Nama, data_shift.Nama_area, data_shift.Jam,data_shift.Hari,data_shift_personil.id,data_shift.ID_shift');
         return $builder->get()->getResultArray();
     }
+    public function atur_shift_where($NIK, $ID_shift)
+    {
+        $builder = $this->db->table('data_shift_personil');
+        $builder->where('NIK', $NIK);
+        $builder->Where('ID_shift', $ID_shift);
+        return $builder->get();
+    }
     public function Personil_Shift()
     {
 
