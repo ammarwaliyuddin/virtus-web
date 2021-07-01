@@ -179,6 +179,8 @@ class Smartwatch extends BaseController
 
                 $this->builder->where(['merek' => $merek]);
                 $this->builder->where(['lokasi' => $lokasi]);
+                $this->builder->where(['latitude' => $latitude]);
+                $this->builder->where(['longitude' => $longitude]);
                 $cekdata = $this->builder->get();
 
                 // $cekNama_area =  $db->table('data_area')->getWhere(['Nama_area' => $Nama_area])->getResult();
