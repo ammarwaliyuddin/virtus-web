@@ -33,7 +33,7 @@ class PersonilModel extends Model
             ->join('data_shift_personil', 'data_shift_personil.NIK=master_data_personil.NIK')
             ->join('data_shift', 'data_shift.ID_shift=data_shift_personil.ID_shift')
             ->like('Nama', $keyword)
-            ->orLike('Nama_area', $keyword)
+            ->orLike('data_shift_personil.Nama_area', $keyword)
             ->orLike('data_shift_personil.NIK', $keyword)
             ->get()->getResultArray();
     }
