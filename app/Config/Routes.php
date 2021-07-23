@@ -44,7 +44,7 @@ $routes->get('/Dashboard2/(:segment)', 'Dashboard2::index/$1', ['filter' => 'aut
 $routes->get('/Security', 'Security::index', ['filter' => 'auth']);
 $routes->get('/Security_personil', 'Security::detail_personil', ['filter' => 'auth']);
 $routes->get('/Security2', 'Security2::index', ['filter' => 'auth']);
-$routes->delete('/Security/(:any)', 'Security::delete/$1', ['filter' => 'auth']);
+$routes->get('/Security_delete/(:any)', 'Security::delete/$1', ['filter' => 'auth']);
 
 
 // print pdf daftar personil
@@ -53,7 +53,7 @@ $routes->get('/personil_reportpdf', 'Security::reportpdf', ['filter' => 'auth'])
 $routes->get('/personil_export', 'Security::export', ['filter' => 'auth']);
 
 $routes->get('/Shift', 'Shift::index', ['filter' => 'auth']);
-$routes->delete('/Shift/(:any)', 'Shift::delete/$1', ['filter' => 'auth']);
+$routes->get('/Shift_delete/(:any)', 'Shift::delete/$1', ['filter' => 'auth']);
 
 // print pdf
 $routes->get('/shift_reportpdf', 'Shift::reportpdf', ['filter' => 'auth']);
@@ -62,13 +62,13 @@ $routes->get('/shift_export', 'Shift::export', ['filter' => 'auth']);
 $routes->get('/aturshift_pdf', 'Shift::atur_reportpdf', ['filter' => 'auth']);
 $routes->get('/aturshift_export', 'Shift::atur_export', ['filter' => 'auth']);
 
-$routes->delete('/Atur_shift/(:any)', 'Shift::atur_shit_hapus/$1', ['filter' => 'auth']);
+$routes->get('/Atur_shift_del/(:any)', 'Shift::atur_shit_hapus/$1', ['filter' => 'auth']);
 
 $routes->get('/Location', 'Location::index', ['filter' => 'auth']);
 $routes->get('/Jabatan', 'Jabatan::index', ['filter' => 'auth']);
 
 // $routes->get('/Jabatan', 'Jabatan::index');
-$routes->delete('/Jabatan/(:num)', 'Jabatan::delete/$1');
+$routes->get('/Jabatan_delete/(:num)', 'Jabatan::delete/$1');
 // $routes->get('/Jabatan/(:any)', 'Jabatan::index/$1');
 
 // print dan cetak pdf jabatan 
@@ -91,7 +91,7 @@ $routes->get('/export', 'Role_user::export_excel', ['filter' => 'auth']);
 $routes->get('/User_reportpdf', 'User::reportpdf', ['filter' => 'auth']);
 
 $routes->get('/Area', 'Area::index', ['filter' => 'auth']);
-$routes->delete('/Area/(:any)', 'Area::delete/$1', ['filter' => 'auth']);
+$routes->get('/Area_delete/(:any)', 'Area::delete/$1', ['filter' => 'auth']);
 $routes->get('/Area/(:any)', 'Area::index/$1', ['filter' => 'auth']);
 
 // area print pdf
@@ -100,7 +100,7 @@ $routes->get('/Area_exportexcel', 'Area::export_excel', ['filter' => 'auth']);
 
 
 $routes->get('/Customer', 'Customer::index', ['filter' => 'auth']);
-$routes->delete('/Customer/(:num)', 'Customer::delete/$1', ['filter' => 'auth']);
+$routes->get('/Customer_delete/(:num)', 'Customer::delete/$1', ['filter' => 'auth']);
 $routes->get('/Customer/(:any)', 'Customer::index/$1', ['filter' => 'auth']);
 // customer print pdf
 $routes->get('/Customer_reportpdf', 'Customer::reportpdf', ['filter' => 'auth']);
@@ -108,12 +108,12 @@ $routes->get('/Customer_export', 'Customer::export', ['filter' => 'auth']);
 
 
 $routes->get('/User', 'User::index', ['filter' => 'auth']);
-$routes->delete('/User/(:any)', 'User::delete/$1', ['filter' => 'auth']);
+$routes->get('/User_delete/(:any)', 'User::delete/$1', ['filter' => 'auth']);
 $routes->get('/User/(:any)', 'User::index/$1', ['filter' => 'auth']);
 $routes->get('/user/export', 'User::export', ['filter' => 'auth']);
 
 $routes->get('/Smartwatch', 'Smartwatch::index');
-$routes->delete('/Smartwatch/(:num)', 'Smartwatch::delete/$1', ['filter' => 'auth']);
+$routes->get('/Smartwatch_delete/(:num)', 'Smartwatch::delete/$1', ['filter' => 'auth']);
 $routes->get('/Smartwatch/(:any)', 'Smartwatch::index/$1', ['filter' => 'auth']);
 // print pdf
 $routes->get('/Smartwatch_reportpdf', 'Smartwatch::reportpdf', ['filter' => 'auth']);

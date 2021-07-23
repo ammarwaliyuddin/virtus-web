@@ -63,12 +63,8 @@
                                 <td><?= $U['Jabatan']; ?></td>
                                 <td>
                                     <a href="#" class="btn btn-warning btn-sm btn-edit" data-nik="<?= $U['NIK']; ?>" data-nama="<?= $U['Nama']; ?>" data-jabatan="<?= $U['Jabatan']; ?>" data-email="<?= $U['Email']; ?>" data-password="<?= $U['Password']; ?>" data-foto="<?= $U['Foto']; ?>" data-expiredate="<?= $U['Expiredate']; ?>" data-status="<?= $U['Status']; ?>" data-keterangan="<?= $U['Keterangan']; ?>">edit</a>
+                                    <a href="/User_delete/<?= $U['NIK']; ?>" class="btn btn-danger btn-sm swt">hapus</a>
 
-                                    <form action="/User/<?= $U['NIK']; ?>" method="POST" class="d-inline">
-                                        <?= csrf_field() ?>
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <button type="submit" class="btn btn-danger btn-sm">hapus</button>
-                                    </form>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -122,7 +118,7 @@
                     <?= csrf_field() ?>
                     <div class="form-group">
                         <label for="NIK">NIK</label>
-                        <input name="NIK" type="text" class="form-control" id="NIK" placeholder="Masukkan NIK" required>
+                        <input name="NIK" type="text" class="form-control" id="NIK" placeholder="Masukkan NIK" required maxlength="8" minlength="8">
                     </div>
                     <div class="form-group">
                         <label for="Nama">Nama </label>
@@ -186,7 +182,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/User/edit/<?= $U['NIK']; ?>" method="POST">
+                <form method="POST" id="editForm" enctype="multipart/form-data">
                     <?= csrf_field() ?>
                     <div class="form-group">
                         <label for="NIK">NIK</label>
@@ -265,8 +261,8 @@
             const Expiredate = $(this).data('expiredate');
             const Status = $(this).data('status');
             const Keterangan = $(this).data('keterangan');
+            const URL = ' /User/edit/' + NIK;
 
-            console.log(Email);
 
             // Set data to Form Edit
             $('.NIK').val(NIK);
@@ -279,8 +275,39 @@
             $('.Status').val(Status);
             $('.Keterangan').val(Keterangan);
 
+            $('#editForm').attr('action', URL);
             $('#userModalEdit').modal('show');
         });
+
+    });
+</script>
+<script>
+    // const swt = document.querySelector('#swt');
+
+    // console.log(swt);
+    $('.swt').on('click', function(e) {
+        // console.log('ok')
+        e.preventDefault();
+        const href = $(this).attr('href');
+        Swal.fire({
+            title: 'Anda Yakin ingin menghapus?',
+            text: "Data Akan Dihapus",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Iya',
+            cancelButtonText: `Tidak`
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.location.href = href;
+                // Swal.fire(
+                //     'Deleted!',
+                //     'Your file has been deleted.',
+                //     'success'
+                // )
+            }
+        })
 
     });
 </script>

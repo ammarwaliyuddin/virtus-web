@@ -59,17 +59,14 @@
                                     <td><?= $A['Lokasi']; ?></td>
                                     <td>
                                         <a href="#" class="btn btn-warning btn-edit btn-sm" data-id="<?= $A['ID_area']; ?>" data-area="<?= $A['Nama_area']; ?>" data-lokasi="<?= $A['Lokasi']; ?>">edit</a>
+                                        <a href="/Area_delete/<?= $A['ID_area']; ?>" class="btn btn-danger btn-sm swt">hapus</a>
 
-                                        <form action="/Area/<?= $A['ID_area']; ?>" method="POST" class="d-inline">
-                                            <?= csrf_field() ?>
-                                            <input type="hidden" name="_method" value="DELETE">
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin untuk menghapus?');">hapus</button>
-                                        </form>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
+
                 </div>
             </div>
         </div>
@@ -100,6 +97,7 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Import data</button>
             </div>
+
             <?= form_close(); ?>
         </div>
     </div>
@@ -153,11 +151,11 @@
                     <?= csrf_field() ?>
                     <div class="form-group">
                         <label for="Nama_area">Nama Area</label>
-                        <input name="Nama_area" type="text" class="form-control Nama_area" id="Nama_area" aria-describedby="emailHelp" placeholder="Masukkan Nama Area" required>
+                        <input name="Nama_area" type="text" class="form-control Nama_area" aria-describedby="emailHelp" placeholder="Masukkan Nama Area" required>
                     </div>
                     <div class="form-group">
                         <label for="Lokasi">Lokasi</label>
-                        <input name="Lokasi" type="text" class="form-control Lokasi" id="Lokasi" aria-describedby="emailHelp" placeholder="Masukkan Lokasi" required>
+                        <input name="Lokasi" type="text" class="form-control Lokasi" aria-describedby="emailHelp" placeholder="Masukkan Lokasi" required>
                     </div>
             </div>
             <div class="modal-footer">
@@ -192,6 +190,37 @@
 
             $('#areaModal2').modal('show');
         });
+
+    });
+</script>
+
+<script>
+    // const swt = document.querySelector('#swt');
+
+    // console.log(swt);
+    $('.swt').on('click', function(e) {
+        console.log('ok')
+        e.preventDefault();
+        const href = $(this).attr('href');
+        Swal.fire({
+            title: 'Anda Yakin ingin menghapus?',
+            text: "Data Akan Dihapus",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Iya',
+            cancelButtonText: `Tidak`
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.location.href = href;
+                // Swal.fire(
+                //     'Deleted!',
+                //     'Your file has been deleted.',
+                //     'success'
+                // )
+            }
+        })
 
     });
 </script>

@@ -75,14 +75,15 @@ class Area extends BaseController
         $shift = $this->ShiftModel->select('ID_shift');
         $shift =  $this->ShiftModel->getWhere(['Nama_area' => $Nama_area])->getResultArray();
 
-
         //akhir opsi
+        if ($shift) {
+            $ID_shift = $shift[0]['ID_shift'];
 
-        $ID_shift = $shift[0]['ID_shift'];
+            $this->aturshift->where('ID_shift', $ID_shift);
+            $this->aturshift->delete();
+            $this->ShiftModel->delete($ID_area);
+        }
 
-        $this->aturshift->where('ID_shift', $ID_shift);
-        $this->aturshift->delete();
-        $this->ShiftModel->delete($ID_area);
         $this->LokasiModel->delete($ID_area);
 
 

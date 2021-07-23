@@ -120,7 +120,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
         <script src="https://cdn.datatables.net/datetime/1.0.3/js/dataTables.dateTime.min.js"></script>
 
-
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
         <!-- Popper.JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
         </script>
@@ -144,7 +144,7 @@
                 //     alert('More than 960');
                 // }
 
-                // if (screen.width < 768) {
+                // if (screen.width <script 768) {
                 //     $('#sidebar').on('click', function() {
                 //         $('#sidebar').removeClass('active');
                 //         $('#content').removeClass('active');

@@ -62,11 +62,14 @@
 
                                     <td>
                                         <a href="#" class="btn btn-warning btn-edit btn-sm" data-nik="<?= $p['NIK']; ?>" data-nama="<?= $p['Nama']; ?>" data-pin="<?= $p['PIN']; ?>" data-Umur="<?= $p['Umur']; ?>" data-nomor="<?= $p['Nomor_HP']; ?>" data-email="<?= $p['Email']; ?>" data-foto="<?= $p['Foto']; ?>">edit</a>
-                                        <form action="/Security/<?= $p['NIK']; ?>" method="POST" class="d-inline">
+                                        <a href="/Security_delete/<?= $p['NIK']; ?>" class="btn btn-danger btn-sm swt">hapus</a>
+
+
+                                        <!-- <form action="/Security/<?= $p['NIK']; ?>" method="POST" class="d-inline">
                                             <?= csrf_field() ?>
                                             <input type="hidden" name="_method" value="DELETE">
                                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin untuk menghapus?');">hapus</button>
-                                        </form>
+                                        </form> -->
                                     </td>
                                 </tr>
                             <?php endforeach ?>
@@ -246,6 +249,37 @@
             $('#editForm').attr('action', URL)
             $('#personilModalEdit').modal('show');
         });
+
+    });
+</script>
+
+<script>
+    // const swt = document.querySelector('#swt');
+
+    // console.log(swt);
+    $('.swt').on('click', function(e) {
+        // console.log('ok')
+        e.preventDefault();
+        const href = $(this).attr('href');
+        Swal.fire({
+            title: 'Anda Yakin ingin menghapus?',
+            text: "Data Akan Dihapus",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Iya',
+            cancelButtonText: `Tidak`
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.location.href = href;
+                // Swal.fire(
+                //     'Deleted!',
+                //     'Your file has been deleted.',
+                //     'success'
+                // )
+            }
+        })
 
     });
 </script>
