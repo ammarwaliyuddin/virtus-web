@@ -14,9 +14,11 @@ class Security extends BaseController
     protected $PersonilModel;
     protected $LokasiModel;
     protected $builder;
+    protected $HistoryPelanggaran;
     public function __construct()
     {
         $this->LokasiModel = new LokasiModel();
+        $this->HistoryPelanggaran = new PersonilModel();
         $this->PersonilModel = new PersonilModel();
         $this->builder      = \Config\Database::connect()->table('master_data_personil');
     }
@@ -91,9 +93,9 @@ class Security extends BaseController
         }
     }
 
-    public function detail_personil($detail)
+    public function detail_personil($id)
     {
-        $detail = $this->PersonilModel->detailPersonil($detail);
+        $detail = $this->PersonilModel->detailPersonil($id);
         // dd($detail);
         // dd($detail);
         // $data = [
@@ -102,11 +104,19 @@ class Security extends BaseController
         //     'detail' => $detail
         // ];
 
-        $data = ['detail' => $detail[0]];
-        // dd($data);
+        $History = $this->HistoryPelanggaran->detailHistory($id);
+
+        $data = [
+            'detail' => $detail[0],
+            'History' => $History
+        ];
+
+        // $History = $this->HistoryPelanggaran->findAll($detail);
+        // dd($History);
         // dd($data);
         return view('Security/Detail_Personil', $data);
     }
+
     public function setting_personil()
     {
         if ($_SESSION['role'] == 'user') {

@@ -47,4 +47,14 @@ class PersonilModel extends Model
         $query = $builder->get()->getResultArray();
         return $query;
     }
+
+    public function detailHistory($id)
+    {
+        return $this->db->table('master_data_personil')
+            ->where(['master_data_personil.NIK' => $id])
+            ->join('data_pelanggaran', 'master_data_personil.NIK=data_pelanggaran.NIK')
+            ->join('data_shift_personil', 'data_shift_personil.NIK=master_data_personil.NIK')
+            ->join('data_shift', 'data_shift.ID_shift=data_shift_personil.ID_shift')
+            ->get()->getResultArray();
+    }
 }

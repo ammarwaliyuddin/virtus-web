@@ -53,7 +53,18 @@
                                             <div class="m-personil-ico d-inline-block text-center" style="width:35px;">
                                                 <img src="/img/ico/m_peringatan.svg" alt="">
                                             </div>
-                                            <div class="m-personil-status d-inline-block">Tidur</div>
+
+                                            <div class="m-personil-status d-inline-block">
+                                                <?php if ($detail['State'] == '0' or $detail['State'] == 'TIDUR') {
+                                                    echo '<a href="" class="">Tidur</a>';
+                                                } elseif ($detail['State'] == '1' or $detail['State'] == 'NGANTUK') {
+                                                    echo '<a href="" class="">Ngantuk</a>';
+                                                } elseif ($detail['State'] == '2' or $detail['State'] == 'NORMAL') {
+                                                    echo '<a href="" class="">Normal</a>';
+                                                } else {
+                                                    echo '<a href="" class="">EROR</a>';
+                                                } ?>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -107,7 +118,7 @@
                             <div class="col-12">
                                 <hr>
                                 <h6 class="text-center mt-2">History Pelanggaran</h6>
-                                <table border="0" cellspacing="5" cellpadding="5">
+                                <!-- <table border="0" cellspacing="5" cellpadding="5">
                                     <tbody>
                                         <tr>
                                             <td>Minimum date:</td>
@@ -118,7 +129,7 @@
                                             <td><input type="text" id="max" name="max"></td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table> -->
                                 <table id="example" class="display nowrap" style="width:100%">
                                     <thead>
                                         <tr>
@@ -128,20 +139,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>2021/01/11</td>
-                                            <td>10 : 05 : 32</td>
-                                            <td>Tidur</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2020/10/10</td>
-                                            <td>08 : 16 : 01</td>
-                                            <td>Tidur</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2020/09/03</td>
-                                            <td>10 : 57 : 44</td>
-                                            <td>Mengantuk</td>
+                                        <?php foreach ($History as $H) : ?>
+                                            <tr>
+                                                <td><?= $H['Nama_area']; ?></td>
+                                                <td><?= $H['tanggal']; ?></td>
+                                                <td><?= $H['Jenis_pelanggaran']; ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                         </tr>
                                     </tbody>
                                 </table>
