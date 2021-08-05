@@ -19,6 +19,16 @@ class ShiftModel extends Model
             ->get()->getResultArray();
     }
 
+    public function getShiftArea($ID_shift)
+    {
+        return $this->db->table('data_shift')
+            ->where(['ID_shift' => $ID_shift])
+            ->join('data_shift_personil', 'data_shift.ID_shift=data_shift_personil.ID_shift')
+            ->join('master_data_personil', 'data_shift_personil.NIK=master_data_personil.NIK')
+            ->join('data_area', 'data_shift.Nama_area=data_area.Nama_area')
+            ->get('data_area');
+    }
+
     public function getAreaByID($ID_area)
     {
         $builder = $this->db->table('data_area');

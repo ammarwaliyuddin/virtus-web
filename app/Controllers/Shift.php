@@ -122,7 +122,8 @@ class Shift extends BaseController
             $data = [
                 'atur_shift' => $this->ShiftModel->atur_shift(),
                 'nama_personil' => $this->ShiftModel->Personil_Shift(),
-                'data_shift' => $this->ShiftModel->findAll()
+                'data_shift' => $this->ShiftModel->findAll(),
+                'area' => $this->AreaModel->findAll()
             ];
 
             // dd($data);
@@ -131,9 +132,18 @@ class Shift extends BaseController
     }
     public function atur_shit_save()
     {
+        $db = \Config\Database::connect();
+        $builder = $db->table('data_shift');
+        $builder->select('Nama_area');
+        $builder->where(['ID_shift' => $this->request->getVar('shift')]);
+        $Nama_area = $builder->get()->getResultArray();
+
+        // dd($Nama_area[0]['Nama_area']);
+
         $data = [
             'NIK' => $this->request->getVar('NIK'),
             'ID_shift' => $this->request->getVar('shift'),
+            'Nama_area' => $Nama_area[0]['Nama_area'],
         ];
 
         // dd($data);
@@ -144,14 +154,20 @@ class Shift extends BaseController
     }
     public function atur_shit_edit($id)
     {
+        $db = \Config\Database::connect();
+        $builder = $db->table('data_shift');
+        $builder->select('Nama_area');
+        $builder->where(['ID_shift' => $this->request->getVar('shift')]);
+        $Nama_area = $builder->get()->getResultArray();
+
         $data = [
             'NIK' => $this->request->getVar('NIK'),
             'ID_shift' => $this->request->getVar('shift'),
+            'Nama_area' => $Nama_area[0]['Nama_area'],
         ];
-
+        // dd($data);
         $this->aturshift->where('id', $id);
         $this->aturshift->update($data);
-        // dd($data);
 
         session()->setFlashdata('pesan', 'Data berhasil diupdate');
         return redirect()->to('/Shift/setting_atur_shift');

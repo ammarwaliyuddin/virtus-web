@@ -65,7 +65,7 @@
                                     <td><?= $atur['Hari']; ?></td>
                                     <td><?= $atur['Jam']; ?></td>
                                     <td>
-                                        <a href="#" class="btn btn-warning btn-sm btn-edit " data-id="<?= $atur['ID_shift']; ?>" data-nik="<?= $atur['NIK']; ?>" data-idshift="<?= $atur['id']; ?>">edit</a>
+                                        <a href="#" class="btn btn-warning btn-sm btn-edit " data-id="<?= $atur['ID_shift']; ?>" data-nik="<?= $atur['NIK']; ?>" data-idshift="<?= $atur['id']; ?>" data-area="<?= $atur['Nama_area']; ?>">edit</a>
                                         <a href="/Atur_shift_del/<?= $atur['id']; ?>" class="btn btn-danger btn-sm swt">hapus</a>
 
 
@@ -136,13 +136,12 @@
                         <label for="shift">Jadwal Shift</label>
                         <select class="form-control " name="shift">
                             <?php foreach ($data_shift as $shift) : ?>
-                                <option value="<?= $shift['ID_shift']; ?>"><?= $shift['Nama_area']; ?> <p>||</p> <?= $shift['jam']; ?> <p>||</p> <?= $shift['hari']; ?>
-                                </option>
+                                <option value="<?= $shift['ID_shift']; ?>"><?= $shift['Nama_area']; ?> <p>||</p> <?= $shift['jam']; ?> <p>||</p> <?= $shift['hari']; ?></option>
                             <?php endforeach ?>
                         </select>
                     </div>
             </div>
-            <div class="modal-footer">
+            <div class=" modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">batal</button>
                 <button type="submit" class="btn btn-primary">simpan</button>
                 </form>
